@@ -1,0 +1,1116 @@
+2026-04-16 13:55:52,213 INFO us_index_dashboard - cache miss key=daily:1y:nasdaq:^IXIC:index
+2026-04-16 13:55:52,214 INFO us_index_dashboard - cache miss key=daily:1y:sp500:^GSPC:index
+2026-04-16 13:55:52,215 INFO us_index_dashboard - cache miss key=daily:1y:vix:^VIX:macro
+2026-04-16 13:55:52,215 INFO us_index_dashboard - cache miss key=daily:1y:us10y:^TNX:macro
+2026-04-16 13:55:52,215 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 13:55:52,215 INFO us_index_dashboard - cache miss key=daily:1y:aapl:AAPL:mega_cap
+2026-04-16 13:55:52,216 INFO us_index_dashboard - cache miss key=daily:1y:msft:MSFT:mega_cap
+2026-04-16 13:55:52,216 INFO us_index_dashboard - cache miss key=daily:1y:nvda:NVDA:mega_cap
+2026-04-16 13:55:52,217 INFO us_index_dashboard - cache miss key=daily:1y:amzn:AMZN:mega_cap
+2026-04-16 13:55:52,217 INFO us_index_dashboard - cache miss key=daily:1y:googl:GOOGL:mega_cap
+2026-04-16 13:55:52,217 INFO us_index_dashboard - cache miss key=daily:1y:meta:META:mega_cap
+2026-04-16 13:55:52,217 INFO us_index_dashboard - cache miss key=daily:1y:tsla:TSLA:mega_cap
+2026-04-16 13:55:52,218 INFO us_index_dashboard - cache miss key=daily:1y:equal_weight:RSP:breadth
+2026-04-16 13:55:52,218 INFO us_index_dashboard - cache miss key=daily:1y:cap_weight:SPY:breadth
+2026-04-16 13:55:52,218 INFO us_index_dashboard - cache miss key=stats:1y:nasdaq:^IXIC:index
+2026-04-16 13:55:52,218 INFO us_index_dashboard - cache miss key=stats:1y:sp500:^GSPC:index
+2026-04-16 13:55:52,219 INFO us_index_dashboard - cache miss key=stats:1y:aapl:AAPL:mega_cap
+2026-04-16 13:55:52,219 INFO us_index_dashboard - cache miss key=stats:1y:msft:MSFT:mega_cap
+2026-04-16 13:55:52,220 INFO us_index_dashboard - cache miss key=stats:1y:nvda:NVDA:mega_cap
+2026-04-16 13:55:52,220 INFO us_index_dashboard - cache miss key=stats:1y:amzn:AMZN:mega_cap
+2026-04-16 13:55:52,220 INFO us_index_dashboard - cache miss key=stats:1y:googl:GOOGL:mega_cap
+2026-04-16 13:55:52,221 INFO us_index_dashboard - cache miss key=stats:1y:meta:META:mega_cap
+2026-04-16 13:55:52,221 INFO us_index_dashboard - cache miss key=stats:1y:tsla:TSLA:mega_cap
+2026-04-16 13:55:52,221 INFO us_index_dashboard - cache miss key=stats:1y:equal_weight:RSP:breadth
+2026-04-16 13:55:52,222 INFO us_index_dashboard - cache miss key=stats:1y:cap_weight:SPY:breadth
+2026-04-16 13:55:52,243 INFO us_index_dashboard - mock fallback key=nasdaq ticker=^IXIC
+2026-04-16 13:55:52,243 INFO us_index_dashboard - mock fallback key=sp500 ticker=^GSPC
+2026-04-16 13:55:52,243 INFO us_index_dashboard - mock fallback key=vix ticker=^VIX
+2026-04-16 13:55:52,243 INFO us_index_dashboard - mock fallback key=us10y ticker=^TNX
+2026-04-16 13:55:52,243 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 13:55:52,243 INFO us_index_dashboard - mock fallback key=aapl ticker=AAPL
+2026-04-16 13:55:52,244 INFO us_index_dashboard - mock fallback key=msft ticker=MSFT
+2026-04-16 13:55:52,244 INFO us_index_dashboard - mock fallback key=nvda ticker=NVDA
+2026-04-16 13:55:52,244 INFO us_index_dashboard - mock fallback key=amzn ticker=AMZN
+2026-04-16 13:55:52,244 INFO us_index_dashboard - mock fallback key=googl ticker=GOOGL
+2026-04-16 13:55:52,244 INFO us_index_dashboard - mock fallback key=meta ticker=META
+2026-04-16 13:55:52,244 INFO us_index_dashboard - mock fallback key=tsla ticker=TSLA
+2026-04-16 13:55:52,244 INFO us_index_dashboard - mock fallback key=equal_weight ticker=RSP
+2026-04-16 13:55:52,244 INFO us_index_dashboard - mock fallback key=cap_weight ticker=SPY
+2026-04-16 13:56:30,126 INFO us_index_dashboard - cache write key=debug-cache-test provider=test rows=1
+2026-04-16 13:56:30,126 INFO us_index_dashboard - cache hit memory key=debug-cache-test ttl=300
+2026-04-16 14:00:52,400 INFO us_index_dashboard - cache miss key=daily:1y:nasdaq:^IXIC:index
+2026-04-16 14:00:52,401 INFO us_index_dashboard - cache miss key=daily:1y:sp500:^GSPC:index
+2026-04-16 14:00:52,401 INFO us_index_dashboard - cache miss key=daily:1y:vix:^VIX:macro
+2026-04-16 14:00:52,402 INFO us_index_dashboard - cache miss key=daily:1y:us10y:^TNX:macro
+2026-04-16 14:00:52,402 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 14:00:52,402 INFO us_index_dashboard - cache miss key=daily:1y:aapl:AAPL:mega_cap
+2026-04-16 14:00:52,402 INFO us_index_dashboard - cache miss key=daily:1y:msft:MSFT:mega_cap
+2026-04-16 14:00:52,403 INFO us_index_dashboard - cache miss key=daily:1y:nvda:NVDA:mega_cap
+2026-04-16 14:00:52,403 INFO us_index_dashboard - cache miss key=daily:1y:amzn:AMZN:mega_cap
+2026-04-16 14:00:52,403 INFO us_index_dashboard - cache miss key=daily:1y:googl:GOOGL:mega_cap
+2026-04-16 14:00:52,403 INFO us_index_dashboard - cache miss key=daily:1y:meta:META:mega_cap
+2026-04-16 14:00:52,404 INFO us_index_dashboard - cache miss key=daily:1y:tsla:TSLA:mega_cap
+2026-04-16 14:00:52,404 INFO us_index_dashboard - cache miss key=daily:1y:equal_weight:RSP:breadth
+2026-04-16 14:00:52,404 INFO us_index_dashboard - cache miss key=daily:1y:cap_weight:SPY:breadth
+2026-04-16 14:00:52,404 INFO us_index_dashboard - cache miss key=stats:1y:nasdaq:^IXIC:index
+2026-04-16 14:00:52,405 INFO us_index_dashboard - cache miss key=stats:1y:sp500:^GSPC:index
+2026-04-16 14:00:52,405 INFO us_index_dashboard - cache miss key=stats:1y:aapl:AAPL:mega_cap
+2026-04-16 14:00:52,406 INFO us_index_dashboard - cache miss key=stats:1y:msft:MSFT:mega_cap
+2026-04-16 14:00:52,406 INFO us_index_dashboard - cache miss key=stats:1y:nvda:NVDA:mega_cap
+2026-04-16 14:00:52,406 INFO us_index_dashboard - cache miss key=stats:1y:amzn:AMZN:mega_cap
+2026-04-16 14:00:52,407 INFO us_index_dashboard - cache miss key=stats:1y:googl:GOOGL:mega_cap
+2026-04-16 14:00:52,407 INFO us_index_dashboard - cache miss key=stats:1y:meta:META:mega_cap
+2026-04-16 14:00:52,407 INFO us_index_dashboard - cache miss key=stats:1y:tsla:TSLA:mega_cap
+2026-04-16 14:00:52,408 INFO us_index_dashboard - cache miss key=stats:1y:equal_weight:RSP:breadth
+2026-04-16 14:00:52,408 INFO us_index_dashboard - cache miss key=stats:1y:cap_weight:SPY:breadth
+2026-04-16 14:00:52,437 INFO us_index_dashboard - mock fallback key=nasdaq ticker=^IXIC
+2026-04-16 14:00:52,437 INFO us_index_dashboard - mock fallback key=sp500 ticker=^GSPC
+2026-04-16 14:00:52,437 INFO us_index_dashboard - mock fallback key=vix ticker=^VIX
+2026-04-16 14:00:52,437 INFO us_index_dashboard - mock fallback key=us10y ticker=^TNX
+2026-04-16 14:00:52,438 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 14:00:52,438 INFO us_index_dashboard - mock fallback key=aapl ticker=AAPL
+2026-04-16 14:00:52,438 INFO us_index_dashboard - mock fallback key=msft ticker=MSFT
+2026-04-16 14:00:52,438 INFO us_index_dashboard - mock fallback key=nvda ticker=NVDA
+2026-04-16 14:00:52,439 INFO us_index_dashboard - mock fallback key=amzn ticker=AMZN
+2026-04-16 14:00:52,439 INFO us_index_dashboard - mock fallback key=googl ticker=GOOGL
+2026-04-16 14:00:52,439 INFO us_index_dashboard - mock fallback key=meta ticker=META
+2026-04-16 14:00:52,439 INFO us_index_dashboard - mock fallback key=tsla ticker=TSLA
+2026-04-16 14:00:52,439 INFO us_index_dashboard - mock fallback key=equal_weight ticker=RSP
+2026-04-16 14:00:52,440 INFO us_index_dashboard - mock fallback key=cap_weight ticker=SPY
+2026-04-16 14:49:11,849 INFO us_index_dashboard - cache miss key=daily:1y:nasdaq:^IXIC:index
+2026-04-16 14:49:11,851 INFO us_index_dashboard - cache miss key=daily:1y:sp500:^GSPC:index
+2026-04-16 14:49:11,851 INFO us_index_dashboard - cache miss key=daily:1y:vix:^VIX:macro
+2026-04-16 14:49:11,852 INFO us_index_dashboard - cache miss key=daily:1y:us10y:^TNX:macro
+2026-04-16 14:49:11,852 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 14:49:11,852 INFO us_index_dashboard - cache miss key=daily:1y:aapl:AAPL:mega_cap
+2026-04-16 14:49:11,853 INFO us_index_dashboard - cache miss key=daily:1y:msft:MSFT:mega_cap
+2026-04-16 14:49:11,853 INFO us_index_dashboard - cache miss key=daily:1y:nvda:NVDA:mega_cap
+2026-04-16 14:49:11,853 INFO us_index_dashboard - cache miss key=daily:1y:amzn:AMZN:mega_cap
+2026-04-16 14:49:11,854 INFO us_index_dashboard - cache miss key=daily:1y:googl:GOOGL:mega_cap
+2026-04-16 14:49:11,855 INFO us_index_dashboard - cache miss key=daily:1y:meta:META:mega_cap
+2026-04-16 14:49:11,855 INFO us_index_dashboard - cache miss key=daily:1y:tsla:TSLA:mega_cap
+2026-04-16 14:49:11,856 INFO us_index_dashboard - cache miss key=daily:1y:equal_weight:RSP:breadth
+2026-04-16 14:49:11,856 INFO us_index_dashboard - cache miss key=daily:1y:cap_weight:SPY:breadth
+2026-04-16 14:49:11,857 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^IXIC', '^GSPC', '^VIX', '^TNX', '^UST2Y', 'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'RSP', 'SPY']
+2026-04-16 14:49:19,007 INFO us_index_dashboard - cache write key=daily:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,009 INFO us_index_dashboard - cache write key=stats:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,011 INFO us_index_dashboard - cache write key=daily:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,013 INFO us_index_dashboard - cache write key=stats:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,015 INFO us_index_dashboard - cache write key=daily:1y:vix:^VIX:macro provider=Yahoo Finance / yfinance rows=251
+2026-04-16 14:49:19,017 INFO us_index_dashboard - cache write key=daily:1y:us10y:^TNX:macro provider=Yahoo Finance / yfinance rows=251
+2026-04-16 14:49:19,020 INFO us_index_dashboard - cache write key=daily:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,023 INFO us_index_dashboard - cache write key=stats:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,025 INFO us_index_dashboard - cache write key=daily:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,027 INFO us_index_dashboard - cache write key=stats:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,030 INFO us_index_dashboard - cache write key=daily:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,032 INFO us_index_dashboard - cache write key=stats:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,034 INFO us_index_dashboard - cache write key=daily:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,036 INFO us_index_dashboard - cache write key=stats:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,038 INFO us_index_dashboard - cache write key=daily:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,041 INFO us_index_dashboard - cache write key=stats:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,043 INFO us_index_dashboard - cache write key=daily:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,046 INFO us_index_dashboard - cache write key=stats:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,047 INFO us_index_dashboard - cache write key=daily:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,049 INFO us_index_dashboard - cache write key=stats:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,051 INFO us_index_dashboard - cache write key=daily:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,053 INFO us_index_dashboard - cache write key=stats:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,056 INFO us_index_dashboard - cache write key=daily:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,058 INFO us_index_dashboard - cache write key=stats:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 14:49:19,058 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 14:49:19,074 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 14:49:42,536 INFO us_index_dashboard - cache hit memory key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-16 14:49:42,537 INFO us_index_dashboard - cache hit memory key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-16 14:49:42,537 INFO us_index_dashboard - cache hit memory key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-16 14:49:42,538 INFO us_index_dashboard - cache hit memory key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-16 14:49:42,538 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 14:49:42,539 INFO us_index_dashboard - cache hit memory key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-16 14:49:42,539 INFO us_index_dashboard - cache hit memory key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-16 14:49:42,539 INFO us_index_dashboard - cache hit memory key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-16 14:49:42,539 INFO us_index_dashboard - cache hit memory key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-16 14:49:42,540 INFO us_index_dashboard - cache hit memory key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-16 14:49:42,540 INFO us_index_dashboard - cache hit memory key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-16 14:49:42,540 INFO us_index_dashboard - cache hit memory key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-16 14:49:42,540 INFO us_index_dashboard - cache hit memory key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-16 14:49:42,541 INFO us_index_dashboard - cache hit memory key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-16 14:49:42,541 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-16 14:49:45,925 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 14:49:45,940 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 14:50:19,051 INFO us_index_dashboard - cache hit memory key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-16 14:50:19,051 INFO us_index_dashboard - cache hit memory key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-16 14:50:19,051 INFO us_index_dashboard - cache hit memory key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-16 14:50:19,052 INFO us_index_dashboard - cache hit memory key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-16 14:50:19,052 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 14:50:19,052 INFO us_index_dashboard - cache hit memory key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-16 14:50:19,053 INFO us_index_dashboard - cache hit memory key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-16 14:50:19,053 INFO us_index_dashboard - cache hit memory key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-16 14:50:19,053 INFO us_index_dashboard - cache hit memory key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-16 14:50:19,054 INFO us_index_dashboard - cache hit memory key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-16 14:50:19,054 INFO us_index_dashboard - cache hit memory key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-16 14:50:19,054 INFO us_index_dashboard - cache hit memory key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-16 14:50:19,054 INFO us_index_dashboard - cache hit memory key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-16 14:50:19,055 INFO us_index_dashboard - cache hit memory key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-16 14:50:19,055 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-16 14:50:21,673 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 14:50:21,692 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 14:50:24,786 INFO us_index_dashboard - cache hit memory key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-16 14:50:24,786 INFO us_index_dashboard - cache hit memory key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-16 14:50:24,787 INFO us_index_dashboard - cache hit memory key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-16 14:50:24,787 INFO us_index_dashboard - cache hit memory key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-16 14:50:24,787 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 14:50:24,787 INFO us_index_dashboard - cache hit memory key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-16 14:50:24,788 INFO us_index_dashboard - cache hit memory key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-16 14:50:24,788 INFO us_index_dashboard - cache hit memory key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-16 14:50:24,788 INFO us_index_dashboard - cache hit memory key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-16 14:50:24,788 INFO us_index_dashboard - cache hit memory key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-16 14:50:24,789 INFO us_index_dashboard - cache hit memory key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-16 14:50:24,789 INFO us_index_dashboard - cache hit memory key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-16 14:50:24,789 INFO us_index_dashboard - cache hit memory key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-16 14:50:24,789 INFO us_index_dashboard - cache hit memory key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-16 14:50:24,790 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-16 14:50:26,316 INFO us_index_dashboard - cache hit memory key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-16 14:50:26,317 INFO us_index_dashboard - cache hit memory key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-16 14:50:26,317 INFO us_index_dashboard - cache hit memory key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-16 14:50:26,317 INFO us_index_dashboard - cache hit memory key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-16 14:50:26,318 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 14:50:26,318 INFO us_index_dashboard - cache hit memory key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-16 14:50:26,318 INFO us_index_dashboard - cache hit memory key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-16 14:50:26,319 INFO us_index_dashboard - cache hit memory key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-16 14:50:26,319 INFO us_index_dashboard - cache hit memory key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-16 14:50:26,320 INFO us_index_dashboard - cache hit memory key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-16 14:50:26,320 INFO us_index_dashboard - cache hit memory key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-16 14:50:26,320 INFO us_index_dashboard - cache hit memory key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-16 14:50:26,321 INFO us_index_dashboard - cache hit memory key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-16 14:50:26,321 INFO us_index_dashboard - cache hit memory key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-16 14:50:26,321 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-16 14:50:27,210 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 14:50:27,223 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 14:50:29,496 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 14:50:29,509 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 14:50:35,474 INFO us_index_dashboard - cache hit memory key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-16 14:50:35,474 INFO us_index_dashboard - cache hit memory key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-16 14:50:35,475 INFO us_index_dashboard - cache hit memory key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-16 14:50:35,475 INFO us_index_dashboard - cache hit memory key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-16 14:50:35,476 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 14:50:35,476 INFO us_index_dashboard - cache hit memory key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-16 14:50:35,476 INFO us_index_dashboard - cache hit memory key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-16 14:50:35,477 INFO us_index_dashboard - cache hit memory key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-16 14:50:35,477 INFO us_index_dashboard - cache hit memory key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-16 14:50:35,477 INFO us_index_dashboard - cache hit memory key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-16 14:50:35,478 INFO us_index_dashboard - cache hit memory key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-16 14:50:35,478 INFO us_index_dashboard - cache hit memory key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-16 14:50:35,478 INFO us_index_dashboard - cache hit memory key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-16 14:50:35,479 INFO us_index_dashboard - cache hit memory key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-16 14:50:35,479 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-16 14:50:37,562 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 14:50:37,578 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 14:53:10,400 INFO us_index_dashboard - cache hit disk key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-16 14:53:10,439 INFO us_index_dashboard - cache hit disk key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-16 14:53:10,481 INFO us_index_dashboard - cache hit disk key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-16 14:53:10,520 INFO us_index_dashboard - cache hit disk key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-16 14:53:10,521 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 14:53:10,566 INFO us_index_dashboard - cache hit disk key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-16 14:53:10,610 INFO us_index_dashboard - cache hit disk key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-16 14:53:10,649 INFO us_index_dashboard - cache hit disk key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-16 14:53:10,687 INFO us_index_dashboard - cache hit disk key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-16 14:53:10,722 INFO us_index_dashboard - cache hit disk key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-16 14:53:10,757 INFO us_index_dashboard - cache hit disk key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-16 14:53:10,797 INFO us_index_dashboard - cache hit disk key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-16 14:53:10,828 INFO us_index_dashboard - cache hit disk key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-16 14:53:10,861 INFO us_index_dashboard - cache hit disk key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-16 14:53:10,862 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-16 14:53:12,803 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 14:53:12,825 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 14:53:35,267 INFO us_index_dashboard - cache hit memory key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-16 14:53:35,267 INFO us_index_dashboard - cache hit memory key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-16 14:53:35,268 INFO us_index_dashboard - cache hit memory key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-16 14:53:35,268 INFO us_index_dashboard - cache hit memory key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-16 14:53:35,269 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 14:53:35,270 INFO us_index_dashboard - cache hit memory key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-16 14:53:35,271 INFO us_index_dashboard - cache hit memory key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-16 14:53:35,271 INFO us_index_dashboard - cache hit memory key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-16 14:53:35,272 INFO us_index_dashboard - cache hit memory key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-16 14:53:35,272 INFO us_index_dashboard - cache hit memory key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-16 14:53:35,273 INFO us_index_dashboard - cache hit memory key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-16 14:53:35,274 INFO us_index_dashboard - cache hit memory key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-16 14:53:35,274 INFO us_index_dashboard - cache hit memory key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-16 14:53:35,275 INFO us_index_dashboard - cache hit memory key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-16 14:53:35,275 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-16 14:53:36,881 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 14:53:36,896 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 15:10:48,093 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=1289
+2026-04-16 15:10:48,095 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=1289
+2026-04-16 15:10:48,096 INFO us_index_dashboard - cache stale key=daily:1y:vix:^VIX:macro ttl=900 age=1289
+2026-04-16 15:10:48,096 INFO us_index_dashboard - cache stale key=daily:1y:us10y:^TNX:macro ttl=900 age=1289
+2026-04-16 15:10:48,097 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 15:10:48,098 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=1289
+2026-04-16 15:10:48,099 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=1289
+2026-04-16 15:10:48,100 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=1289
+2026-04-16 15:10:48,101 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=1289
+2026-04-16 15:10:48,101 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=1289
+2026-04-16 15:10:48,102 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=1289
+2026-04-16 15:10:48,103 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=1289
+2026-04-16 15:10:48,104 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=1289
+2026-04-16 15:10:48,105 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=1289
+2026-04-16 15:10:48,105 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^IXIC', '^GSPC', '^VIX', '^TNX', '^UST2Y', 'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'RSP', 'SPY']
+2026-04-16 15:10:52,135 INFO us_index_dashboard - cache write key=daily:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,137 INFO us_index_dashboard - cache write key=stats:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,139 INFO us_index_dashboard - cache write key=daily:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,141 INFO us_index_dashboard - cache write key=stats:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,143 INFO us_index_dashboard - cache write key=daily:1y:vix:^VIX:macro provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,145 INFO us_index_dashboard - cache write key=daily:1y:us10y:^TNX:macro provider=Yahoo Finance / yfinance rows=251
+2026-04-16 15:10:52,147 INFO us_index_dashboard - cache write key=daily:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,149 INFO us_index_dashboard - cache write key=stats:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,151 INFO us_index_dashboard - cache write key=daily:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,153 INFO us_index_dashboard - cache write key=stats:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,155 INFO us_index_dashboard - cache write key=daily:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,156 INFO us_index_dashboard - cache write key=stats:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,158 INFO us_index_dashboard - cache write key=daily:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,161 INFO us_index_dashboard - cache write key=stats:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,163 INFO us_index_dashboard - cache write key=daily:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,165 INFO us_index_dashboard - cache write key=stats:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,167 INFO us_index_dashboard - cache write key=daily:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,168 INFO us_index_dashboard - cache write key=stats:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,170 INFO us_index_dashboard - cache write key=daily:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,172 INFO us_index_dashboard - cache write key=stats:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,174 INFO us_index_dashboard - cache write key=daily:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,176 INFO us_index_dashboard - cache write key=stats:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,178 INFO us_index_dashboard - cache write key=daily:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,180 INFO us_index_dashboard - cache write key=stats:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:10:52,181 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 15:10:52,194 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 15:18:42,555 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=470
+2026-04-16 15:18:42,577 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=470
+2026-04-16 15:18:42,600 INFO us_index_dashboard - cache hit disk key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-16 15:18:42,622 INFO us_index_dashboard - cache hit disk key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-16 15:18:42,623 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 15:18:42,644 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=470
+2026-04-16 15:18:42,668 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=470
+2026-04-16 15:18:42,695 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=471
+2026-04-16 15:18:42,718 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=471
+2026-04-16 15:18:42,739 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=471
+2026-04-16 15:18:42,760 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=471
+2026-04-16 15:18:42,780 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=471
+2026-04-16 15:18:42,801 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=471
+2026-04-16 15:18:42,821 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=471
+2026-04-16 15:18:42,841 INFO us_index_dashboard - cache hit disk key=stats:1y:nasdaq:^IXIC:index ttl=86400
+2026-04-16 15:18:42,841 INFO us_index_dashboard - stats cache fallback key=nasdaq layer=disk
+2026-04-16 15:18:42,862 INFO us_index_dashboard - cache hit disk key=stats:1y:sp500:^GSPC:index ttl=86400
+2026-04-16 15:18:42,862 INFO us_index_dashboard - stats cache fallback key=sp500 layer=disk
+2026-04-16 15:18:42,882 INFO us_index_dashboard - cache hit disk key=stats:1y:aapl:AAPL:mega_cap ttl=86400
+2026-04-16 15:18:42,883 INFO us_index_dashboard - stats cache fallback key=aapl layer=disk
+2026-04-16 15:18:42,903 INFO us_index_dashboard - cache hit disk key=stats:1y:msft:MSFT:mega_cap ttl=86400
+2026-04-16 15:18:42,903 INFO us_index_dashboard - stats cache fallback key=msft layer=disk
+2026-04-16 15:18:42,923 INFO us_index_dashboard - cache hit disk key=stats:1y:nvda:NVDA:mega_cap ttl=86400
+2026-04-16 15:18:42,923 INFO us_index_dashboard - stats cache fallback key=nvda layer=disk
+2026-04-16 15:18:42,943 INFO us_index_dashboard - cache hit disk key=stats:1y:amzn:AMZN:mega_cap ttl=86400
+2026-04-16 15:18:42,943 INFO us_index_dashboard - stats cache fallback key=amzn layer=disk
+2026-04-16 15:18:42,963 INFO us_index_dashboard - cache hit disk key=stats:1y:googl:GOOGL:mega_cap ttl=86400
+2026-04-16 15:18:42,963 INFO us_index_dashboard - stats cache fallback key=googl layer=disk
+2026-04-16 15:18:42,984 INFO us_index_dashboard - cache hit disk key=stats:1y:meta:META:mega_cap ttl=86400
+2026-04-16 15:18:42,984 INFO us_index_dashboard - stats cache fallback key=meta layer=disk
+2026-04-16 15:18:43,010 INFO us_index_dashboard - cache hit disk key=stats:1y:tsla:TSLA:mega_cap ttl=86400
+2026-04-16 15:18:43,010 INFO us_index_dashboard - stats cache fallback key=tsla layer=disk
+2026-04-16 15:18:43,030 INFO us_index_dashboard - cache hit disk key=stats:1y:equal_weight:RSP:breadth ttl=86400
+2026-04-16 15:18:43,030 INFO us_index_dashboard - stats cache fallback key=equal_weight layer=disk
+2026-04-16 15:18:43,050 INFO us_index_dashboard - cache hit disk key=stats:1y:cap_weight:SPY:breadth ttl=86400
+2026-04-16 15:18:43,051 INFO us_index_dashboard - stats cache fallback key=cap_weight layer=disk
+2026-04-16 15:18:43,062 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 15:21:28,051 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=636
+2026-04-16 15:21:28,052 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=636
+2026-04-16 15:21:28,053 INFO us_index_dashboard - cache hit memory key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-16 15:21:28,053 INFO us_index_dashboard - cache hit memory key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-16 15:21:28,053 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 15:21:28,054 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=636
+2026-04-16 15:21:28,055 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=636
+2026-04-16 15:21:28,056 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=636
+2026-04-16 15:21:28,057 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=636
+2026-04-16 15:21:28,057 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=636
+2026-04-16 15:21:28,058 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=636
+2026-04-16 15:21:28,059 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=636
+2026-04-16 15:21:28,060 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=636
+2026-04-16 15:21:28,061 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=636
+2026-04-16 15:21:28,062 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^IXIC', '^GSPC', '^UST2Y', 'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'RSP', 'SPY']
+2026-04-16 15:21:30,964 INFO us_index_dashboard - cache write key=daily:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,966 INFO us_index_dashboard - cache write key=stats:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,967 INFO us_index_dashboard - cache write key=daily:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,969 INFO us_index_dashboard - cache write key=stats:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,971 INFO us_index_dashboard - cache write key=daily:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,972 INFO us_index_dashboard - cache write key=stats:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,974 INFO us_index_dashboard - cache write key=daily:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,975 INFO us_index_dashboard - cache write key=stats:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,976 INFO us_index_dashboard - cache write key=daily:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,978 INFO us_index_dashboard - cache write key=stats:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,979 INFO us_index_dashboard - cache write key=daily:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,981 INFO us_index_dashboard - cache write key=stats:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,982 INFO us_index_dashboard - cache write key=daily:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,983 INFO us_index_dashboard - cache write key=stats:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,985 INFO us_index_dashboard - cache write key=daily:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,986 INFO us_index_dashboard - cache write key=stats:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,988 INFO us_index_dashboard - cache write key=daily:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,989 INFO us_index_dashboard - cache write key=stats:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,991 INFO us_index_dashboard - cache write key=daily:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,993 INFO us_index_dashboard - cache write key=stats:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,994 INFO us_index_dashboard - cache write key=daily:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,996 INFO us_index_dashboard - cache write key=stats:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:21:30,996 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 15:21:31,007 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 15:23:53,902 INFO us_index_dashboard - cache hit disk key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-16 15:23:53,925 INFO us_index_dashboard - cache hit disk key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-16 15:23:53,926 INFO us_index_dashboard - cache hit disk key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-16 15:23:53,927 INFO us_index_dashboard - cache hit disk key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-16 15:23:53,927 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 15:23:53,952 INFO us_index_dashboard - cache hit disk key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-16 15:23:53,974 INFO us_index_dashboard - cache hit disk key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-16 15:23:54,004 INFO us_index_dashboard - cache hit disk key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-16 15:23:54,029 INFO us_index_dashboard - cache hit disk key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-16 15:23:54,052 INFO us_index_dashboard - cache hit disk key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-16 15:23:54,073 INFO us_index_dashboard - cache hit disk key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-16 15:23:54,095 INFO us_index_dashboard - cache hit disk key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-16 15:23:54,117 INFO us_index_dashboard - cache hit disk key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-16 15:23:54,138 INFO us_index_dashboard - cache hit disk key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-16 15:23:54,138 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-16 15:24:03,732 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 15:24:03,744 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 15:24:28,103 INFO us_index_dashboard - cache hit memory key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-16 15:24:28,103 INFO us_index_dashboard - cache hit memory key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-16 15:24:28,104 INFO us_index_dashboard - cache hit memory key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-16 15:24:28,104 INFO us_index_dashboard - cache hit memory key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-16 15:24:28,105 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 15:24:28,106 INFO us_index_dashboard - cache hit memory key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-16 15:24:28,106 INFO us_index_dashboard - cache hit memory key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-16 15:24:28,107 INFO us_index_dashboard - cache hit memory key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-16 15:24:28,107 INFO us_index_dashboard - cache hit memory key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-16 15:24:28,108 INFO us_index_dashboard - cache hit memory key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-16 15:24:28,108 INFO us_index_dashboard - cache hit memory key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-16 15:24:28,109 INFO us_index_dashboard - cache hit memory key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-16 15:24:28,109 INFO us_index_dashboard - cache hit memory key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-16 15:24:28,110 INFO us_index_dashboard - cache hit memory key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-16 15:24:28,110 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-16 15:24:34,240 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 15:24:34,252 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 15:29:08,216 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=457
+2026-04-16 15:29:08,216 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=457
+2026-04-16 15:29:08,217 INFO us_index_dashboard - cache stale key=daily:1y:vix:^VIX:macro ttl=900 age=1096
+2026-04-16 15:29:08,218 INFO us_index_dashboard - cache stale key=daily:1y:us10y:^TNX:macro ttl=900 age=1096
+2026-04-16 15:29:08,218 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 15:29:08,219 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=457
+2026-04-16 15:29:08,220 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=457
+2026-04-16 15:29:08,221 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=457
+2026-04-16 15:29:08,222 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=457
+2026-04-16 15:29:08,222 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=457
+2026-04-16 15:29:08,223 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=457
+2026-04-16 15:29:08,224 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=457
+2026-04-16 15:29:08,225 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=457
+2026-04-16 15:29:08,226 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=457
+2026-04-16 15:29:08,226 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^IXIC', '^GSPC', '^VIX', '^TNX', '^UST2Y', 'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'RSP', 'SPY']
+2026-04-16 15:29:11,538 INFO us_index_dashboard - cache write key=daily:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,540 INFO us_index_dashboard - cache write key=stats:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,542 INFO us_index_dashboard - cache write key=daily:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,544 INFO us_index_dashboard - cache write key=stats:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,546 INFO us_index_dashboard - cache write key=daily:1y:vix:^VIX:macro provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,547 INFO us_index_dashboard - cache write key=daily:1y:us10y:^TNX:macro provider=Yahoo Finance / yfinance rows=251
+2026-04-16 15:29:11,549 INFO us_index_dashboard - cache write key=daily:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,550 INFO us_index_dashboard - cache write key=stats:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,552 INFO us_index_dashboard - cache write key=daily:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,554 INFO us_index_dashboard - cache write key=stats:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,556 INFO us_index_dashboard - cache write key=daily:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,557 INFO us_index_dashboard - cache write key=stats:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,559 INFO us_index_dashboard - cache write key=daily:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,561 INFO us_index_dashboard - cache write key=stats:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,563 INFO us_index_dashboard - cache write key=daily:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,564 INFO us_index_dashboard - cache write key=stats:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,566 INFO us_index_dashboard - cache write key=daily:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,567 INFO us_index_dashboard - cache write key=stats:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,569 INFO us_index_dashboard - cache write key=daily:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,571 INFO us_index_dashboard - cache write key=stats:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,572 INFO us_index_dashboard - cache write key=daily:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,574 INFO us_index_dashboard - cache write key=stats:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,576 INFO us_index_dashboard - cache write key=daily:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,577 INFO us_index_dashboard - cache write key=stats:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:29:11,578 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 15:29:11,589 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 15:29:14,865 INFO us_index_dashboard - cache hit memory key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-16 15:29:14,866 INFO us_index_dashboard - cache hit memory key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-16 15:29:14,866 INFO us_index_dashboard - cache hit memory key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-16 15:29:14,867 INFO us_index_dashboard - cache hit memory key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-16 15:29:14,868 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 15:29:14,868 INFO us_index_dashboard - cache hit memory key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-16 15:29:14,869 INFO us_index_dashboard - cache hit memory key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-16 15:29:14,870 INFO us_index_dashboard - cache hit memory key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-16 15:29:14,870 INFO us_index_dashboard - cache hit memory key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-16 15:29:14,870 INFO us_index_dashboard - cache hit memory key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-16 15:29:14,870 INFO us_index_dashboard - cache hit memory key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-16 15:29:14,871 INFO us_index_dashboard - cache hit memory key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-16 15:29:14,871 INFO us_index_dashboard - cache hit memory key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-16 15:29:14,871 INFO us_index_dashboard - cache hit memory key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-16 15:29:14,871 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-16 15:29:16,339 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 15:29:16,352 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 15:35:05,473 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=354
+2026-04-16 15:35:05,497 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=354
+2026-04-16 15:35:05,520 INFO us_index_dashboard - cache hit disk key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-16 15:35:05,544 INFO us_index_dashboard - cache hit disk key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-16 15:35:05,545 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 15:35:05,570 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=354
+2026-04-16 15:35:05,593 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=354
+2026-04-16 15:35:05,616 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=354
+2026-04-16 15:35:05,639 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=354
+2026-04-16 15:35:05,664 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=354
+2026-04-16 15:35:05,688 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=354
+2026-04-16 15:35:05,711 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=354
+2026-04-16 15:35:05,733 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=354
+2026-04-16 15:35:05,761 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=354
+2026-04-16 15:35:05,761 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^IXIC', '^GSPC', '^UST2Y', 'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'RSP', 'SPY']
+2026-04-16 15:35:11,699 INFO us_index_dashboard - cache write key=daily:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,701 INFO us_index_dashboard - cache write key=stats:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,703 INFO us_index_dashboard - cache write key=daily:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,704 INFO us_index_dashboard - cache write key=stats:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,706 INFO us_index_dashboard - cache write key=daily:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,708 INFO us_index_dashboard - cache write key=stats:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,710 INFO us_index_dashboard - cache write key=daily:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,712 INFO us_index_dashboard - cache write key=stats:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,713 INFO us_index_dashboard - cache write key=daily:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,715 INFO us_index_dashboard - cache write key=stats:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,718 INFO us_index_dashboard - cache write key=daily:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,719 INFO us_index_dashboard - cache write key=stats:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,721 INFO us_index_dashboard - cache write key=daily:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,722 INFO us_index_dashboard - cache write key=stats:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,724 INFO us_index_dashboard - cache write key=daily:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,726 INFO us_index_dashboard - cache write key=stats:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,727 INFO us_index_dashboard - cache write key=daily:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,729 INFO us_index_dashboard - cache write key=stats:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,731 INFO us_index_dashboard - cache write key=daily:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,733 INFO us_index_dashboard - cache write key=stats:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,735 INFO us_index_dashboard - cache write key=daily:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,736 INFO us_index_dashboard - cache write key=stats:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-16 15:35:11,736 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 15:35:11,749 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 15:38:54,432 INFO us_index_dashboard - cache hit disk key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-16 15:38:54,459 INFO us_index_dashboard - cache hit disk key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-16 15:38:54,460 INFO us_index_dashboard - cache hit disk key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-16 15:38:54,462 INFO us_index_dashboard - cache hit disk key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-16 15:38:54,462 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 15:38:54,488 INFO us_index_dashboard - cache hit disk key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-16 15:38:54,521 INFO us_index_dashboard - cache hit disk key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-16 15:38:54,546 INFO us_index_dashboard - cache hit disk key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-16 15:38:54,573 INFO us_index_dashboard - cache hit disk key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-16 15:38:54,597 INFO us_index_dashboard - cache hit disk key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-16 15:38:54,621 INFO us_index_dashboard - cache hit disk key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-16 15:38:54,644 INFO us_index_dashboard - cache hit disk key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-16 15:38:54,667 INFO us_index_dashboard - cache hit disk key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-16 15:38:54,692 INFO us_index_dashboard - cache hit disk key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-16 15:38:54,692 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-16 15:38:56,894 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 15:38:56,907 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 17:54:17,239 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=8346
+2026-04-16 17:54:17,244 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=8346
+2026-04-16 17:54:17,246 INFO us_index_dashboard - cache stale key=daily:1y:vix:^VIX:macro ttl=900 age=8706
+2026-04-16 17:54:17,250 INFO us_index_dashboard - cache stale key=daily:1y:us10y:^TNX:macro ttl=900 age=8706
+2026-04-16 17:54:17,250 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 17:54:17,253 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=8346
+2026-04-16 17:54:17,255 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=8346
+2026-04-16 17:54:17,258 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=8346
+2026-04-16 17:54:17,261 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=8346
+2026-04-16 17:54:17,263 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=8346
+2026-04-16 17:54:17,265 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=8346
+2026-04-16 17:54:17,268 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=8346
+2026-04-16 17:54:17,270 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=8346
+2026-04-16 17:54:17,272 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=8346
+2026-04-16 17:54:17,273 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^IXIC', '^GSPC', '^VIX', '^TNX', '^UST2Y', 'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'RSP', 'SPY']
+2026-04-16 17:54:24,223 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=nasdaq error=empty history
+2026-04-16 17:54:24,223 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=sp500 error=empty history
+2026-04-16 17:54:24,223 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=vix error=empty history
+2026-04-16 17:54:24,224 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us10y error=empty history
+2026-04-16 17:54:24,224 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 17:54:24,224 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=aapl error=empty history
+2026-04-16 17:54:24,224 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=msft error=empty history
+2026-04-16 17:54:24,224 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=nvda error=empty history
+2026-04-16 17:54:24,224 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=amzn error=empty history
+2026-04-16 17:54:24,224 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=googl error=empty history
+2026-04-16 17:54:24,224 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=meta error=empty history
+2026-04-16 17:54:24,224 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=tsla error=empty history
+2026-04-16 17:54:24,225 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=equal_weight error=empty history
+2026-04-16 17:54:24,225 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=cap_weight error=empty history
+2026-04-16 17:54:24,252 INFO us_index_dashboard - cache hit disk key=stats:1y:nasdaq:^IXIC:index ttl=86400
+2026-04-16 17:54:24,253 INFO us_index_dashboard - stats cache fallback key=nasdaq layer=disk
+2026-04-16 17:54:24,277 INFO us_index_dashboard - cache hit disk key=stats:1y:sp500:^GSPC:index ttl=86400
+2026-04-16 17:54:24,277 INFO us_index_dashboard - stats cache fallback key=sp500 layer=disk
+2026-04-16 17:54:24,278 INFO us_index_dashboard - cache stale memory fallback key=daily:1y:vix:^VIX:macro
+2026-04-16 17:54:24,278 INFO us_index_dashboard - cache stale memory fallback key=daily:1y:us10y:^TNX:macro
+2026-04-16 17:54:24,302 INFO us_index_dashboard - cache hit disk key=stats:1y:aapl:AAPL:mega_cap ttl=86400
+2026-04-16 17:54:24,303 INFO us_index_dashboard - stats cache fallback key=aapl layer=disk
+2026-04-16 17:54:24,326 INFO us_index_dashboard - cache hit disk key=stats:1y:msft:MSFT:mega_cap ttl=86400
+2026-04-16 17:54:24,327 INFO us_index_dashboard - stats cache fallback key=msft layer=disk
+2026-04-16 17:54:24,350 INFO us_index_dashboard - cache hit disk key=stats:1y:nvda:NVDA:mega_cap ttl=86400
+2026-04-16 17:54:24,350 INFO us_index_dashboard - stats cache fallback key=nvda layer=disk
+2026-04-16 17:54:24,378 INFO us_index_dashboard - cache hit disk key=stats:1y:amzn:AMZN:mega_cap ttl=86400
+2026-04-16 17:54:24,379 INFO us_index_dashboard - stats cache fallback key=amzn layer=disk
+2026-04-16 17:54:24,402 INFO us_index_dashboard - cache hit disk key=stats:1y:googl:GOOGL:mega_cap ttl=86400
+2026-04-16 17:54:24,402 INFO us_index_dashboard - stats cache fallback key=googl layer=disk
+2026-04-16 17:54:24,426 INFO us_index_dashboard - cache hit disk key=stats:1y:meta:META:mega_cap ttl=86400
+2026-04-16 17:54:24,426 INFO us_index_dashboard - stats cache fallback key=meta layer=disk
+2026-04-16 17:54:24,449 INFO us_index_dashboard - cache hit disk key=stats:1y:tsla:TSLA:mega_cap ttl=86400
+2026-04-16 17:54:24,449 INFO us_index_dashboard - stats cache fallback key=tsla layer=disk
+2026-04-16 17:54:24,472 INFO us_index_dashboard - cache hit disk key=stats:1y:equal_weight:RSP:breadth ttl=86400
+2026-04-16 17:54:24,472 INFO us_index_dashboard - stats cache fallback key=equal_weight layer=disk
+2026-04-16 17:54:24,496 INFO us_index_dashboard - cache hit disk key=stats:1y:cap_weight:SPY:breadth ttl=86400
+2026-04-16 17:54:24,496 INFO us_index_dashboard - stats cache fallback key=cap_weight layer=disk
+2026-04-16 17:54:24,511 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 17:54:41,658 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=8370
+2026-04-16 17:54:41,660 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=8370
+2026-04-16 17:54:41,661 INFO us_index_dashboard - cache stale key=daily:1y:vix:^VIX:macro ttl=900 age=8730
+2026-04-16 17:54:41,662 INFO us_index_dashboard - cache stale key=daily:1y:us10y:^TNX:macro ttl=900 age=8730
+2026-04-16 17:54:41,662 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 17:54:41,663 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=8370
+2026-04-16 17:54:41,664 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=8370
+2026-04-16 17:54:41,665 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=8370
+2026-04-16 17:54:41,666 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=8370
+2026-04-16 17:54:41,667 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=8370
+2026-04-16 17:54:41,668 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=8370
+2026-04-16 17:54:41,669 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=8370
+2026-04-16 17:54:41,670 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=8370
+2026-04-16 17:54:41,671 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=8370
+2026-04-16 17:54:41,672 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^IXIC', '^GSPC', '^VIX', '^TNX', '^UST2Y', 'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'RSP', 'SPY']
+2026-04-16 17:54:44,251 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=nasdaq error=empty history
+2026-04-16 17:54:44,252 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=sp500 error=empty history
+2026-04-16 17:54:44,252 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=vix error=empty history
+2026-04-16 17:54:44,252 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us10y error=empty history
+2026-04-16 17:54:44,252 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 17:54:44,252 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=aapl error=empty history
+2026-04-16 17:54:44,253 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=msft error=empty history
+2026-04-16 17:54:44,253 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=nvda error=empty history
+2026-04-16 17:54:44,253 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=amzn error=empty history
+2026-04-16 17:54:44,253 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=googl error=empty history
+2026-04-16 17:54:44,253 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=meta error=empty history
+2026-04-16 17:54:44,253 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=tsla error=empty history
+2026-04-16 17:54:44,253 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=equal_weight error=empty history
+2026-04-16 17:54:44,254 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=cap_weight error=empty history
+2026-04-16 17:54:44,254 INFO us_index_dashboard - cache hit memory key=stats:1y:nasdaq:^IXIC:index ttl=86400
+2026-04-16 17:54:44,254 INFO us_index_dashboard - stats cache fallback key=nasdaq layer=memory
+2026-04-16 17:54:44,254 INFO us_index_dashboard - cache hit memory key=stats:1y:sp500:^GSPC:index ttl=86400
+2026-04-16 17:54:44,254 INFO us_index_dashboard - stats cache fallback key=sp500 layer=memory
+2026-04-16 17:54:44,254 INFO us_index_dashboard - cache stale memory fallback key=daily:1y:vix:^VIX:macro
+2026-04-16 17:54:44,255 INFO us_index_dashboard - cache stale memory fallback key=daily:1y:us10y:^TNX:macro
+2026-04-16 17:54:44,255 INFO us_index_dashboard - cache hit memory key=stats:1y:aapl:AAPL:mega_cap ttl=86400
+2026-04-16 17:54:44,255 INFO us_index_dashboard - stats cache fallback key=aapl layer=memory
+2026-04-16 17:54:44,256 INFO us_index_dashboard - cache hit memory key=stats:1y:msft:MSFT:mega_cap ttl=86400
+2026-04-16 17:54:44,256 INFO us_index_dashboard - stats cache fallback key=msft layer=memory
+2026-04-16 17:54:44,256 INFO us_index_dashboard - cache hit memory key=stats:1y:nvda:NVDA:mega_cap ttl=86400
+2026-04-16 17:54:44,256 INFO us_index_dashboard - stats cache fallback key=nvda layer=memory
+2026-04-16 17:54:44,256 INFO us_index_dashboard - cache hit memory key=stats:1y:amzn:AMZN:mega_cap ttl=86400
+2026-04-16 17:54:44,256 INFO us_index_dashboard - stats cache fallback key=amzn layer=memory
+2026-04-16 17:54:44,257 INFO us_index_dashboard - cache hit memory key=stats:1y:googl:GOOGL:mega_cap ttl=86400
+2026-04-16 17:54:44,257 INFO us_index_dashboard - stats cache fallback key=googl layer=memory
+2026-04-16 17:54:44,257 INFO us_index_dashboard - cache hit memory key=stats:1y:meta:META:mega_cap ttl=86400
+2026-04-16 17:54:44,257 INFO us_index_dashboard - stats cache fallback key=meta layer=memory
+2026-04-16 17:54:44,257 INFO us_index_dashboard - cache hit memory key=stats:1y:tsla:TSLA:mega_cap ttl=86400
+2026-04-16 17:54:44,258 INFO us_index_dashboard - stats cache fallback key=tsla layer=memory
+2026-04-16 17:54:44,258 INFO us_index_dashboard - cache hit memory key=stats:1y:equal_weight:RSP:breadth ttl=86400
+2026-04-16 17:54:44,258 INFO us_index_dashboard - stats cache fallback key=equal_weight layer=memory
+2026-04-16 17:54:44,258 INFO us_index_dashboard - cache hit memory key=stats:1y:cap_weight:SPY:breadth ttl=86400
+2026-04-16 17:54:44,258 INFO us_index_dashboard - stats cache fallback key=cap_weight layer=memory
+2026-04-16 17:54:44,271 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 17:54:55,814 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=8384
+2026-04-16 17:54:55,815 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=8384
+2026-04-16 17:54:55,815 INFO us_index_dashboard - cache stale key=daily:1y:vix:^VIX:macro ttl=900 age=8744
+2026-04-16 17:54:55,816 INFO us_index_dashboard - cache stale key=daily:1y:us10y:^TNX:macro ttl=900 age=8744
+2026-04-16 17:54:55,817 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 17:54:55,818 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=8384
+2026-04-16 17:54:55,818 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=8384
+2026-04-16 17:54:55,819 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=8384
+2026-04-16 17:54:55,820 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=8384
+2026-04-16 17:54:55,821 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=8384
+2026-04-16 17:54:55,822 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=8384
+2026-04-16 17:54:55,823 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=8384
+2026-04-16 17:54:55,824 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=8384
+2026-04-16 17:54:55,825 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=8384
+2026-04-16 17:54:55,825 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^IXIC', '^GSPC', '^VIX', '^TNX', '^UST2Y', 'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'RSP', 'SPY']
+2026-04-16 17:54:57,755 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=nasdaq error=empty history
+2026-04-16 17:54:57,755 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=sp500 error=empty history
+2026-04-16 17:54:57,755 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=vix error=empty history
+2026-04-16 17:54:57,756 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us10y error=empty history
+2026-04-16 17:54:57,756 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 17:54:57,756 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=aapl error=empty history
+2026-04-16 17:54:57,756 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=msft error=empty history
+2026-04-16 17:54:57,756 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=nvda error=empty history
+2026-04-16 17:54:57,756 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=amzn error=empty history
+2026-04-16 17:54:57,756 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=googl error=empty history
+2026-04-16 17:54:57,756 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=meta error=empty history
+2026-04-16 17:54:57,757 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=tsla error=empty history
+2026-04-16 17:54:57,757 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=equal_weight error=empty history
+2026-04-16 17:54:57,757 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=cap_weight error=empty history
+2026-04-16 17:54:57,757 INFO us_index_dashboard - cache hit memory key=stats:1y:nasdaq:^IXIC:index ttl=86400
+2026-04-16 17:54:57,757 INFO us_index_dashboard - stats cache fallback key=nasdaq layer=memory
+2026-04-16 17:54:57,757 INFO us_index_dashboard - cache hit memory key=stats:1y:sp500:^GSPC:index ttl=86400
+2026-04-16 17:54:57,758 INFO us_index_dashboard - stats cache fallback key=sp500 layer=memory
+2026-04-16 17:54:57,758 INFO us_index_dashboard - cache stale memory fallback key=daily:1y:vix:^VIX:macro
+2026-04-16 17:54:57,758 INFO us_index_dashboard - cache stale memory fallback key=daily:1y:us10y:^TNX:macro
+2026-04-16 17:54:57,759 INFO us_index_dashboard - cache hit memory key=stats:1y:aapl:AAPL:mega_cap ttl=86400
+2026-04-16 17:54:57,759 INFO us_index_dashboard - stats cache fallback key=aapl layer=memory
+2026-04-16 17:54:57,759 INFO us_index_dashboard - cache hit memory key=stats:1y:msft:MSFT:mega_cap ttl=86400
+2026-04-16 17:54:57,759 INFO us_index_dashboard - stats cache fallback key=msft layer=memory
+2026-04-16 17:54:57,759 INFO us_index_dashboard - cache hit memory key=stats:1y:nvda:NVDA:mega_cap ttl=86400
+2026-04-16 17:54:57,760 INFO us_index_dashboard - stats cache fallback key=nvda layer=memory
+2026-04-16 17:54:57,760 INFO us_index_dashboard - cache hit memory key=stats:1y:amzn:AMZN:mega_cap ttl=86400
+2026-04-16 17:54:57,760 INFO us_index_dashboard - stats cache fallback key=amzn layer=memory
+2026-04-16 17:54:57,760 INFO us_index_dashboard - cache hit memory key=stats:1y:googl:GOOGL:mega_cap ttl=86400
+2026-04-16 17:54:57,760 INFO us_index_dashboard - stats cache fallback key=googl layer=memory
+2026-04-16 17:54:57,761 INFO us_index_dashboard - cache hit memory key=stats:1y:meta:META:mega_cap ttl=86400
+2026-04-16 17:54:57,761 INFO us_index_dashboard - stats cache fallback key=meta layer=memory
+2026-04-16 17:54:57,761 INFO us_index_dashboard - cache hit memory key=stats:1y:tsla:TSLA:mega_cap ttl=86400
+2026-04-16 17:54:57,761 INFO us_index_dashboard - stats cache fallback key=tsla layer=memory
+2026-04-16 17:54:57,761 INFO us_index_dashboard - cache hit memory key=stats:1y:equal_weight:RSP:breadth ttl=86400
+2026-04-16 17:54:57,761 INFO us_index_dashboard - stats cache fallback key=equal_weight layer=memory
+2026-04-16 17:54:57,762 INFO us_index_dashboard - cache hit memory key=stats:1y:cap_weight:SPY:breadth ttl=86400
+2026-04-16 17:54:57,762 INFO us_index_dashboard - stats cache fallback key=cap_weight layer=memory
+2026-04-16 17:54:57,775 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 17:55:01,106 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=8389
+2026-04-16 17:55:01,108 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=8389
+2026-04-16 17:55:01,109 INFO us_index_dashboard - cache stale key=daily:1y:vix:^VIX:macro ttl=900 age=8750
+2026-04-16 17:55:01,111 INFO us_index_dashboard - cache stale key=daily:1y:us10y:^TNX:macro ttl=900 age=8750
+2026-04-16 17:55:01,111 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 17:55:01,113 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=8389
+2026-04-16 17:55:01,114 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=8389
+2026-04-16 17:55:01,116 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=8389
+2026-04-16 17:55:01,117 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=8389
+2026-04-16 17:55:01,119 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=8389
+2026-04-16 17:55:01,120 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=8389
+2026-04-16 17:55:01,121 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=8389
+2026-04-16 17:55:01,122 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=8389
+2026-04-16 17:55:01,124 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=8389
+2026-04-16 17:55:01,124 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^IXIC', '^GSPC', '^VIX', '^TNX', '^UST2Y', 'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'RSP', 'SPY']
+2026-04-16 17:55:05,126 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=nasdaq error=empty history
+2026-04-16 17:55:05,126 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=sp500 error=empty history
+2026-04-16 17:55:05,126 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=vix error=empty history
+2026-04-16 17:55:05,126 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us10y error=empty history
+2026-04-16 17:55:05,126 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 17:55:05,127 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=aapl error=empty history
+2026-04-16 17:55:05,127 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=msft error=empty history
+2026-04-16 17:55:05,127 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=nvda error=empty history
+2026-04-16 17:55:05,127 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=amzn error=empty history
+2026-04-16 17:55:05,127 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=googl error=empty history
+2026-04-16 17:55:05,127 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=meta error=empty history
+2026-04-16 17:55:05,127 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=tsla error=empty history
+2026-04-16 17:55:05,127 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=equal_weight error=empty history
+2026-04-16 17:55:05,127 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=cap_weight error=empty history
+2026-04-16 17:55:05,128 INFO us_index_dashboard - cache hit memory key=stats:1y:nasdaq:^IXIC:index ttl=86400
+2026-04-16 17:55:05,128 INFO us_index_dashboard - stats cache fallback key=nasdaq layer=memory
+2026-04-16 17:55:05,128 INFO us_index_dashboard - cache hit memory key=stats:1y:sp500:^GSPC:index ttl=86400
+2026-04-16 17:55:05,128 INFO us_index_dashboard - stats cache fallback key=sp500 layer=memory
+2026-04-16 17:55:05,128 INFO us_index_dashboard - cache stale memory fallback key=daily:1y:vix:^VIX:macro
+2026-04-16 17:55:05,129 INFO us_index_dashboard - cache stale memory fallback key=daily:1y:us10y:^TNX:macro
+2026-04-16 17:55:05,129 INFO us_index_dashboard - cache hit memory key=stats:1y:aapl:AAPL:mega_cap ttl=86400
+2026-04-16 17:55:05,129 INFO us_index_dashboard - stats cache fallback key=aapl layer=memory
+2026-04-16 17:55:05,129 INFO us_index_dashboard - cache hit memory key=stats:1y:msft:MSFT:mega_cap ttl=86400
+2026-04-16 17:55:05,130 INFO us_index_dashboard - stats cache fallback key=msft layer=memory
+2026-04-16 17:55:05,130 INFO us_index_dashboard - cache hit memory key=stats:1y:nvda:NVDA:mega_cap ttl=86400
+2026-04-16 17:55:05,130 INFO us_index_dashboard - stats cache fallback key=nvda layer=memory
+2026-04-16 17:55:05,130 INFO us_index_dashboard - cache hit memory key=stats:1y:amzn:AMZN:mega_cap ttl=86400
+2026-04-16 17:55:05,130 INFO us_index_dashboard - stats cache fallback key=amzn layer=memory
+2026-04-16 17:55:05,130 INFO us_index_dashboard - cache hit memory key=stats:1y:googl:GOOGL:mega_cap ttl=86400
+2026-04-16 17:55:05,131 INFO us_index_dashboard - stats cache fallback key=googl layer=memory
+2026-04-16 17:55:05,131 INFO us_index_dashboard - cache hit memory key=stats:1y:meta:META:mega_cap ttl=86400
+2026-04-16 17:55:05,131 INFO us_index_dashboard - stats cache fallback key=meta layer=memory
+2026-04-16 17:55:05,131 INFO us_index_dashboard - cache hit memory key=stats:1y:tsla:TSLA:mega_cap ttl=86400
+2026-04-16 17:55:05,131 INFO us_index_dashboard - stats cache fallback key=tsla layer=memory
+2026-04-16 17:55:05,131 INFO us_index_dashboard - cache hit memory key=stats:1y:equal_weight:RSP:breadth ttl=86400
+2026-04-16 17:55:05,132 INFO us_index_dashboard - stats cache fallback key=equal_weight layer=memory
+2026-04-16 17:55:05,132 INFO us_index_dashboard - cache hit memory key=stats:1y:cap_weight:SPY:breadth ttl=86400
+2026-04-16 17:55:05,132 INFO us_index_dashboard - stats cache fallback key=cap_weight layer=memory
+2026-04-16 17:55:05,144 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-16 17:55:07,559 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=8396
+2026-04-16 17:55:07,560 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=8396
+2026-04-16 17:55:07,561 INFO us_index_dashboard - cache stale key=daily:1y:vix:^VIX:macro ttl=900 age=8756
+2026-04-16 17:55:07,562 INFO us_index_dashboard - cache stale key=daily:1y:us10y:^TNX:macro ttl=900 age=8756
+2026-04-16 17:55:07,563 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-16 17:55:07,563 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=8396
+2026-04-16 17:55:07,564 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=8396
+2026-04-16 17:55:07,565 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=8396
+2026-04-16 17:55:07,566 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=8396
+2026-04-16 17:55:07,567 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=8396
+2026-04-16 17:55:07,568 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=8396
+2026-04-16 17:55:07,569 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=8396
+2026-04-16 17:55:07,570 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=8396
+2026-04-16 17:55:07,570 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=8396
+2026-04-16 17:55:07,571 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^IXIC', '^GSPC', '^VIX', '^TNX', '^UST2Y', 'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'RSP', 'SPY']
+2026-04-16 17:55:09,596 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=nasdaq error=empty history
+2026-04-16 17:55:09,596 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=sp500 error=empty history
+2026-04-16 17:55:09,596 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=vix error=empty history
+2026-04-16 17:55:09,596 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us10y error=empty history
+2026-04-16 17:55:09,597 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-16 17:55:09,597 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=aapl error=empty history
+2026-04-16 17:55:09,597 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=msft error=empty history
+2026-04-16 17:55:09,597 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=nvda error=empty history
+2026-04-16 17:55:09,597 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=amzn error=empty history
+2026-04-16 17:55:09,598 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=googl error=empty history
+2026-04-16 17:55:09,598 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=meta error=empty history
+2026-04-16 17:55:09,598 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=tsla error=empty history
+2026-04-16 17:55:09,598 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=equal_weight error=empty history
+2026-04-16 17:55:09,598 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=cap_weight error=empty history
+2026-04-16 17:55:09,599 INFO us_index_dashboard - cache hit memory key=stats:1y:nasdaq:^IXIC:index ttl=86400
+2026-04-16 17:55:09,599 INFO us_index_dashboard - stats cache fallback key=nasdaq layer=memory
+2026-04-16 17:55:09,599 INFO us_index_dashboard - cache hit memory key=stats:1y:sp500:^GSPC:index ttl=86400
+2026-04-16 17:55:09,599 INFO us_index_dashboard - stats cache fallback key=sp500 layer=memory
+2026-04-16 17:55:09,600 INFO us_index_dashboard - cache stale memory fallback key=daily:1y:vix:^VIX:macro
+2026-04-16 17:55:09,600 INFO us_index_dashboard - cache stale memory fallback key=daily:1y:us10y:^TNX:macro
+2026-04-16 17:55:09,601 INFO us_index_dashboard - cache hit memory key=stats:1y:aapl:AAPL:mega_cap ttl=86400
+2026-04-16 17:55:09,601 INFO us_index_dashboard - stats cache fallback key=aapl layer=memory
+2026-04-16 17:55:09,601 INFO us_index_dashboard - cache hit memory key=stats:1y:msft:MSFT:mega_cap ttl=86400
+2026-04-16 17:55:09,602 INFO us_index_dashboard - stats cache fallback key=msft layer=memory
+2026-04-16 17:55:09,602 INFO us_index_dashboard - cache hit memory key=stats:1y:nvda:NVDA:mega_cap ttl=86400
+2026-04-16 17:55:09,602 INFO us_index_dashboard - stats cache fallback key=nvda layer=memory
+2026-04-16 17:55:09,603 INFO us_index_dashboard - cache hit memory key=stats:1y:amzn:AMZN:mega_cap ttl=86400
+2026-04-16 17:55:09,603 INFO us_index_dashboard - stats cache fallback key=amzn layer=memory
+2026-04-16 17:55:09,603 INFO us_index_dashboard - cache hit memory key=stats:1y:googl:GOOGL:mega_cap ttl=86400
+2026-04-16 17:55:09,603 INFO us_index_dashboard - stats cache fallback key=googl layer=memory
+2026-04-16 17:55:09,604 INFO us_index_dashboard - cache hit memory key=stats:1y:meta:META:mega_cap ttl=86400
+2026-04-16 17:55:09,604 INFO us_index_dashboard - stats cache fallback key=meta layer=memory
+2026-04-16 17:55:09,604 INFO us_index_dashboard - cache hit memory key=stats:1y:tsla:TSLA:mega_cap ttl=86400
+2026-04-16 17:55:09,604 INFO us_index_dashboard - stats cache fallback key=tsla layer=memory
+2026-04-16 17:55:09,605 INFO us_index_dashboard - cache hit memory key=stats:1y:equal_weight:RSP:breadth ttl=86400
+2026-04-16 17:55:09,605 INFO us_index_dashboard - stats cache fallback key=equal_weight layer=memory
+2026-04-16 17:55:09,605 INFO us_index_dashboard - cache hit memory key=stats:1y:cap_weight:SPY:breadth ttl=86400
+2026-04-16 17:55:09,606 INFO us_index_dashboard - stats cache fallback key=cap_weight layer=memory
+2026-04-16 17:55:09,619 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-17 09:15:50,574 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=63639
+2026-04-17 09:15:50,600 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=63639
+2026-04-17 09:15:50,622 INFO us_index_dashboard - cache stale key=daily:1y:vix:^VIX:macro ttl=900 age=63999
+2026-04-17 09:15:50,643 INFO us_index_dashboard - cache stale key=daily:1y:us10y:^TNX:macro ttl=900 age=63999
+2026-04-17 09:15:50,644 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-17 09:15:50,664 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=63639
+2026-04-17 09:15:50,685 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=63639
+2026-04-17 09:15:50,705 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=63639
+2026-04-17 09:15:50,726 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=63639
+2026-04-17 09:15:50,746 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=63639
+2026-04-17 09:15:50,766 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=63639
+2026-04-17 09:15:50,787 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=63639
+2026-04-17 09:15:50,807 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=63639
+2026-04-17 09:15:50,828 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=63639
+2026-04-17 09:15:50,828 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^IXIC', '^GSPC', '^VIX', '^TNX', '^UST2Y', 'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'RSP', 'SPY']
+2026-04-17 09:15:56,886 INFO us_index_dashboard - cache write key=daily:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,887 INFO us_index_dashboard - cache write key=stats:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,888 INFO us_index_dashboard - cache write key=daily:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,890 INFO us_index_dashboard - cache write key=stats:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,891 INFO us_index_dashboard - cache write key=daily:1y:vix:^VIX:macro provider=Yahoo Finance / yfinance rows=251
+2026-04-17 09:15:56,892 INFO us_index_dashboard - cache write key=daily:1y:us10y:^TNX:macro provider=Yahoo Finance / yfinance rows=251
+2026-04-17 09:15:56,893 INFO us_index_dashboard - cache write key=daily:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,895 INFO us_index_dashboard - cache write key=stats:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,896 INFO us_index_dashboard - cache write key=daily:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,897 INFO us_index_dashboard - cache write key=stats:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,899 INFO us_index_dashboard - cache write key=daily:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,900 INFO us_index_dashboard - cache write key=stats:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,901 INFO us_index_dashboard - cache write key=daily:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,902 INFO us_index_dashboard - cache write key=stats:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,904 INFO us_index_dashboard - cache write key=daily:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,905 INFO us_index_dashboard - cache write key=stats:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,906 INFO us_index_dashboard - cache write key=daily:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,908 INFO us_index_dashboard - cache write key=stats:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,910 INFO us_index_dashboard - cache write key=daily:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,911 INFO us_index_dashboard - cache write key=stats:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,913 INFO us_index_dashboard - cache write key=daily:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,914 INFO us_index_dashboard - cache write key=stats:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,915 INFO us_index_dashboard - cache write key=daily:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,916 INFO us_index_dashboard - cache write key=stats:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 09:15:56,916 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-17 09:15:56,936 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-17 09:19:34,254 INFO us_index_dashboard - cache hit memory key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-17 09:19:34,254 INFO us_index_dashboard - cache hit memory key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-17 09:19:34,254 INFO us_index_dashboard - cache hit memory key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-17 09:19:34,255 INFO us_index_dashboard - cache hit memory key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-17 09:19:34,255 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-17 09:19:34,255 INFO us_index_dashboard - cache hit memory key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-17 09:19:34,256 INFO us_index_dashboard - cache hit memory key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-17 09:19:34,256 INFO us_index_dashboard - cache hit memory key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-17 09:19:34,256 INFO us_index_dashboard - cache hit memory key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-17 09:19:34,256 INFO us_index_dashboard - cache hit memory key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-17 09:19:34,257 INFO us_index_dashboard - cache hit memory key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-17 09:19:34,257 INFO us_index_dashboard - cache hit memory key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-17 09:19:34,257 INFO us_index_dashboard - cache hit memory key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-17 09:19:34,257 INFO us_index_dashboard - cache hit memory key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-17 09:19:34,258 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-17 09:19:37,205 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-17 09:19:37,216 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-17 09:19:41,494 INFO us_index_dashboard - cache hit memory key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-17 09:19:41,495 INFO us_index_dashboard - cache hit memory key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-17 09:19:41,495 INFO us_index_dashboard - cache hit memory key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-17 09:19:41,495 INFO us_index_dashboard - cache hit memory key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-17 09:19:41,496 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-17 09:19:41,496 INFO us_index_dashboard - cache hit memory key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-17 09:19:41,496 INFO us_index_dashboard - cache hit memory key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-17 09:19:41,496 INFO us_index_dashboard - cache hit memory key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-17 09:19:41,496 INFO us_index_dashboard - cache hit memory key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-17 09:19:41,497 INFO us_index_dashboard - cache hit memory key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-17 09:19:41,497 INFO us_index_dashboard - cache hit memory key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-17 09:19:41,497 INFO us_index_dashboard - cache hit memory key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-17 09:19:41,497 INFO us_index_dashboard - cache hit memory key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-17 09:19:41,497 INFO us_index_dashboard - cache hit memory key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-17 09:19:41,497 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-17 09:19:43,692 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-17 09:19:43,703 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-17 09:19:46,267 INFO us_index_dashboard - cache hit memory key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-17 09:19:46,267 INFO us_index_dashboard - cache hit memory key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-17 09:19:46,267 INFO us_index_dashboard - cache hit memory key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-17 09:19:46,268 INFO us_index_dashboard - cache hit memory key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-17 09:19:46,268 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-17 09:19:46,268 INFO us_index_dashboard - cache hit memory key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-17 09:19:46,268 INFO us_index_dashboard - cache hit memory key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-17 09:19:46,269 INFO us_index_dashboard - cache hit memory key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-17 09:19:46,269 INFO us_index_dashboard - cache hit memory key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-17 09:19:46,269 INFO us_index_dashboard - cache hit memory key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-17 09:19:46,269 INFO us_index_dashboard - cache hit memory key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-17 09:19:46,269 INFO us_index_dashboard - cache hit memory key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-17 09:19:46,270 INFO us_index_dashboard - cache hit memory key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-17 09:19:46,270 INFO us_index_dashboard - cache hit memory key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-17 09:19:46,270 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-17 09:19:47,578 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-17 09:19:47,584 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-17 11:41:48,470 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=8752
+2026-04-17 11:41:48,488 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=8752
+2026-04-17 11:41:48,503 INFO us_index_dashboard - cache stale key=daily:1y:vix:^VIX:macro ttl=900 age=8752
+2026-04-17 11:41:48,519 INFO us_index_dashboard - cache stale key=daily:1y:us10y:^TNX:macro ttl=900 age=8752
+2026-04-17 11:41:48,520 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-17 11:41:48,533 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=8752
+2026-04-17 11:41:48,547 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=8752
+2026-04-17 11:41:48,560 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=8752
+2026-04-17 11:41:48,574 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=8752
+2026-04-17 11:41:48,588 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=8752
+2026-04-17 11:41:48,602 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=8752
+2026-04-17 11:41:48,616 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=8752
+2026-04-17 11:41:48,629 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=8752
+2026-04-17 11:41:48,643 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=8752
+2026-04-17 11:41:48,643 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^IXIC', '^GSPC', '^VIX', '^TNX', '^UST2Y', 'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'RSP', 'SPY']
+2026-04-17 11:41:51,150 INFO us_index_dashboard - cache write key=daily:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,152 INFO us_index_dashboard - cache write key=stats:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,154 INFO us_index_dashboard - cache write key=daily:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,155 INFO us_index_dashboard - cache write key=stats:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,157 INFO us_index_dashboard - cache write key=daily:1y:vix:^VIX:macro provider=Yahoo Finance / yfinance rows=251
+2026-04-17 11:41:51,158 INFO us_index_dashboard - cache write key=daily:1y:us10y:^TNX:macro provider=Yahoo Finance / yfinance rows=251
+2026-04-17 11:41:51,160 INFO us_index_dashboard - cache write key=daily:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,162 INFO us_index_dashboard - cache write key=stats:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,163 INFO us_index_dashboard - cache write key=daily:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,164 INFO us_index_dashboard - cache write key=stats:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,165 INFO us_index_dashboard - cache write key=daily:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,167 INFO us_index_dashboard - cache write key=stats:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,168 INFO us_index_dashboard - cache write key=daily:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,169 INFO us_index_dashboard - cache write key=stats:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,171 INFO us_index_dashboard - cache write key=daily:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,172 INFO us_index_dashboard - cache write key=stats:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,175 INFO us_index_dashboard - cache write key=daily:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,176 INFO us_index_dashboard - cache write key=stats:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,177 INFO us_index_dashboard - cache write key=daily:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,179 INFO us_index_dashboard - cache write key=stats:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,180 INFO us_index_dashboard - cache write key=daily:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,182 INFO us_index_dashboard - cache write key=stats:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,182 INFO us_index_dashboard - cache write key=daily:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,183 INFO us_index_dashboard - cache write key=stats:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:41:51,184 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-17 11:41:51,191 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-17 11:49:29,138 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=458
+2026-04-17 11:49:29,160 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=458
+2026-04-17 11:49:29,181 INFO us_index_dashboard - cache hit disk key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-17 11:49:29,202 INFO us_index_dashboard - cache hit disk key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-17 11:49:29,202 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-17 11:49:29,223 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=458
+2026-04-17 11:49:29,244 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=458
+2026-04-17 11:49:29,265 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=458
+2026-04-17 11:49:29,286 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=458
+2026-04-17 11:49:29,307 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=458
+2026-04-17 11:49:29,329 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=458
+2026-04-17 11:49:29,350 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=458
+2026-04-17 11:49:29,371 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=458
+2026-04-17 11:49:29,392 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=458
+2026-04-17 11:49:29,413 INFO us_index_dashboard - cache hit disk key=stats:1y:nasdaq:^IXIC:index ttl=86400
+2026-04-17 11:49:29,413 INFO us_index_dashboard - stats cache fallback key=nasdaq layer=disk
+2026-04-17 11:49:29,438 INFO us_index_dashboard - cache hit disk key=stats:1y:sp500:^GSPC:index ttl=86400
+2026-04-17 11:49:29,438 INFO us_index_dashboard - stats cache fallback key=sp500 layer=disk
+2026-04-17 11:49:29,465 INFO us_index_dashboard - cache hit disk key=stats:1y:aapl:AAPL:mega_cap ttl=86400
+2026-04-17 11:49:29,465 INFO us_index_dashboard - stats cache fallback key=aapl layer=disk
+2026-04-17 11:49:29,486 INFO us_index_dashboard - cache hit disk key=stats:1y:msft:MSFT:mega_cap ttl=86400
+2026-04-17 11:49:29,487 INFO us_index_dashboard - stats cache fallback key=msft layer=disk
+2026-04-17 11:49:29,508 INFO us_index_dashboard - cache hit disk key=stats:1y:nvda:NVDA:mega_cap ttl=86400
+2026-04-17 11:49:29,508 INFO us_index_dashboard - stats cache fallback key=nvda layer=disk
+2026-04-17 11:49:29,529 INFO us_index_dashboard - cache hit disk key=stats:1y:amzn:AMZN:mega_cap ttl=86400
+2026-04-17 11:49:29,529 INFO us_index_dashboard - stats cache fallback key=amzn layer=disk
+2026-04-17 11:49:29,551 INFO us_index_dashboard - cache hit disk key=stats:1y:googl:GOOGL:mega_cap ttl=86400
+2026-04-17 11:49:29,551 INFO us_index_dashboard - stats cache fallback key=googl layer=disk
+2026-04-17 11:49:29,573 INFO us_index_dashboard - cache hit disk key=stats:1y:meta:META:mega_cap ttl=86400
+2026-04-17 11:49:29,573 INFO us_index_dashboard - stats cache fallback key=meta layer=disk
+2026-04-17 11:49:29,595 INFO us_index_dashboard - cache hit disk key=stats:1y:tsla:TSLA:mega_cap ttl=86400
+2026-04-17 11:49:29,595 INFO us_index_dashboard - stats cache fallback key=tsla layer=disk
+2026-04-17 11:49:29,623 INFO us_index_dashboard - cache hit disk key=stats:1y:equal_weight:RSP:breadth ttl=86400
+2026-04-17 11:49:29,623 INFO us_index_dashboard - stats cache fallback key=equal_weight layer=disk
+2026-04-17 11:49:29,644 INFO us_index_dashboard - cache hit disk key=stats:1y:cap_weight:SPY:breadth ttl=86400
+2026-04-17 11:49:29,645 INFO us_index_dashboard - stats cache fallback key=cap_weight layer=disk
+2026-04-17 11:49:29,657 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-17 11:50:59,752 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=549
+2026-04-17 11:50:59,753 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=549
+2026-04-17 11:50:59,754 INFO us_index_dashboard - cache hit disk key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-17 11:50:59,756 INFO us_index_dashboard - cache hit disk key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-17 11:50:59,757 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-17 11:50:59,758 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=549
+2026-04-17 11:50:59,760 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=549
+2026-04-17 11:50:59,763 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=549
+2026-04-17 11:50:59,764 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=549
+2026-04-17 11:50:59,764 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=549
+2026-04-17 11:50:59,765 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=549
+2026-04-17 11:50:59,766 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=549
+2026-04-17 11:50:59,767 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=549
+2026-04-17 11:50:59,768 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=549
+2026-04-17 11:50:59,769 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^IXIC', '^GSPC', '^UST2Y', 'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'RSP', 'SPY']
+2026-04-17 11:51:01,271 INFO us_index_dashboard - cache write key=daily:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,272 INFO us_index_dashboard - cache write key=stats:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,274 INFO us_index_dashboard - cache write key=daily:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,275 INFO us_index_dashboard - cache write key=stats:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,276 INFO us_index_dashboard - cache write key=daily:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,278 INFO us_index_dashboard - cache write key=stats:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,280 INFO us_index_dashboard - cache write key=daily:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,281 INFO us_index_dashboard - cache write key=stats:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,283 INFO us_index_dashboard - cache write key=daily:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,285 INFO us_index_dashboard - cache write key=stats:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,286 INFO us_index_dashboard - cache write key=daily:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,287 INFO us_index_dashboard - cache write key=stats:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,289 INFO us_index_dashboard - cache write key=daily:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,290 INFO us_index_dashboard - cache write key=stats:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,292 INFO us_index_dashboard - cache write key=daily:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,293 INFO us_index_dashboard - cache write key=stats:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,295 INFO us_index_dashboard - cache write key=daily:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,297 INFO us_index_dashboard - cache write key=stats:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,298 INFO us_index_dashboard - cache write key=daily:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,300 INFO us_index_dashboard - cache write key=stats:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,301 INFO us_index_dashboard - cache write key=daily:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,303 INFO us_index_dashboard - cache write key=stats:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:51:01,303 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-17 11:51:01,315 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-17 11:52:05,875 INFO us_index_dashboard - cache hit disk key=daily:1y:nasdaq:^IXIC:index ttl=300
+2026-04-17 11:52:05,899 INFO us_index_dashboard - cache hit disk key=daily:1y:sp500:^GSPC:index ttl=300
+2026-04-17 11:52:05,901 INFO us_index_dashboard - cache hit disk key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-17 11:52:05,901 INFO us_index_dashboard - cache hit disk key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-17 11:52:05,902 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-17 11:52:05,924 INFO us_index_dashboard - cache hit disk key=daily:1y:aapl:AAPL:mega_cap ttl=300
+2026-04-17 11:52:05,946 INFO us_index_dashboard - cache hit disk key=daily:1y:msft:MSFT:mega_cap ttl=300
+2026-04-17 11:52:05,967 INFO us_index_dashboard - cache hit disk key=daily:1y:nvda:NVDA:mega_cap ttl=300
+2026-04-17 11:52:05,987 INFO us_index_dashboard - cache hit disk key=daily:1y:amzn:AMZN:mega_cap ttl=300
+2026-04-17 11:52:06,007 INFO us_index_dashboard - cache hit disk key=daily:1y:googl:GOOGL:mega_cap ttl=300
+2026-04-17 11:52:06,027 INFO us_index_dashboard - cache hit disk key=daily:1y:meta:META:mega_cap ttl=300
+2026-04-17 11:52:06,047 INFO us_index_dashboard - cache hit disk key=daily:1y:tsla:TSLA:mega_cap ttl=300
+2026-04-17 11:52:06,067 INFO us_index_dashboard - cache hit disk key=daily:1y:equal_weight:RSP:breadth ttl=300
+2026-04-17 11:52:06,087 INFO us_index_dashboard - cache hit disk key=daily:1y:cap_weight:SPY:breadth ttl=300
+2026-04-17 11:52:06,088 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^UST2Y']
+2026-04-17 11:52:11,357 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-17 11:52:11,370 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-17 11:57:15,595 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=374
+2026-04-17 11:57:15,596 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=374
+2026-04-17 11:57:15,597 INFO us_index_dashboard - cache stale key=daily:1y:vix:^VIX:macro ttl=900 age=924
+2026-04-17 11:57:15,598 INFO us_index_dashboard - cache stale key=daily:1y:us10y:^TNX:macro ttl=900 age=924
+2026-04-17 11:57:15,598 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-17 11:57:15,599 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=374
+2026-04-17 11:57:15,600 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=374
+2026-04-17 11:57:15,601 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=374
+2026-04-17 11:57:15,602 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=374
+2026-04-17 11:57:15,602 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=374
+2026-04-17 11:57:15,603 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=374
+2026-04-17 11:57:15,604 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=374
+2026-04-17 11:57:15,605 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=374
+2026-04-17 11:57:15,606 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=374
+2026-04-17 11:57:15,606 INFO us_index_dashboard - provider request provider=Yahoo Finance / yfinance symbols=['^IXIC', '^GSPC', '^VIX', '^TNX', '^UST2Y', 'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'RSP', 'SPY']
+2026-04-17 11:57:23,188 INFO us_index_dashboard - cache write key=daily:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,190 INFO us_index_dashboard - cache write key=stats:1y:nasdaq:^IXIC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,191 INFO us_index_dashboard - cache write key=daily:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,192 INFO us_index_dashboard - cache write key=stats:1y:sp500:^GSPC:index provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,193 INFO us_index_dashboard - cache write key=daily:1y:vix:^VIX:macro provider=Yahoo Finance / yfinance rows=251
+2026-04-17 11:57:23,194 INFO us_index_dashboard - cache write key=daily:1y:us10y:^TNX:macro provider=Yahoo Finance / yfinance rows=251
+2026-04-17 11:57:23,196 INFO us_index_dashboard - cache write key=daily:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,196 INFO us_index_dashboard - cache write key=stats:1y:aapl:AAPL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,198 INFO us_index_dashboard - cache write key=daily:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,199 INFO us_index_dashboard - cache write key=stats:1y:msft:MSFT:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,200 INFO us_index_dashboard - cache write key=daily:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,202 INFO us_index_dashboard - cache write key=stats:1y:nvda:NVDA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,203 INFO us_index_dashboard - cache write key=daily:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,204 INFO us_index_dashboard - cache write key=stats:1y:amzn:AMZN:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,205 INFO us_index_dashboard - cache write key=daily:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,207 INFO us_index_dashboard - cache write key=stats:1y:googl:GOOGL:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,209 INFO us_index_dashboard - cache write key=daily:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,210 INFO us_index_dashboard - cache write key=stats:1y:meta:META:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,211 INFO us_index_dashboard - cache write key=daily:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,212 INFO us_index_dashboard - cache write key=stats:1y:tsla:TSLA:mega_cap provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,214 INFO us_index_dashboard - cache write key=daily:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,215 INFO us_index_dashboard - cache write key=stats:1y:equal_weight:RSP:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,217 INFO us_index_dashboard - cache write key=daily:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,218 INFO us_index_dashboard - cache write key=stats:1y:cap_weight:SPY:breadth provider=Yahoo Finance / yfinance rows=250
+2026-04-17 11:57:23,218 WARNING us_index_dashboard - symbol failed provider=Yahoo Finance / yfinance key=us2y error=empty history
+2026-04-17 11:57:23,228 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-17 12:04:53,114 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=450
+2026-04-17 12:04:53,140 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=450
+2026-04-17 12:04:53,163 INFO us_index_dashboard - cache hit disk key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-17 12:04:53,187 INFO us_index_dashboard - cache hit disk key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-17 12:04:53,188 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-17 12:04:53,216 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=450
+2026-04-17 12:04:53,243 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=450
+2026-04-17 12:04:53,268 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=450
+2026-04-17 12:04:53,291 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=450
+2026-04-17 12:04:53,314 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=450
+2026-04-17 12:04:53,338 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=450
+2026-04-17 12:04:53,365 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=450
+2026-04-17 12:04:53,389 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=450
+2026-04-17 12:04:53,411 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=450
+2026-04-17 12:04:53,434 INFO us_index_dashboard - cache hit disk key=stats:1y:nasdaq:^IXIC:index ttl=86400
+2026-04-17 12:04:53,434 INFO us_index_dashboard - stats cache fallback key=nasdaq layer=disk
+2026-04-17 12:04:53,456 INFO us_index_dashboard - cache hit disk key=stats:1y:sp500:^GSPC:index ttl=86400
+2026-04-17 12:04:53,457 INFO us_index_dashboard - stats cache fallback key=sp500 layer=disk
+2026-04-17 12:04:53,479 INFO us_index_dashboard - cache hit disk key=stats:1y:aapl:AAPL:mega_cap ttl=86400
+2026-04-17 12:04:53,479 INFO us_index_dashboard - stats cache fallback key=aapl layer=disk
+2026-04-17 12:04:53,502 INFO us_index_dashboard - cache hit disk key=stats:1y:msft:MSFT:mega_cap ttl=86400
+2026-04-17 12:04:53,502 INFO us_index_dashboard - stats cache fallback key=msft layer=disk
+2026-04-17 12:04:53,524 INFO us_index_dashboard - cache hit disk key=stats:1y:nvda:NVDA:mega_cap ttl=86400
+2026-04-17 12:04:53,524 INFO us_index_dashboard - stats cache fallback key=nvda layer=disk
+2026-04-17 12:04:53,547 INFO us_index_dashboard - cache hit disk key=stats:1y:amzn:AMZN:mega_cap ttl=86400
+2026-04-17 12:04:53,547 INFO us_index_dashboard - stats cache fallback key=amzn layer=disk
+2026-04-17 12:04:53,569 INFO us_index_dashboard - cache hit disk key=stats:1y:googl:GOOGL:mega_cap ttl=86400
+2026-04-17 12:04:53,569 INFO us_index_dashboard - stats cache fallback key=googl layer=disk
+2026-04-17 12:04:53,595 INFO us_index_dashboard - cache hit disk key=stats:1y:meta:META:mega_cap ttl=86400
+2026-04-17 12:04:53,595 INFO us_index_dashboard - stats cache fallback key=meta layer=disk
+2026-04-17 12:04:53,617 INFO us_index_dashboard - cache hit disk key=stats:1y:tsla:TSLA:mega_cap ttl=86400
+2026-04-17 12:04:53,617 INFO us_index_dashboard - stats cache fallback key=tsla layer=disk
+2026-04-17 12:04:53,640 INFO us_index_dashboard - cache hit disk key=stats:1y:equal_weight:RSP:breadth ttl=86400
+2026-04-17 12:04:53,640 INFO us_index_dashboard - stats cache fallback key=equal_weight layer=disk
+2026-04-17 12:04:53,662 INFO us_index_dashboard - cache hit disk key=stats:1y:cap_weight:SPY:breadth ttl=86400
+2026-04-17 12:04:53,662 INFO us_index_dashboard - stats cache fallback key=cap_weight layer=disk
+2026-04-17 12:04:53,676 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-17 12:05:13,376 INFO us_index_dashboard - cache stale key=daily:1y:nasdaq:^IXIC:index ttl=300 age=470
+2026-04-17 12:05:13,377 INFO us_index_dashboard - cache stale key=daily:1y:sp500:^GSPC:index ttl=300 age=470
+2026-04-17 12:05:13,378 INFO us_index_dashboard - cache hit disk key=daily:1y:vix:^VIX:macro ttl=900
+2026-04-17 12:05:13,379 INFO us_index_dashboard - cache hit disk key=daily:1y:us10y:^TNX:macro ttl=900
+2026-04-17 12:05:13,380 INFO us_index_dashboard - cache miss key=daily:1y:us2y:^UST2Y:macro
+2026-04-17 12:05:13,381 INFO us_index_dashboard - cache stale key=daily:1y:aapl:AAPL:mega_cap ttl=300 age=470
+2026-04-17 12:05:13,382 INFO us_index_dashboard - cache stale key=daily:1y:msft:MSFT:mega_cap ttl=300 age=470
+2026-04-17 12:05:13,383 INFO us_index_dashboard - cache stale key=daily:1y:nvda:NVDA:mega_cap ttl=300 age=470
+2026-04-17 12:05:13,384 INFO us_index_dashboard - cache stale key=daily:1y:amzn:AMZN:mega_cap ttl=300 age=470
+2026-04-17 12:05:13,386 INFO us_index_dashboard - cache stale key=daily:1y:googl:GOOGL:mega_cap ttl=300 age=470
+2026-04-17 12:05:13,387 INFO us_index_dashboard - cache stale key=daily:1y:meta:META:mega_cap ttl=300 age=470
+2026-04-17 12:05:13,389 INFO us_index_dashboard - cache stale key=daily:1y:tsla:TSLA:mega_cap ttl=300 age=470
+2026-04-17 12:05:13,390 INFO us_index_dashboard - cache stale key=daily:1y:equal_weight:RSP:breadth ttl=300 age=470
+2026-04-17 12:05:13,391 INFO us_index_dashboard - cache stale key=daily:1y:cap_weight:SPY:breadth ttl=300 age=470
+2026-04-17 12:05:13,392 INFO us_index_dashboard - cache hit disk key=stats:1y:nasdaq:^IXIC:index ttl=86400
+2026-04-17 12:05:13,392 INFO us_index_dashboard - stats cache fallback key=nasdaq layer=disk
+2026-04-17 12:05:13,393 INFO us_index_dashboard - cache hit disk key=stats:1y:sp500:^GSPC:index ttl=86400
+2026-04-17 12:05:13,394 INFO us_index_dashboard - stats cache fallback key=sp500 layer=disk
+2026-04-17 12:05:13,395 INFO us_index_dashboard - cache hit disk key=stats:1y:aapl:AAPL:mega_cap ttl=86400
+2026-04-17 12:05:13,395 INFO us_index_dashboard - stats cache fallback key=aapl layer=disk
+2026-04-17 12:05:13,396 INFO us_index_dashboard - cache hit disk key=stats:1y:msft:MSFT:mega_cap ttl=86400
+2026-04-17 12:05:13,396 INFO us_index_dashboard - stats cache fallback key=msft layer=disk
+2026-04-17 12:05:13,397 INFO us_index_dashboard - cache hit disk key=stats:1y:nvda:NVDA:mega_cap ttl=86400
+2026-04-17 12:05:13,397 INFO us_index_dashboard - stats cache fallback key=nvda layer=disk
+2026-04-17 12:05:13,398 INFO us_index_dashboard - cache hit disk key=stats:1y:amzn:AMZN:mega_cap ttl=86400
+2026-04-17 12:05:13,398 INFO us_index_dashboard - stats cache fallback key=amzn layer=disk
+2026-04-17 12:05:13,399 INFO us_index_dashboard - cache hit disk key=stats:1y:googl:GOOGL:mega_cap ttl=86400
+2026-04-17 12:05:13,399 INFO us_index_dashboard - stats cache fallback key=googl layer=disk
+2026-04-17 12:05:13,401 INFO us_index_dashboard - cache hit disk key=stats:1y:meta:META:mega_cap ttl=86400
+2026-04-17 12:05:13,401 INFO us_index_dashboard - stats cache fallback key=meta layer=disk
+2026-04-17 12:05:13,402 INFO us_index_dashboard - cache hit disk key=stats:1y:tsla:TSLA:mega_cap ttl=86400
+2026-04-17 12:05:13,402 INFO us_index_dashboard - stats cache fallback key=tsla layer=disk
+2026-04-17 12:05:13,403 INFO us_index_dashboard - cache hit disk key=stats:1y:equal_weight:RSP:breadth ttl=86400
+2026-04-17 12:05:13,403 INFO us_index_dashboard - stats cache fallback key=equal_weight layer=disk
+2026-04-17 12:05:13,404 INFO us_index_dashboard - cache hit disk key=stats:1y:cap_weight:SPY:breadth ttl=86400
+2026-04-17 12:05:13,404 INFO us_index_dashboard - stats cache fallback key=cap_weight layer=disk
+2026-04-17 12:05:13,419 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y

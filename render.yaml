@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: us-index-dashboard-mvp
+    runtime: python
+    plan: free
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.address 0.0.0.0 --server.port $PORT --server.headless true --browser.gatherUsageStats false
+    envVars:
+      - key: MARKET_DATA_PROVIDER
+        value: yfinance
+      - key: CACHE_DIR
+        value: /tmp/us_index_dashboard_cache
+      - key: LOG_DIR
+        value: /tmp/us_index_dashboard_logs
+      - key: CACHE_TTL_QUOTE
+        value: "300"
+      - key: CACHE_TTL_MACRO
+        value: "900"
+      - key: CACHE_TTL_STATS
+        value: "86400"
+      - key: DEBUG_DATA
+        value: "0"
+      - key: ALPHA_VANTAGE_API_KEY
+        sync: false
+      - key: MARKET_API_KEY
+        sync: false
