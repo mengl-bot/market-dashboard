@@ -1,0 +1,376 @@
+"""Status-aware Streamlit components for data-source transparency."""
+
+from __future__ import annotations
+
+import html
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+import streamlit as st
+
+from services.analytics import IndexMetrics, MarketAnalytics
+from ui.formatters import delta_class, fmt_number, fmt_pct, fmt_plain_pct
+
+
+def normalized_status(source_state: str | None) -> str:
+    """Map repository source states into user-facing status buckets."""
+
+    if source_state in {"realtime", "cached", "mock", "error"}:
+        return source_state
+    if source_state == "live":
+        return "realtime"
+    if source_state in {"cache", "stale_cache"}:
+        return "cached"
+    if source_state == "mock":
+        return "mock"
+    return "error"
+
+
+def status_badge(
+    source_state: str | None,
+    cache_saved_at: float | None = None,
+    provider: str | None = None,
+    cache_label: str = "缓存",
+) -> str:
+    """Return a small absolute-positioned status badge."""
+
+    status = normalized_status(source_state)
+    labels = {
+        "realtime": "🟢 实时",
+        "cached": "🟡 缓存",
+        "mock": "🔵 Mock",
+        "error": "🔴 错误",
+    }
+    return f'<span class="status-badge status-{status}">{labels[status]}</span>{status_meta(status, cache_saved_at, provider, cache_label)}'
+
+
+def status_meta(status: str, cache_saved_at: float | None, provider: str | None, cache_label: str) -> str:
+    """Render concise provider/cache detail below the badge."""
+
+    provider_text = provider_label(provider)
+    if status == "realtime":
+        return f'<div class="status-meta">{provider_text} 实时成功</div>' if provider_text else ""
+    if status == "mock":
+        return f'<div class="status-meta">{provider_text or "mock_data.py"}</div>'
+    if status == "error":
+        return '<div class="status-meta">当前不可用</div>'
+    if cache_saved_at is None:
+        return f'<div class="status-meta">{provider_text or "缓存数据"}</div>'
+
+    saved_at = datetime.fromtimestamp(cache_saved_at)
+    minutes = max(0, int((datetime.now() - saved_at).total_seconds() // 60))
+    if minutes < 1:
+        age = f"{cache_label}刚刚"
+    elif minutes < 60:
+        age = f"{cache_label} {minutes}分钟前"
+    else:
+        age = f"{cache_label} {minutes // 60}小时{minutes % 60}分钟前"
+    return f'<div class="status-meta">{age}<br>{cache_label}于 {saved_at:%H:%M}</div>'
+
+
+def provider_label(provider: str | None) -> str:
+    """Normalize provider names for compact UI status text."""
+
+    if not provider:
+        return ""
+    lower = provider.lower()
+    if "yfinance" in lower or "yahoo" in lower:
+        return "yfinance"
+    if "alpha" in lower:
+        return "Alpha Vantage"
+    if "mock" in lower:
+        return "mock_data.py"
+    if "wikipedia" in lower:
+        return "Wikipedia"
+    return provider
+
+
+def aggregate_status(states: list[str | None]) -> str:
+    """Collapse several source states into one conservative module status."""
+
+    normalized = [normalized_status(state) for state in states]
+    for status in ["error", "mock", "cached", "realtime"]:
+        if status in normalized:
+            return status
+    return "error"
+
+
+def health_counts(analytics: MarketAnalytics) -> dict[str, int]:
+    """Count status buckets across core dashboard modules."""
+
+    states = [metric.data_state for metric in analytics.metrics.values()]
+    states.extend([analytics.breadth.sp500_source, analytics.breadth.nasdaq100_source])
+    states.append(aggregate_status(states))
+    counts = {"realtime": 0, "cached": 0, "mock": 0, "error": 0}
+    for state in states:
+        counts[normalized_status(state)] += 1
+    return counts
+
+
+def render_terminal_status_bar(analytics: MarketAnalytics, source_name: str, is_mock: bool) -> None:
+    """Render top status bar with data health overview."""
+
+    counts = health_counts(analytics)
+    st.markdown(
+        f"""
+        <div class="health-strip">
+            <span class="health-title">数据健康度</span>
+            <span class="health-chip status-realtime">🟢 {counts["realtime"]}实时</span>
+            <span class="health-chip status-cached">🟡 {counts["cached"]}缓存</span>
+            <span class="health-chip status-mock">🔵 {counts["mock"]}模拟</span>
+            <span class="health-chip status-error">🔴 {counts["error"]}错误</span>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    now_et = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d %H:%M:%S ET")
+    live_text = "模拟数据（MOCK）" if is_mock else "实时链路（LIVE）"
+    live_class = "terminal-chip warn" if is_mock else "terminal-chip live"
+    vix = analytics.macro_metrics.get("vix")
+    us10y = analytics.macro_metrics.get("us10y")
+    breadth_text = f"龙头宽度 M7 A/D {analytics.breadth.advances}/{analytics.breadth.declines}"
+    risk_class = "risk-off" if "Risk OFF" in analytics.decision.risk_mode else "risk-on"
+
+    st.markdown(
+        f"""
+        <div class="terminal-topbar">
+            <div class="terminal-brand">
+                <span class="terminal-title">美股指数专业看板 V3</span>
+                <span class="terminal-subtitle">数据源：{html.escape(source_name)}</span>
+            </div>
+            <div class="terminal-strip">
+                <span class="terminal-chip">{now_et}</span>
+                <span class="{live_class}">{live_text}</span>
+                <span class="terminal-chip {risk_class}">{analytics.decision.risk_mode}</span>
+                <span class="terminal-chip">VIX {fmt_number(vix.current if vix else None, 2)} / {fmt_pct(vix.day_change_pct if vix else None)}</span>
+                <span class="terminal-chip">10年美债 {fmt_number(us10y.current if us10y else None, 2)}%</span>
+                <span class="terminal-chip">{breadth_text}</span>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_overview(metrics: dict[str, IndexMetrics]) -> None:
+    """Render index cards with status badges."""
+
+    cols = st.columns(2)
+    for col, key in zip(cols, ["nasdaq", "sp500"]):
+        metric = metrics.get(key)
+        if not metric:
+            continue
+        returns_html = "".join(f'<span class="return-pill">{label} {fmt_pct(value)}</span>' for label, value in metric.returns.items())
+        with col:
+            st.markdown(
+                f"""
+                <div class="card index-card">
+                    {status_badge(metric.data_state, metric.cache_saved_at, metric.data_provider)}
+                    <div class="card-title">{html.escape(metric.name)}</div>
+                    <div class="metric-value">{fmt_number(metric.current)}</div>
+                    <div class="{delta_class(metric.day_change)}">{fmt_number(metric.day_change)} / {fmt_pct(metric.day_change_pct)}</div>
+                    <div class="return-row">{returns_html}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+
+def render_macro_strip(metrics: dict[str, IndexMetrics]) -> None:
+    """Render macro cards with status badges."""
+
+    us10y = metrics.get("us10y")
+    us2y = metrics.get("us2y")
+    spread = us2y.current - us10y.current if us2y and us10y and us2y.current is not None and us10y.current is not None else None
+    items = [
+        ("VIX", metrics.get("vix"), metrics.get("vix").current if metrics.get("vix") else None, metrics.get("vix").day_change_pct if metrics.get("vix") else None, ""),
+        ("10年美债收益率", us10y, us10y.current if us10y else None, us10y.day_change if us10y else None, "%"),
+        ("2年美债收益率", us2y, us2y.current if us2y else None, us2y.day_change if us2y else None, "%"),
+        ("2Y-10Y 利差", us10y or us2y, spread, None, "bp"),
+    ]
+
+    cols = st.columns(4)
+    for col, (title, metric, value, delta, unit) in zip(cols, items):
+        value_text = f"{fmt_number(value, 2)}%" if unit == "%" else f"{fmt_number(value * 100, 0)} bp" if value is not None and unit == "bp" else fmt_number(value, 2)
+        delta_text = fmt_pct(delta) if title == "VIX" else fmt_number(delta, 2)
+        with col:
+            st.markdown(
+                f"""
+                <div class="card compact-card">
+                    {status_badge(
+                        metric.data_state if metric else None,
+                        metric.cache_saved_at if metric else None,
+                        metric.data_provider if metric else None,
+                    )}
+                    <div class="card-title">{title}</div>
+                    <div class="macro-value">{value_text}</div>
+                    <div class="{delta_class(delta)}">{delta_text}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+
+def render_mega_cap_section(metrics: dict[str, IndexMetrics], average: float | None) -> None:
+    """Render M7 heatmap cards with status badges."""
+
+    section_status = aggregate_status([metric.data_state for metric in metrics.values()])
+    st.markdown(
+        f"""
+        <div class="section-kpi">
+            <span>七巨头平均表现（M7 Avg）</span>
+            <strong class="{delta_class(average)}">{fmt_pct(average)}</strong>
+            {status_badge(section_status)}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    rows = sorted(metrics.values(), key=lambda metric: metric.strength_rank or 99)
+    for start in range(0, len(rows), 4):
+        cols = st.columns(min(4, len(rows) - start))
+        for col, metric in zip(cols, rows[start : start + 4]):
+            with col:
+                st.markdown(
+                    f"""
+                    <div class="heat-cell {heat_class(metric.day_change_pct)}">
+                        {status_badge(metric.data_state, metric.cache_saved_at, metric.data_provider)}
+                        <div class="heat-rank">强弱排名 #{metric.strength_rank or '-'}</div>
+                        <div class="heat-ticker">{html.escape(metric.name)}</div>
+                        <div class="heat-change">{fmt_pct(metric.day_change_pct)}</div>
+                        <div class="heat-meta">权重 {fmt_plain_pct(metric.weight)} · 贡献 {fmt_pct(metric.contribution)}</div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+
+
+def render_breadth_section(analytics: MarketAnalytics) -> None:
+    """Render leadership and full-market breadth with status badges."""
+
+    breadth = analytics.breadth
+    m7_state = aggregate_status([metric.data_state for metric in analytics.mega_cap_metrics.values()])
+    equal_state = aggregate_status(
+        [
+            analytics.metrics.get("equal_weight").data_state if analytics.metrics.get("equal_weight") else None,
+            analytics.metrics.get("cap_weight").data_state if analytics.metrics.get("cap_weight") else None,
+        ]
+    )
+    leadership_items = [
+        ("龙头宽度（M7 A/D）", f"上涨{breadth.advances} / 下跌{breadth.declines} / 持平{breadth.unchanged}", "七巨头内部结构", "仅衡量七巨头内部涨跌分布，不代表全市场宽度。", m7_state),
+        ("龙头新高/新低（M7 NH/NL）", f"{breadth.new_highs} / {breadth.new_lows}", "52周位置", "观察龙头股是否接近52周高位或低位，用于判断领导力质量。", m7_state),
+        ("等权表现（Equal Weight）", fmt_pct(breadth.equal_weight_return), "RSP", "等权指数更能反映普通成分股表现，弱于市值加权时说明上涨较集中。", equal_state),
+        ("市值加权表现（Cap Weight）", fmt_pct(breadth.cap_weight_return), "SPY", "市值加权指数受大型权重股影响更大，用于观察龙头拉动强度。", equal_state),
+        ("等权-市值差（EW-CW）", fmt_pct(breadth.equal_vs_cap_spread), "扩散/集中", "差值为正说明上涨扩散更好，差值为负说明权重股主导更强。", equal_state),
+    ]
+
+    st.markdown('<div class="breadth-caption">龙头宽度：M7 A/D reflects breadth within mega-cap leaders, not the whole market.</div>', unsafe_allow_html=True)
+    cols = st.columns(5)
+    for col, (title, value, note, explanation, state) in zip(cols, leadership_items):
+        with col:
+            st.markdown(
+                f"""
+                <div class="card compact-card">
+                    {status_badge(state)}
+                    <div class="card-title">{title}</div>
+                    <div class="breadth-value">{value}</div>
+                    <div class="card-note">{note}</div>
+                    <div class="card-explain">{explanation}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+    market_items = [
+        ("标普500涨跌比", format_ad(breadth.sp500_advances, breadth.sp500_declines, breadth.sp500_unchanged), breadth.sp500_message, "覆盖S&P 500成分股，用最近两个交易日收盘价计算上涨、下跌和持平家数。", breadth.sp500_source, breadth.sp500_cache_saved_at),
+        ("纳指100涨跌比", format_ad(breadth.nasdaq100_advances, breadth.nasdaq100_declines, breadth.nasdaq100_unchanged), breadth.nasdaq100_message, "覆盖Nasdaq-100成分股，用最近两个交易日收盘价衡量科技权重内部扩散情况。", breadth.nasdaq100_source, breadth.nasdaq100_cache_saved_at),
+    ]
+
+    st.markdown('<div class="breadth-caption market">全市场宽度：成分股级别 A/D，失败时优先使用最近缓存。</div>', unsafe_allow_html=True)
+    cols = st.columns(2)
+    for col, (title, value, message, explanation, state, cache_saved_at) in zip(cols, market_items):
+        with col:
+            st.markdown(
+                f"""
+                <div class="card compact-card">
+                    {status_badge(state, cache_saved_at, cache_label="上次计算")}
+                    <div class="card-title">{title}</div>
+                    <div class="breadth-value">{value}</div>
+                    <div class="card-note">{message}</div>
+                    <div class="card-explain">{explanation}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+
+def render_decision_matrix(analytics: MarketAnalytics) -> None:
+    """Render five-dimensional decision cards with AI data status."""
+
+    ai_state = aggregate_status([metric.data_state for metric in analytics.metrics.values()] + [analytics.breadth.sp500_source, analytics.breadth.nasdaq100_source])
+    items = [
+        ("趋势", analytics.decision.trend),
+        ("宽度", analytics.decision.breadth),
+        ("波动", analytics.decision.volatility),
+        ("驱动", analytics.decision.driver),
+        ("风险", analytics.decision.risk),
+    ]
+    cols = st.columns(len(items))
+    for col, (label, value) in zip(cols, items):
+        with col:
+            st.markdown(
+                f"""
+                <div class="decision-cell">
+                    {status_badge(ai_state)}
+                    <div class="decision-label">{label}</div>
+                    <div class="decision-value">{value}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+
+def render_summary(sections: dict[str, list[str]], analytics: MarketAnalytics | None = None) -> None:
+    """Render Summary / Driver / Watchlist with AI data status."""
+
+    title_map = {"Summary": "摘要（Summary）", "Driver": "驱动（Driver）", "Watchlist": "观察清单（Watchlist）"}
+    ai_state = aggregate_status([metric.data_state for metric in analytics.metrics.values()] + [analytics.breadth.sp500_source, analytics.breadth.nasdaq100_source]) if analytics else None
+    cols = st.columns(3)
+    for col, key in zip(cols, ["Summary", "Driver", "Watchlist"]):
+        with col:
+            notes = "".join(f"<li>{html.escape(str(item))}</li>" for item in sections.get(key, []))
+            st.markdown(
+                f"""
+                <div class="terminal-note">
+                    {status_badge(ai_state) if ai_state else ""}
+                    <div class="terminal-note-title">{title_map[key]}</div>
+                    <ul>{notes}</ul>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+
+def format_ad(advances: int | None, declines: int | None, unchanged: int | None) -> str:
+    """Format A/D counts."""
+
+    if advances is None or declines is None:
+        return "暂无数据"
+    return f"上涨{advances}家 / 下跌{declines}家 / 持平{unchanged or 0}家"
+
+
+def heat_class(value: float | None) -> str:
+    """Return heatmap class from percentage change."""
+
+    if value is None:
+        return "heat-flat"
+    if value >= 2:
+        return "heat-up-strong"
+    if value > 0:
+        return "heat-up"
+    if value <= -2:
+        return "heat-down-strong"
+    if value < 0:
+        return "heat-down"
+    return "heat-flat"

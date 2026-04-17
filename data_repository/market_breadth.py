@@ -44,6 +44,7 @@ class MarketBreadthSnapshot:
     provider: str = "Unavailable"
     source_state: str = "unavailable"
     cache_hit: bool = False
+    cache_saved_at: float | None = None
     message: str = "暂无可用数据"
 
 
@@ -225,7 +226,7 @@ class MarketBreadthRepository:
         entry, layer = self.cache.get(self._counts_cache_key(key), self.quote_ttl)
         if entry is None:
             return None
-        snapshot = self._snapshot_from_frame(key, label, entry.history, entry.provider, "cache", True)
+        snapshot = self._snapshot_from_frame(key, label, entry.history, entry.provider, "cache", True, entry.saved_at)
         snapshot.message = f"使用缓存数据，有效样本 {snapshot.sampled_count or 0}/{snapshot.total_count or 0}"
         self.logger.info("market breadth counts cache hit key=%s layer=%s", key, layer)
         return snapshot
@@ -234,7 +235,7 @@ class MarketBreadthRepository:
         entry = self.cache.get_stale(self._counts_cache_key(key))
         if entry is None:
             return None
-        snapshot = self._snapshot_from_frame(key, label, entry.history, entry.provider, "stale_cache", True)
+        snapshot = self._snapshot_from_frame(key, label, entry.history, entry.provider, "stale_cache", True, entry.saved_at)
         snapshot.message = f"{message}，有效样本 {snapshot.sampled_count or 0}/{snapshot.total_count or 0}"
         return snapshot
 
@@ -261,6 +262,7 @@ class MarketBreadthRepository:
         provider: str,
         source_state: str,
         cache_hit: bool,
+        cache_saved_at: float | None,
     ) -> MarketBreadthSnapshot:
         row = frame.iloc[-1] if not frame.empty else {}
         return MarketBreadthSnapshot(
@@ -274,6 +276,7 @@ class MarketBreadthRepository:
             provider=provider,
             source_state=source_state,
             cache_hit=cache_hit,
+            cache_saved_at=cache_saved_at,
             message=str(row.get("message") or "使用缓存数据"),
         )
 

@@ -63,6 +63,7 @@ def apply_dark_theme() -> None:
         .terminal-chip.risk-on { color: #32d583; border-color: #166534; background: #07140d; }
         .terminal-chip.risk-off { color: #ff5f57; border-color: #7f1d1d; background: #160909; }
         .card {
+            position: relative;
             border: 1px solid #243244;
             background: #0b111a;
             border-radius: 6px;
@@ -74,6 +75,7 @@ def apply_dark_theme() -> None:
         .card-title {
             color: #94a3b8;
             font-size: 11px;
+            padding-right: 82px;
             margin-bottom: 5px;
             letter-spacing: 0.03em;
             text-transform: uppercase;
@@ -122,7 +124,56 @@ def apply_dark_theme() -> None:
             font-size: 12px;
             font-weight: 760;
         }
+        .status-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            border: 1px solid #334155;
+            background: #070b11;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 10px;
+            line-height: 1.2;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+        .status-realtime { color: #32d583; border-color: #166534; }
+        .status-cached { color: #fbbf24; border-color: #854d0e; }
+        .status-mock { color: #60a5fa; border-color: #1d4ed8; }
+        .status-error { color: #ff5f57; border-color: #7f1d1d; }
+        .status-meta {
+            color: #64748b;
+            font-size: 10px;
+            line-height: 1.25;
+            margin-top: 4px;
+        }
+        .health-strip {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            border: 1px solid #243244;
+            background: #070b11;
+            border-radius: 6px;
+            padding: 7px 9px;
+            margin: 0 0 10px 0;
+        }
+        .health-title {
+            color: #cbd5e1;
+            font-size: 12px;
+            font-weight: 800;
+            margin-right: 4px;
+        }
+        .health-chip {
+            border: 1px solid #334155;
+            border-radius: 4px;
+            padding: 3px 7px;
+            font-size: 11px;
+            font-weight: 760;
+            background: #0b111a;
+        }
         .section-kpi {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -142,6 +193,7 @@ def apply_dark_theme() -> None:
             gap: 6px;
         }
         .heat-cell {
+            position: relative;
             border: 1px solid #243244;
             border-radius: 6px;
             padding: 10px;
@@ -162,6 +214,7 @@ def apply_dark_theme() -> None:
             gap: 6px;
         }
         .decision-cell {
+            position: relative;
             border: 1px solid #243244;
             background: #080d14;
             border-radius: 6px;
@@ -182,6 +235,7 @@ def apply_dark_theme() -> None:
             line-height: 1.35;
         }
         .terminal-note {
+            position: relative;
             border: 1px solid #243244;
             background: #080d14;
             border-radius: 6px;

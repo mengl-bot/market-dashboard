@@ -31,6 +31,7 @@ class IndexDataset:
     provider: str = "unknown"
     source_state: str = "live"
     cache_hit: bool = False
+    cache_saved_at: float | None = None
     error: str | None = None
 
 

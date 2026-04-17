@@ -41,14 +41,16 @@ def _render_dashboard() -> None:
     from services.summary import generate_chinese_summary
     from ui.components import (
         render_badges,
-        render_breadth_section,
         render_data_debug,
+        render_price_chart,
+        render_stats,
+    )
+    from ui.status_components import (
+        render_breadth_section,
         render_decision_matrix,
         render_macro_strip,
         render_mega_cap_section,
         render_overview,
-        render_price_chart,
-        render_stats,
         render_summary,
         render_terminal_status_bar,
     )
@@ -67,8 +69,6 @@ def _render_dashboard() -> None:
     summary_sections = generate_chinese_summary(analytics)
 
     render_terminal_status_bar(analytics, provider_result.source_name, provider_result.is_mock)
-    if provider_result.warning:
-        st.info(provider_result.warning)
 
     if debug_enabled:
         with st.expander("Data repository debug", expanded=True):
@@ -114,7 +114,7 @@ def _render_dashboard() -> None:
 
     st.divider()
     st.subheader("AI 盘后简报")
-    render_summary(summary_sections)
+    render_summary(summary_sections, analytics)
 
 
 if __name__ == "__main__":

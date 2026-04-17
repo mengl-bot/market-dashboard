@@ -75,6 +75,7 @@ class DataRepository:
                 provider=cached.provider,
                 source_state="cache",
                 cache_hit=True,
+                cache_saved_at=cached.saved_at,
             )
             datasets[config.key] = dataset
             debug_rows.append(self._debug_row(dataset, layer or "memory"))
@@ -101,6 +102,7 @@ class DataRepository:
                     provider=stale.provider,
                     source_state="stale_cache",
                     cache_hit=True,
+                    cache_saved_at=stale.saved_at,
                 )
                 datasets[config.key] = dataset
                 debug_rows.append(self._debug_row(dataset, "stale"))

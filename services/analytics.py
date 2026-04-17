@@ -50,6 +50,9 @@ class IndexMetrics:
     weight: float | None = None
     contribution: float | None = None
     strength_rank: int | None = None
+    data_state: str = "error"
+    data_provider: str = "unknown"
+    cache_saved_at: float | None = None
 
 
 @dataclass
@@ -73,11 +76,13 @@ class BreadthMetrics:
     sp500_unchanged: int | None = None
     sp500_source: str = "unavailable"
     sp500_message: str = "暂无可用数据"
+    sp500_cache_saved_at: float | None = None
     nasdaq100_advances: int | None = None
     nasdaq100_declines: int | None = None
     nasdaq100_unchanged: int | None = None
     nasdaq100_source: str = "unavailable"
     nasdaq100_message: str = "暂无可用数据"
+    nasdaq100_cache_saved_at: float | None = None
 
 
 @dataclass
@@ -194,6 +199,9 @@ def calculate_index_metrics(dataset: IndexDataset) -> IndexMetrics:
         volatility_20d=volatility_20d,
         avg_range_20d=avg_range_20d,
         latest_date=pd.to_datetime(latest.get("date")) if pd.notna(latest.get("date")) else None,
+        data_state=dataset.source_state,
+        data_provider=dataset.provider,
+        cache_saved_at=dataset.cache_saved_at,
     )
 
 
@@ -233,11 +241,13 @@ def calculate_breadth(
         sp500_unchanged=sp500.unchanged if sp500 else None,
         sp500_source=sp500.source_state if sp500 else "unavailable",
         sp500_message=sp500.message if sp500 else "暂无可用数据",
+        sp500_cache_saved_at=sp500.cache_saved_at if sp500 else None,
         nasdaq100_advances=nasdaq100.advances if nasdaq100 else None,
         nasdaq100_declines=nasdaq100.declines if nasdaq100 else None,
         nasdaq100_unchanged=nasdaq100.unchanged if nasdaq100 else None,
         nasdaq100_source=nasdaq100.source_state if nasdaq100 else "unavailable",
         nasdaq100_message=nasdaq100.message if nasdaq100 else "暂无可用数据",
+        nasdaq100_cache_saved_at=nasdaq100.cache_saved_at if nasdaq100 else None,
     )
 
 
@@ -374,6 +384,9 @@ def _empty_metrics(dataset: IndexDataset) -> IndexMetrics:
         volatility_20d=None,
         avg_range_20d=None,
         latest_date=None,
+        data_state=dataset.source_state,
+        data_provider=dataset.provider,
+        cache_saved_at=dataset.cache_saved_at,
     )
 
 
