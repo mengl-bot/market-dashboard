@@ -172,6 +172,94 @@ def apply_dark_theme() -> None:
             font-weight: 760;
             background: #0b111a;
         }
+        .morning-panel {
+            border: 1px solid #243244;
+            background: #070b11;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .morning-title {
+            color: #fbbf24;
+            font-size: 12px;
+            font-weight: 820;
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+        .morning-conclusion {
+            border: 1px solid #334155;
+            background: #0b111a;
+            border-radius: 6px;
+            padding: 9px 11px;
+            margin-top: 8px;
+        }
+        .morning-conclusion span {
+            display: block;
+            color: #94a3b8;
+            font-size: 11px;
+            font-weight: 760;
+            margin-bottom: 4px;
+        }
+        .morning-conclusion strong {
+            color: #f8fafc;
+            font-size: 14px;
+            line-height: 1.35;
+        }
+        .stats-summary {
+            border: 1px solid #243244;
+            background: #070b11;
+            border-radius: 6px;
+            padding: 9px 11px;
+            margin-bottom: 8px;
+            color: #e5edf7;
+            font-size: 13px;
+            font-weight: 720;
+        }
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #243244;
+            background: #080d14;
+            border-radius: 6px;
+            overflow: hidden;
+            font-size: 12px;
+        }
+        .stats-table th {
+            color: #94a3b8;
+            background: #0b111a;
+            border-bottom: 1px solid #243244;
+            padding: 8px 7px;
+            text-align: left;
+            font-weight: 780;
+            vertical-align: bottom;
+        }
+        .stats-table td {
+            color: #d8e1ec;
+            border-bottom: 1px solid #182233;
+            padding: 8px 7px;
+            white-space: nowrap;
+        }
+        .stats-table tr:last-child td { border-bottom: 0; }
+        .th-sub {
+            display: block;
+            color: #64748b;
+            font-size: 10px;
+            font-weight: 620;
+            margin-top: 2px;
+            line-height: 1.25;
+        }
+        .ratio-badge {
+            display: inline-block;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 11px;
+            font-weight: 800;
+            border: 1px solid #334155;
+            background: #070b11;
+        }
+        .ratio-high { color: #32d583; border-color: #166534; }
+        .ratio-normal { color: #cbd5e1; border-color: #334155; }
+        .ratio-low { color: #fbbf24; border-color: #854d0e; }
         .section-kpi {
             position: relative;
             display: flex;

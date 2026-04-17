@@ -133,15 +133,15 @@ def render_price_chart(
                 y=frame["y"],
                 mode="lines",
                 name=name,
-                customdata=frame[["close", "pct", "volume", "range", "spread"]],
+                customdata=frame[["close_text", "pct_text", "volume_text", "range_text", "spread_text"]],
                 hovertemplate=(
                     "%{x|%Y-%m-%d}<br>"
                     f"{name}<br>"
-                    "收盘: %{customdata[0]:,.2f}<br>"
-                    "区间涨跌: %{customdata[1]:+.2f}%<br>"
-                    "双指数差: %{customdata[4]:+.2f}pct<br>"
-                    "成交量: %{customdata[2]:,.0f}<br>"
-                    "日内振幅: %{customdata[3]:.2f}%<extra></extra>"
+                    "收盘: %{customdata[0]}<br>"
+                    "区间涨跌: %{customdata[1]}<br>"
+                    "双指数差: %{customdata[4]}<br>"
+                    "成交量: %{customdata[2]}<br>"
+                    "日内振幅: %{customdata[3]}<extra></extra>"
                 ),
                 line={"width": 2.2},
                 fill=fill,
@@ -237,7 +237,7 @@ def render_breadth_section(analytics: MarketAnalytics) -> None:
 
     breadth = analytics.breadth
     leadership_items = [
-        ("M7 A/D", f"{breadth.advances} / {breadth.declines}", "Leadership Breadth", "衡量七巨头内部上涨与下跌家数。"),
+        ("M7 A/D", f"{breadth.advances} / {breadth.declines}", "龙头宽度", "衡量七巨头内部上涨与下跌家数。"),
         ("M7 NH/NL", f"{breadth.new_highs} / {breadth.new_lows}", "52W extremes", "观察龙头股是否接近一年高低位。"),
         ("Equal Wgt", fmt_pct(breadth.equal_weight_return), "RSP", "等权指数更能反映普通成分股表现。"),
         ("Cap Wgt", fmt_pct(breadth.cap_weight_return), "SPY", "市值加权指数更受大型权重股影响。"),
@@ -245,7 +245,7 @@ def render_breadth_section(analytics: MarketAnalytics) -> None:
     ]
 
     st.markdown(
-        '<div class="breadth-caption">龙头宽度 · M7 A/D reflects breadth within mega-cap leaders, not the whole market.</div>',
+        '<div class="breadth-caption">龙头宽度：M7 A/D 反映七巨头（Mega Cap Leaders）内部上涨/下跌家数的广度情况，不代表整个市场宽度。</div>',
         unsafe_allow_html=True,
     )
     cols = st.columns(5)
@@ -284,7 +284,7 @@ def render_breadth_section(analytics: MarketAnalytics) -> None:
     ]
 
     st.markdown(
-        '<div class="breadth-caption">龙头宽度：M7 A/D reflects breadth within mega-cap leaders, not the whole market.</div>',
+        '<div class="breadth-caption">龙头宽度：M7 A/D 反映七巨头（Mega Cap Leaders）内部上涨/下跌家数的广度情况，不代表整个市场宽度。</div>',
         unsafe_allow_html=True,
     )
     cols = st.columns(5)
@@ -528,6 +528,10 @@ def _prepare_index_chart_data(datasets: dict[str, IndexDataset], period: str, no
                 "y": values / values.iloc[0] * 100 if normalized else values,
             }
         )
+        frame["close_text"] = frame["close"].map(_fmt_hover_price)
+        frame["pct_text"] = frame["pct"].map(lambda value: _fmt_hover_signed(value, "%"))
+        frame["volume_text"] = frame["volume"].map(_fmt_hover_volume)
+        frame["range_text"] = frame["range"].map(lambda value: _fmt_hover_signed(value, "%", signed=False))
         frames[dataset.config.name] = frame
         pct_frames.append(frame[["date", "pct"]].rename(columns={"pct": dataset.config.key}))
 
@@ -538,12 +542,40 @@ def _prepare_index_chart_data(datasets: dict[str, IndexDataset], period: str, no
         keys = [col for col in merged.columns if col != "date"]
         merged["spread"] = merged[keys[0]] - merged[keys[1]]
         for name, frame in frames.items():
-            frames[name] = frame.merge(merged[["date", "spread"]], on="date", how="left")
+            frame = frame.merge(merged[["date", "spread"]], on="date", how="left")
+            frame["spread_text"] = frame["spread"].map(lambda value: _fmt_hover_signed(value, " pct"))
+            frames[name] = frame
     else:
         for name, frame in frames.items():
             frame["spread"] = 0.0
+            frame["spread_text"] = "0.00 pct"
             frames[name] = frame
     return frames
+
+
+def _fmt_hover_price(value: object) -> str:
+    if pd.isna(value):
+        return "--"
+    return f"{float(value):,.2f}"
+
+
+def _fmt_hover_signed(value: object, suffix: str, signed: bool = True) -> str:
+    if pd.isna(value):
+        return "--"
+    number = float(value)
+    sign = "+" if signed and number > 0 else ""
+    return f"{sign}{number:.2f}{suffix}"
+
+
+def _fmt_hover_volume(value: object) -> str:
+    if pd.isna(value):
+        return "--"
+    number = float(value)
+    if abs(number) >= 1_000_000_000:
+        return f"{number / 1_000_000_000:.2f}B"
+    if abs(number) >= 1_000_000:
+        return f"{number / 1_000_000:.2f}M"
+    return f"{number:,.0f}"
 
 
 def _add_recent_high_low_markers(fig: go.Figure, name: str, frame: pd.DataFrame) -> None:
@@ -598,7 +630,7 @@ def render_breadth_section(analytics: MarketAnalytics) -> None:
     ]
 
     st.markdown(
-        '<div class="breadth-caption">龙头宽度 · 七巨头涨跌比仅反映超大市值龙头内部结构，并不代表全市场宽度。（M7 A/D reflects breadth within mega-cap leaders, not the whole market.）</div>',
+        '<div class="breadth-caption">龙头宽度：M7 A/D 反映七巨头（Mega Cap Leaders）内部上涨/下跌家数的广度情况，不代表整个市场宽度。</div>',
         unsafe_allow_html=True,
     )
     cols = st.columns(5)
@@ -682,6 +714,98 @@ def render_stats(metrics: dict[str, IndexMetrics]) -> None:
             }
         )
     st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+
+
+def render_stats(metrics: dict[str, IndexMetrics]) -> None:
+    """Render volume and statistics as data plus interpretation."""
+
+    rows = list(metrics.values())
+    st.markdown(f'<div class="stats-summary">{_stats_summary(rows)}</div>', unsafe_allow_html=True)
+
+    headers = [
+        ("指数", ""),
+        ("当日成交量", "今日成交规模"),
+        ("3个月均量", "近期平均成交规模"),
+        ("量比", "今日成交量 / 3个月均量"),
+        ("日内区间", "今日最高-最低范围"),
+        ("52周位置", "当前价格在一年区间中的位置"),
+        ("20日年化波动", "近期风险波动水平"),
+        ("20日平均振幅", "日均波动幅度"),
+    ]
+    header_html = "".join(f"<th>{title}<span class=\"th-sub\">{subtitle}</span></th>" for title, subtitle in headers)
+    body_html = []
+    for metric in rows:
+        body_html.append(
+            "<tr>"
+            f"<td>{html.escape(metric.name)}</td>"
+            f"<td>{fmt_volume(metric.volume)}</td>"
+            f"<td>{fmt_volume(metric.avg_volume_3m)}</td>"
+            f"<td>{_volume_ratio_badge(metric.volume_ratio)}</td>"
+            f"<td>{fmt_number(metric.day_low)} - {fmt_number(metric.day_high)}</td>"
+            f"<td>{fmt_plain_pct(metric.position_52w * 100 if metric.position_52w is not None else None)}</td>"
+            f"<td>{fmt_plain_pct(metric.volatility_20d)}</td>"
+            f"<td>{fmt_plain_pct(metric.avg_range_20d)}</td>"
+            "</tr>"
+        )
+
+    st.markdown(
+        f"""
+        <table class="stats-table">
+            <thead><tr>{header_html}</tr></thead>
+            <tbody>{''.join(body_html)}</tbody>
+        </table>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def _stats_summary(metrics: list[IndexMetrics]) -> str:
+    nasdaq = next((metric for metric in metrics if metric.key == "nasdaq"), None)
+    sp500 = next((metric for metric in metrics if metric.key == "sp500"), None)
+    parts = []
+    for label, metric in [("纳指", nasdaq), ("标普", sp500)]:
+        if not metric:
+            continue
+        volume_state = _volume_state(metric.volume_ratio)
+        direction = "上行" if (metric.day_change_pct or 0) > 0 else "下行" if (metric.day_change_pct or 0) < 0 else "持平"
+        parts.append(f"{label}{volume_state}{direction}")
+
+    position_values = [metric.position_52w for metric in [nasdaq, sp500] if metric and metric.position_52w is not None]
+    if position_values:
+        avg_position = sum(position_values) / len(position_values)
+        if avg_position >= 0.8:
+            position_text = "指数接近年内高位"
+        elif avg_position <= 0.25:
+            position_text = "指数仍处一年区间低位"
+        else:
+            position_text = "指数处于一年区间中部"
+    else:
+        position_text = "52周位置数据待确认"
+
+    activity = "，".join(parts) if parts else "成交活跃度数据待确认"
+    return f"市场活跃度：{activity}，{position_text}。"
+
+
+def _volume_state(volume_ratio: float | None) -> str:
+    if volume_ratio is None:
+        return "量能待确认"
+    if volume_ratio > 1.2:
+        return "放量"
+    if volume_ratio < 0.8:
+        return "缩量"
+    return "量能正常"
+
+
+def _volume_ratio_badge(volume_ratio: float | None) -> str:
+    if volume_ratio is None:
+        return '<span class="ratio-badge ratio-normal">--</span>'
+    if volume_ratio > 1.2:
+        cls, label = "ratio-high", "放量"
+    elif volume_ratio < 0.8:
+        cls, label = "ratio-low", "缩量"
+    else:
+        cls, label = "ratio-normal", "正常"
+    return f'<span class="ratio-badge {cls}">{volume_ratio:.2f} {label}</span>'
 
 
 def render_terminal_status_bar(analytics: MarketAnalytics, source_name: str, is_mock: bool) -> None:
@@ -826,7 +950,7 @@ def render_breadth_section(analytics: MarketAnalytics) -> None:
     ]
 
     st.markdown(
-        '<div class="breadth-caption">龙头宽度：M7 A/D reflects breadth within mega-cap leaders, not the whole market.</div>',
+        '<div class="breadth-caption">龙头宽度：M7 A/D 反映七巨头（Mega Cap Leaders）内部上涨/下跌家数的广度情况，不代表整个市场宽度。</div>',
         unsafe_allow_html=True,
     )
     cols = st.columns(5)
@@ -1120,7 +1244,7 @@ def render_breadth_section(analytics: MarketAnalytics) -> None:
     ]
 
     st.markdown(
-        '<div class="breadth-caption">龙头宽度：M7 A/D reflects breadth within mega-cap leaders, not the whole market.</div>',
+        '<div class="breadth-caption">龙头宽度：M7 A/D 反映七巨头（Mega Cap Leaders）内部上涨/下跌家数的广度情况，不代表整个市场宽度。</div>',
         unsafe_allow_html=True,
     )
     cols = st.columns(5)

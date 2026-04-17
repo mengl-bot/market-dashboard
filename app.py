@@ -46,9 +46,11 @@ def _render_dashboard() -> None:
         render_stats,
     )
     from ui.status_components import (
+        is_morning_review_mode,
         render_breadth_section,
         render_decision_matrix,
         render_macro_strip,
+        render_morning_recap,
         render_mega_cap_section,
         render_overview,
         render_summary,
@@ -67,8 +69,11 @@ def _render_dashboard() -> None:
 
     analytics = calculate_market_analytics(provider_result.datasets, provider_result.market_breadth)
     summary_sections = generate_chinese_summary(analytics)
+    morning_mode = is_morning_review_mode()
 
-    render_terminal_status_bar(analytics, provider_result.source_name, provider_result.is_mock)
+    render_terminal_status_bar(analytics, provider_result.source_name, provider_result.is_mock, morning_mode=morning_mode)
+    if morning_mode:
+        render_morning_recap(analytics)
 
     if debug_enabled:
         with st.expander("Data repository debug", expanded=True):

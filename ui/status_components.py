@@ -1,4 +1,4 @@
-"""Status-aware Streamlit components for data-source transparency."""
+"""Status-aware Streamlit components and morning review mode."""
 
 from __future__ import annotations
 
@@ -10,6 +10,17 @@ import streamlit as st
 
 from services.analytics import IndexMetrics, MarketAnalytics
 from ui.formatters import delta_class, fmt_number, fmt_pct, fmt_plain_pct
+
+
+BEIJING_TZ = ZoneInfo("Asia/Shanghai")
+ET_TZ = ZoneInfo("America/New_York")
+
+
+def is_morning_review_mode(now: datetime | None = None) -> bool:
+    """Return True when Beijing time is in the morning review window."""
+
+    current = now.astimezone(BEIJING_TZ) if now else datetime.now(BEIJING_TZ)
+    return 6 <= current.hour < 12
 
 
 def normalized_status(source_state: str | None) -> str:
@@ -107,7 +118,12 @@ def health_counts(analytics: MarketAnalytics) -> dict[str, int]:
     return counts
 
 
-def render_terminal_status_bar(analytics: MarketAnalytics, source_name: str, is_mock: bool) -> None:
+def render_terminal_status_bar(
+    analytics: MarketAnalytics,
+    source_name: str,
+    is_mock: bool,
+    morning_mode: bool = False,
+) -> None:
     """Render top status bar with data health overview."""
 
     counts = health_counts(analytics)
@@ -124,9 +140,10 @@ def render_terminal_status_bar(analytics: MarketAnalytics, source_name: str, is_
         unsafe_allow_html=True,
     )
 
-    now_et = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d %H:%M:%S ET")
-    live_text = "模拟数据（MOCK）" if is_mock else "实时链路（LIVE）"
-    live_class = "terminal-chip warn" if is_mock else "terminal-chip live"
+    now_et = datetime.now(ET_TZ).strftime("%Y-%m-%d %H:%M:%S ET")
+    title = "昨夜美股收盘总结" if morning_mode else "美股指数专业看板 V3"
+    live_text = "晨间复盘模式" if morning_mode else ("模拟数据（MOCK）" if is_mock else "实时链路（LIVE）")
+    live_class = "terminal-chip" if morning_mode else ("terminal-chip warn" if is_mock else "terminal-chip live")
     vix = analytics.macro_metrics.get("vix")
     us10y = analytics.macro_metrics.get("us10y")
     breadth_text = f"龙头宽度 M7 A/D {analytics.breadth.advances}/{analytics.breadth.declines}"
@@ -136,7 +153,7 @@ def render_terminal_status_bar(analytics: MarketAnalytics, source_name: str, is_
         f"""
         <div class="terminal-topbar">
             <div class="terminal-brand">
-                <span class="terminal-title">美股指数专业看板 V3</span>
+                <span class="terminal-title">{title}</span>
                 <span class="terminal-subtitle">数据源：{html.escape(source_name)}</span>
             </div>
             <div class="terminal-strip">
@@ -151,6 +168,90 @@ def render_terminal_status_bar(analytics: MarketAnalytics, source_name: str, is_
         """,
         unsafe_allow_html=True,
     )
+
+
+def render_morning_recap(analytics: MarketAnalytics) -> None:
+    """Render a compact Beijing-morning close review block."""
+
+    nasdaq = analytics.index_metrics.get("nasdaq")
+    sp500 = analytics.index_metrics.get("sp500")
+    vix = analytics.macro_metrics.get("vix")
+    us10y = analytics.macro_metrics.get("us10y")
+    breadth = analytics.breadth
+    risk_text = analytics.decision.risk
+    conclusion = morning_conclusion(analytics)
+
+    cards = [
+        (
+            "纳指 / 标普收盘",
+            f"{fmt_pct(nasdaq.day_change_pct if nasdaq else None)} / {fmt_pct(sp500.day_change_pct if sp500 else None)}",
+            "昨夜主线强弱",
+            aggregate_status([nasdaq.data_state if nasdaq else None, sp500.data_state if sp500 else None]),
+            max_cache_time([nasdaq, sp500]),
+        ),
+        (
+            "七巨头表现",
+            fmt_pct(analytics.mega_cap_average),
+            "龙头股平均涨跌",
+            aggregate_status([metric.data_state for metric in analytics.mega_cap_metrics.values()]),
+            max_cache_time(list(analytics.mega_cap_metrics.values())),
+        ),
+        (
+            "市场宽度",
+            format_ad(breadth.sp500_advances, breadth.sp500_declines, breadth.sp500_unchanged),
+            "S&P 500 A/D",
+            breadth.sp500_source,
+            breadth.sp500_cache_saved_at,
+        ),
+        (
+            "风险指标",
+            f"VIX {fmt_number(vix.current if vix else None, 2)} / 10Y {fmt_number(us10y.current if us10y else None, 2)}%",
+            risk_text,
+            aggregate_status([vix.data_state if vix else None, us10y.data_state if us10y else None]),
+            max_cache_time([vix, us10y]),
+        ),
+    ]
+
+    st.markdown('<div class="morning-panel"><div class="morning-title">晨间复盘重点</div>', unsafe_allow_html=True)
+    cols = st.columns(4)
+    for col, (title, value, note, state, cache_saved_at) in zip(cols, cards):
+        with col:
+            st.markdown(
+                f"""
+                <div class="card compact-card">
+                    {status_badge(state, cache_saved_at, cache_label="缓存")}
+                    <div class="card-title">{title}</div>
+                    <div class="breadth-value">{value}</div>
+                    <div class="card-note">{note}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+    st.markdown(
+        f"""
+        <div class="morning-conclusion">
+            <span>今日一句话结论</span>
+            <strong>{html.escape(conclusion)}</strong>
+        </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def morning_conclusion(analytics: MarketAnalytics) -> str:
+    """Create one concise morning conclusion from existing decisions."""
+
+    nasdaq = analytics.index_metrics.get("nasdaq")
+    sp500 = analytics.index_metrics.get("sp500")
+    avg_index = average([nasdaq.day_change_pct if nasdaq else None, sp500.day_change_pct if sp500 else None])
+    if "Risk OFF" in analytics.decision.risk_mode:
+        return "风险偏防守，先看波动和美债方向，再判断成长股能否修复。"
+    if avg_index is not None and avg_index > 0.35 and analytics.mega_cap_average is not None and analytics.mega_cap_average > 0:
+        return "昨夜由指数和龙头共同支撑，今日重点看上涨能否扩散到更宽板块。"
+    if avg_index is not None and avg_index < -0.35:
+        return "昨夜指数承压，今日优先观察开盘风险偏好和VIX是否继续抬升。"
+    return "市场处在观察区，今日重点看成交量、宽度和龙头延续性。"
 
 
 def render_overview(metrics: dict[str, IndexMetrics]) -> None:
@@ -193,16 +294,12 @@ def render_macro_strip(metrics: dict[str, IndexMetrics]) -> None:
     cols = st.columns(4)
     for col, (title, metric, value, delta, unit) in zip(cols, items):
         value_text = f"{fmt_number(value, 2)}%" if unit == "%" else f"{fmt_number(value * 100, 0)} bp" if value is not None and unit == "bp" else fmt_number(value, 2)
-        delta_text = fmt_pct(delta) if title == "VIX" else fmt_number(delta, 2)
+        delta_text = fmt_pct(delta) if title == "VIX" else fmt_bp(delta)
         with col:
             st.markdown(
                 f"""
                 <div class="card compact-card">
-                    {status_badge(
-                        metric.data_state if metric else None,
-                        metric.cache_saved_at if metric else None,
-                        metric.data_provider if metric else None,
-                    )}
+                    {status_badge(metric.data_state if metric else None, metric.cache_saved_at if metric else None, metric.data_provider if metric else None)}
                     <div class="card-title">{title}</div>
                     <div class="macro-value">{value_text}</div>
                     <div class="{delta_class(delta)}">{delta_text}</div>
@@ -212,7 +309,7 @@ def render_macro_strip(metrics: dict[str, IndexMetrics]) -> None:
             )
 
 
-def render_mega_cap_section(metrics: dict[str, IndexMetrics], average: float | None) -> None:
+def render_mega_cap_section(metrics: dict[str, IndexMetrics], average_value: float | None) -> None:
     """Render M7 heatmap cards with status badges."""
 
     section_status = aggregate_status([metric.data_state for metric in metrics.values()])
@@ -220,7 +317,7 @@ def render_mega_cap_section(metrics: dict[str, IndexMetrics], average: float | N
         f"""
         <div class="section-kpi">
             <span>七巨头平均表现（M7 Avg）</span>
-            <strong class="{delta_class(average)}">{fmt_pct(average)}</strong>
+            <strong class="{delta_class(average_value)}">{fmt_pct(average_value)}</strong>
             {status_badge(section_status)}
         </div>
         """,
@@ -265,7 +362,10 @@ def render_breadth_section(analytics: MarketAnalytics) -> None:
         ("等权-市值差（EW-CW）", fmt_pct(breadth.equal_vs_cap_spread), "扩散/集中", "差值为正说明上涨扩散更好，差值为负说明权重股主导更强。", equal_state),
     ]
 
-    st.markdown('<div class="breadth-caption">龙头宽度：M7 A/D reflects breadth within mega-cap leaders, not the whole market.</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="breadth-caption">龙头宽度：M7 A/D 反映七巨头（Mega Cap Leaders）内部上涨/下跌家数的广度情况，不代表整个市场宽度。</div>',
+        unsafe_allow_html=True,
+    )
     cols = st.columns(5)
     for col, (title, value, note, explanation, state) in zip(cols, leadership_items):
         with col:
@@ -360,6 +460,14 @@ def format_ad(advances: int | None, declines: int | None, unchanged: int | None)
     return f"上涨{advances}家 / 下跌{declines}家 / 持平{unchanged or 0}家"
 
 
+def fmt_bp(value: float | None) -> str:
+    """Format yield changes in basis points."""
+
+    if value is None:
+        return "--"
+    return f"{value * 100:+.0f}bp"
+
+
 def heat_class(value: float | None) -> str:
     """Return heatmap class from percentage change."""
 
@@ -374,3 +482,13 @@ def heat_class(value: float | None) -> str:
     if value < 0:
         return "heat-down"
     return "heat-flat"
+
+
+def average(values: list[float | None]) -> float | None:
+    clean = [value for value in values if value is not None]
+    return sum(clean) / len(clean) if clean else None
+
+
+def max_cache_time(metrics: list[IndexMetrics | None]) -> float | None:
+    values = [metric.cache_saved_at for metric in metrics if metric and metric.cache_saved_at is not None]
+    return max(values) if values else None
