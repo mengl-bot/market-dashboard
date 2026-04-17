@@ -63,7 +63,7 @@ def _render_dashboard() -> None:
     with st.spinner("正在加载市场数据..."):
         provider_result = DataRepository(config).load_market_data()
 
-    analytics = calculate_market_analytics(provider_result.datasets)
+    analytics = calculate_market_analytics(provider_result.datasets, provider_result.market_breadth)
     summary_sections = generate_chinese_summary(analytics)
 
     render_terminal_status_bar(analytics, provider_result.source_name, provider_result.is_mock)

@@ -692,3 +692,108 @@ def render_decision_matrix(analytics: MarketAnalytics) -> None:
                 """,
                 unsafe_allow_html=True,
             )
+
+
+def _fmt_full_ad(advances: int | None, declines: int | None, unchanged: int | None) -> str:
+    if advances is None or declines is None:
+        return "暂无数据"
+    unchanged_value = 0 if unchanged is None else unchanged
+    return f"上涨{advances}家 / 下跌{declines}家 / 持平{unchanged_value}家"
+
+
+def _breadth_source_label(source_state: str) -> str:
+    if source_state == "live":
+        return "实时数据"
+    if source_state in {"cache", "stale_cache"}:
+        return "使用缓存数据"
+    return "暂无实时数据"
+
+
+def render_breadth_section(analytics: MarketAnalytics) -> None:
+    """Render leadership breadth and real broad-market A/D cards."""
+
+    breadth = analytics.breadth
+    leadership_items = [
+        (
+            "龙头宽度（M7 A/D）",
+            f"上涨{breadth.advances} / 下跌{breadth.declines} / 持平{breadth.unchanged}",
+            "七巨头内部结构",
+            "仅衡量七巨头内部涨跌分布，不代表全市场宽度。",
+        ),
+        (
+            "龙头新高/新低（M7 NH/NL）",
+            f"{breadth.new_highs} / {breadth.new_lows}",
+            "52周位置",
+            "观察龙头股是否接近52周高位或低位，用于判断领导力质量。",
+        ),
+        (
+            "等权表现（Equal Weight）",
+            fmt_pct(breadth.equal_weight_return),
+            "RSP",
+            "等权指数更能反映普通成分股表现，弱于市值加权时说明上涨较集中。",
+        ),
+        (
+            "市值加权表现（Cap Weight）",
+            fmt_pct(breadth.cap_weight_return),
+            "SPY",
+            "市值加权指数受大型权重股影响更大，用于观察龙头拉动强度。",
+        ),
+        (
+            "等权-市值差（EW-CW）",
+            fmt_pct(breadth.equal_vs_cap_spread),
+            "扩散/集中",
+            "差值为正说明上涨扩散更好，差值为负说明权重股主导更强。",
+        ),
+    ]
+
+    st.markdown(
+        '<div class="breadth-caption">龙头宽度：M7 A/D reflects breadth within mega-cap leaders, not the whole market.</div>',
+        unsafe_allow_html=True,
+    )
+    cols = st.columns(5)
+    for col, (title, value, note, explanation) in zip(cols, leadership_items):
+        with col:
+            st.markdown(
+                f"""
+                <div class="card compact-card">
+                    <div class="card-title">{title}</div>
+                    <div class="breadth-value">{value}</div>
+                    <div class="card-note">{note}</div>
+                    <div class="card-explain">{explanation}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+    market_items = [
+        (
+            "标普500涨跌比",
+            _fmt_full_ad(breadth.sp500_advances, breadth.sp500_declines, breadth.sp500_unchanged),
+            _breadth_source_label(breadth.sp500_source),
+            breadth.sp500_message,
+            "覆盖S&P 500成分股，用最近两个交易日收盘价计算上涨、下跌和持平家数。",
+        ),
+        (
+            "纳指100涨跌比",
+            _fmt_full_ad(breadth.nasdaq100_advances, breadth.nasdaq100_declines, breadth.nasdaq100_unchanged),
+            _breadth_source_label(breadth.nasdaq100_source),
+            breadth.nasdaq100_message,
+            "覆盖Nasdaq-100成分股，用最近两个交易日收盘价衡量科技权重内部扩散情况。",
+        ),
+    ]
+
+    st.markdown('<div class="breadth-caption market">全市场宽度：成分股级别 A/D，失败时优先使用最近缓存。</div>', unsafe_allow_html=True)
+    cols = st.columns(2)
+    for col, (title, value, note, message, explanation) in zip(cols, market_items):
+        with col:
+            st.markdown(
+                f"""
+                <div class="card compact-card">
+                    <div class="card-title">{title}</div>
+                    <div class="breadth-value">{value}</div>
+                    <div class="card-note">{note} · {message}</div>
+                    <div class="card-explain">{explanation}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )

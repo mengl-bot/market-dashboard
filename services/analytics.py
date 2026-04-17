@@ -9,6 +9,7 @@ from typing import Dict
 import numpy as np
 import pandas as pd
 
+from data_repository.market_breadth import MarketBreadthSnapshot
 from providers.base import IndexDataset
 
 
@@ -69,8 +70,14 @@ class BreadthMetrics:
     equal_vs_cap_spread: float | None
     sp500_advances: int | None = None
     sp500_declines: int | None = None
+    sp500_unchanged: int | None = None
+    sp500_source: str = "unavailable"
+    sp500_message: str = "暂无可用数据"
     nasdaq100_advances: int | None = None
     nasdaq100_declines: int | None = None
+    nasdaq100_unchanged: int | None = None
+    nasdaq100_source: str = "unavailable"
+    nasdaq100_message: str = "暂无可用数据"
 
 
 @dataclass
@@ -103,7 +110,10 @@ class MarketAnalytics:
 PERIOD_DAYS = {"5D": 5, "1M": 21, "6M": 126, "1Y": 252}
 
 
-def calculate_market_analytics(datasets: Dict[str, IndexDataset]) -> MarketAnalytics:
+def calculate_market_analytics(
+    datasets: Dict[str, IndexDataset],
+    market_breadth: dict[str, MarketBreadthSnapshot] | None = None,
+) -> MarketAnalytics:
     """Compute metrics and rule-based market labels."""
 
     metrics = {key: calculate_index_metrics(dataset) for key, dataset in datasets.items()}
@@ -111,7 +121,7 @@ def calculate_market_analytics(datasets: Dict[str, IndexDataset]) -> MarketAnaly
     macro_metrics = _by_category(metrics, "macro")
     mega_cap_metrics = _rank_mega_caps(_by_category(metrics, "mega_cap"))
     metrics.update(mega_cap_metrics)
-    breadth = calculate_breadth(metrics)
+    breadth = calculate_breadth(metrics, market_breadth)
     mega_cap_average = _average([metric.day_change_pct for metric in mega_cap_metrics.values()])
     labels, leader_key = generate_market_labels(index_metrics, macro_metrics, mega_cap_average, breadth)
     decision = generate_decision_view(index_metrics, macro_metrics, mega_cap_metrics, breadth, mega_cap_average, leader_key)
@@ -187,7 +197,10 @@ def calculate_index_metrics(dataset: IndexDataset) -> IndexMetrics:
     )
 
 
-def calculate_breadth(metrics: Dict[str, IndexMetrics]) -> BreadthMetrics:
+def calculate_breadth(
+    metrics: Dict[str, IndexMetrics],
+    market_breadth: dict[str, MarketBreadthSnapshot] | None = None,
+) -> BreadthMetrics:
     """Build M7 leadership breadth and reserve full-market breadth fields."""
 
     basket = [metric for metric in metrics.values() if metric.category == "mega_cap" and metric.day_change_pct is not None]
@@ -203,6 +216,9 @@ def calculate_breadth(metrics: Dict[str, IndexMetrics]) -> BreadthMetrics:
     cap_weight_return = cap_weight.day_change_pct if cap_weight else None
     equal_vs_cap_spread = _safe_sub(equal_weight_return, cap_weight_return)
 
+    sp500 = (market_breadth or {}).get("sp500")
+    nasdaq100 = (market_breadth or {}).get("nasdaq100")
+
     return BreadthMetrics(
         advances=advances,
         declines=declines,
@@ -212,6 +228,16 @@ def calculate_breadth(metrics: Dict[str, IndexMetrics]) -> BreadthMetrics:
         equal_weight_return=equal_weight_return,
         cap_weight_return=cap_weight_return,
         equal_vs_cap_spread=equal_vs_cap_spread,
+        sp500_advances=sp500.advances if sp500 else None,
+        sp500_declines=sp500.declines if sp500 else None,
+        sp500_unchanged=sp500.unchanged if sp500 else None,
+        sp500_source=sp500.source_state if sp500 else "unavailable",
+        sp500_message=sp500.message if sp500 else "暂无可用数据",
+        nasdaq100_advances=nasdaq100.advances if nasdaq100 else None,
+        nasdaq100_declines=nasdaq100.declines if nasdaq100 else None,
+        nasdaq100_unchanged=nasdaq100.unchanged if nasdaq100 else None,
+        nasdaq100_source=nasdaq100.source_state if nasdaq100 else "unavailable",
+        nasdaq100_message=nasdaq100.message if nasdaq100 else "暂无可用数据",
     )
 
 

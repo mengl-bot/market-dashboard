@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from io import StringIO
 from typing import Iterable
+from urllib.request import Request, urlopen
 
 import pandas as pd
 
@@ -111,7 +113,19 @@ class MarketBreadthRepository:
 
     def _fetch_constituents(self, key: str) -> list[str]:
         source = WIKIPEDIA_SOURCES[key]
-        tables = pd.read_html(source["url"])
+        request = Request(
+            source["url"],
+            headers={
+                "User-Agent": (
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/124.0 Safari/537.36"
+                )
+            },
+        )
+        with urlopen(request, timeout=20) as response:
+            html = response.read().decode("utf-8", errors="ignore")
+        tables = pd.read_html(StringIO(html))
         candidates: list[str] = []
         for table in tables:
             columns = {str(column).strip(): column for column in table.columns}
@@ -168,15 +182,19 @@ class MarketBreadthRepository:
 
         frames: list[pd.Series] = []
         for chunk in self._chunks(tickers, 90):
-            raw = yf.download(
-                tickers=chunk,
-                period="5d",
-                interval="1d",
-                auto_adjust=False,
-                group_by="ticker",
-                threads=True,
-                progress=False,
-            )
+            try:
+                raw = yf.download(
+                    tickers=chunk,
+                    period="5d",
+                    interval="1d",
+                    auto_adjust=False,
+                    group_by="ticker",
+                    threads=True,
+                    progress=False,
+                )
+            except Exception as exc:
+                self.logger.warning("market breadth quote chunk failed size=%s error=%s", len(chunk), exc)
+                continue
             if raw is None or raw.empty:
                 continue
             frames.extend(self._close_series_from_raw(raw, chunk))

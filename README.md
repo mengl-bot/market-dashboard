@@ -1,5 +1,22 @@
 # 美股指数专业看板 V3
 
+## 全市场宽度
+
+宽度模块已从占位卡片升级为成分股级别 A/D：
+
+- 标普500涨跌比：从 Wikipedia 获取 S&P 500 成分股，使用 yfinance 批量下载最近 2 个交易日收盘价，计算上涨/下跌/持平家数。
+- 纳指100涨跌比：从 Wikipedia 获取 Nasdaq-100 成分股，使用同一套接口计算 A/D；若来源短期不可用，会降级到最近缓存。
+- 成分股列表缓存 86400 秒。
+- 宽度行情结果使用 `CACHE_TTL_QUOTE`，并限制在 300 到 900 秒之间。
+- 实时获取失败时，页面显示“使用缓存数据”；没有缓存时仅该卡片显示暂无数据，不影响其他模块。
+
+本地快速验证：
+
+```powershell
+python -m compileall app.py data_repository providers services ui utils
+streamlit run app.py
+```
+
 本项目是一个本地可运行的 Python Streamlit 专业看板，用于跟踪 NASDAQ Composite、S&P 500、宏观风险指标、七巨头表现、市场宽度和盘后决策信号。
 
 ## V3 重点

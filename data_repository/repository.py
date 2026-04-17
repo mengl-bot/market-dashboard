@@ -13,6 +13,7 @@ from utils.config import AppConfig, load_config
 from utils.logging_config import setup_logging
 
 from data_repository.cache import MarketDataCache
+from data_repository.market_breadth import MarketBreadthRepository, MarketBreadthSnapshot
 
 
 @dataclass
@@ -37,6 +38,7 @@ class RepositoryResult:
     source_name: str
     is_mock: bool
     warning: str | None
+    market_breadth: dict[str, MarketBreadthSnapshot] = field(default_factory=dict)
     debug_rows: list[DebugRow] = field(default_factory=list)
     status_messages: list[str] = field(default_factory=list)
 
@@ -51,6 +53,7 @@ class DataRepository:
         self.yahoo = YFinanceProvider()
         self.alpha = AlphaVantageProvider(self.config.alpha_vantage_api_key or self.config.market_api_key)
         self.mock = MockMarketDataProvider()
+        self.market_breadth = MarketBreadthRepository(self.cache, self.logger, self.config)
 
     def load_market_data(self, series: list[IndexConfig] | None = None) -> RepositoryResult:
         """Load all dashboard data with cache and per-symbol fallback."""
@@ -113,7 +116,11 @@ class DataRepository:
                 debug_rows.append(self._debug_row(dataset, "none", "provider fallback"))
                 self.logger.info("mock fallback key=%s ticker=%s", key, dataset.config.ticker)
 
+        market_breadth = self.market_breadth.load_all()
+        self._append_market_breadth_debug(market_breadth, debug_rows)
+
         status_messages = self._status_messages(configs, datasets)
+        status_messages.extend(self._market_breadth_status(market_breadth))
         warning = "；".join(status_messages) if status_messages else None
         source_name = self._source_name(datasets)
         is_mock = all(dataset.source_state == "mock" for dataset in datasets.values()) if datasets else True
@@ -122,6 +129,7 @@ class DataRepository:
             source_name=source_name,
             is_mock=is_mock,
             warning=warning,
+            market_breadth=market_breadth,
             debug_rows=debug_rows,
             status_messages=status_messages,
         )
@@ -218,6 +226,35 @@ class DataRepository:
         if missing:
             messages.append(f"部分模块暂无数据：{', '.join(missing)}")
 
+        return messages
+
+    def _append_market_breadth_debug(
+        self,
+        snapshots: dict[str, MarketBreadthSnapshot],
+        debug_rows: list[DebugRow],
+    ) -> None:
+        for key, snapshot in snapshots.items():
+            debug_rows.append(
+                DebugRow(
+                    key=f"breadth_{key}",
+                    ticker=snapshot.label,
+                    category="market_breadth",
+                    provider=snapshot.provider,
+                    state=snapshot.source_state,
+                    cache_layer="cache" if snapshot.cache_hit else "none",
+                    rows=snapshot.sampled_count or 0,
+                    message=snapshot.message,
+                )
+            )
+
+    def _market_breadth_status(self, snapshots: dict[str, MarketBreadthSnapshot]) -> list[str]:
+        messages: list[str] = []
+        cached = [snapshot.label for snapshot in snapshots.values() if snapshot.source_state in {"cache", "stale_cache"}]
+        unavailable = [snapshot.label for snapshot in snapshots.values() if snapshot.source_state == "unavailable"]
+        if cached:
+            messages.append(f"全市场宽度使用缓存数据：{', '.join(cached)}")
+        if unavailable:
+            messages.append(f"全市场宽度暂不可用：{', '.join(unavailable)}")
         return messages
 
     def _source_name(self, datasets: dict[str, IndexDataset]) -> str:
