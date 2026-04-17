@@ -2,30 +2,14 @@
 
 from __future__ import annotations
 
-import streamlit as st
+import os
+import traceback
 
-from data_repository import DataRepository
-from services.analytics import calculate_market_analytics
-from services.summary import generate_chinese_summary
-from ui.components import (
-    render_badges,
-    render_breadth_section,
-    render_data_debug,
-    render_decision_matrix,
-    render_macro_strip,
-    render_mega_cap_section,
-    render_overview,
-    render_price_chart,
-    render_stats,
-    render_summary,
-    render_terminal_status_bar,
-)
-from ui.styles import apply_dark_theme
-from utils.config import load_config
+import streamlit as st
 
 
 def main() -> None:
-    """Build the dashboard page."""
+    """Build the dashboard page or a minimal deployment test page."""
 
     st.set_page_config(
         page_title="美股指数专业看板 V3",
@@ -33,6 +17,44 @@ def main() -> None:
         layout="wide",
         initial_sidebar_state="collapsed",
     )
+
+    if os.getenv("DEPLOY_TEST_MODE", "0").lower() in {"1", "true", "yes", "on"}:
+        st.title("Deploy Test Success")
+        st.caption("Streamlit app booted without loading data providers, charts, or custom dashboard modules.")
+        return
+
+    try:
+        _render_dashboard()
+    except Exception as exc:
+        st.error("应用启动失败。请查看 Render 日志或下方错误摘要。")
+        st.exception(exc)
+        with st.expander("Traceback", expanded=False):
+            st.code(traceback.format_exc())
+        raise
+
+
+def _render_dashboard() -> None:
+    """Render the full dashboard with lazy imports for deploy diagnostics."""
+
+    from data_repository import DataRepository
+    from services.analytics import calculate_market_analytics
+    from services.summary import generate_chinese_summary
+    from ui.components import (
+        render_badges,
+        render_breadth_section,
+        render_data_debug,
+        render_decision_matrix,
+        render_macro_strip,
+        render_mega_cap_section,
+        render_overview,
+        render_price_chart,
+        render_stats,
+        render_summary,
+        render_terminal_status_bar,
+    )
+    from ui.styles import apply_dark_theme
+    from utils.config import load_config
+
     apply_dark_theme()
 
     config = load_config()
