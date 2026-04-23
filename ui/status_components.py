@@ -48,10 +48,10 @@ def status_badge(
 
     status = normalized_status(source_state)
     labels = {
-        "realtime": "🟢 实时",
-        "cached": "🟡 缓存",
-        "mock": "🔵 Mock",
-        "error": "🔴 错误",
+        "realtime": "实时",
+        "cached": "缓存",
+        "mock": "模拟",
+        "error": "异常",
     }
     return f'<span class="status-badge status-{status}">{labels[status]}</span>{status_meta(status, cache_saved_at, provider, cache_label)}'
 
@@ -61,23 +61,23 @@ def status_meta(status: str, cache_saved_at: float | None, provider: str | None,
 
     provider_text = provider_label(provider)
     if status == "realtime":
-        return f'<div class="status-meta">{provider_text} 实时成功</div>' if provider_text else ""
+        return f'<div class="status-meta">{provider_text} 当前接口成功获取</div>' if provider_text else ""
     if status == "mock":
-        return f'<div class="status-meta">{provider_text or "mock_data.py"}</div>'
+        return '<div class="status-meta">占位数据，等待真实接口接入</div>'
     if status == "error":
-        return '<div class="status-meta">当前不可用</div>'
+        return '<div class="status-meta">当前获取失败</div>'
     if cache_saved_at is None:
-        return f'<div class="status-meta">{provider_text or "缓存数据"}</div>'
+        return '<div class="status-meta">最近一次有效数据</div>'
 
     saved_at = datetime.fromtimestamp(cache_saved_at)
     minutes = max(0, int((datetime.now() - saved_at).total_seconds() // 60))
     if minutes < 1:
-        age = f"{cache_label}刚刚"
+        age = "最近一次有效数据：刚刚"
     elif minutes < 60:
-        age = f"{cache_label} {minutes}分钟前"
+        age = f"最近一次有效数据：{minutes}分钟前"
     else:
-        age = f"{cache_label} {minutes // 60}小时{minutes % 60}分钟前"
-    return f'<div class="status-meta">{age}<br>{cache_label}于 {saved_at:%H:%M}</div>'
+        age = f"最近一次有效数据：{minutes // 60}小时{minutes % 60}分钟前"
+    return f'<div class="status-meta">{age}<br>更新时间 {saved_at:%H:%M}</div>'
 
 
 def provider_label(provider: str | None) -> str:
@@ -91,7 +91,7 @@ def provider_label(provider: str | None) -> str:
     if "alpha" in lower:
         return "Alpha Vantage"
     if "mock" in lower:
-        return "mock_data.py"
+        return "模拟数据"
     if "wikipedia" in lower:
         return "Wikipedia"
     return provider
@@ -131,19 +131,20 @@ def render_terminal_status_bar(
     st.markdown(
         f"""
         <div class="health-strip">
-            <span class="health-title">数据健康度</span>
-            <span class="health-chip status-realtime">🟢 {counts["realtime"]}实时</span>
-            <span class="health-chip status-cached">🟡 {counts["cached"]}缓存</span>
-            <span class="health-chip status-mock">🔵 {counts["mock"]}模拟</span>
-            <span class="health-chip status-error">🔴 {counts["error"]}错误</span>
+            <span class="health-title">数据状态总览</span>
+            <span class="health-chip status-realtime" title="实时数据：当前接口成功获取">实时数据：{counts["realtime"]}项</span>
+            <span class="health-chip status-cached" title="缓存数据：最近一次有效数据">缓存数据：{counts["cached"]}项</span>
+            <span class="health-chip status-mock" title="模拟数据：占位数据，等待真实接口接入">模拟数据：{counts["mock"]}项</span>
+            <span class="health-chip status-error" title="异常数据：当前获取失败">异常数据：{counts["error"]}项</span>
+            <span class="health-help">实时数据：当前接口成功获取；缓存数据：最近一次有效数据；模拟数据：占位数据，等待真实接口接入；异常数据：当前获取失败。</span>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
     now_et = datetime.now(ET_TZ).strftime("%Y-%m-%d %H:%M:%S ET")
-    title = "昨夜美股收盘总结" if morning_mode else "美股指数专业看板 V3"
-    live_text = "晨间复盘模式" if morning_mode else ("模拟数据（MOCK）" if is_mock else "实时链路（LIVE）")
+    title = "昨夜美股收盘总结" if morning_mode else "美股投资决策终端 V4"
+    live_text = "晨间复盘模式" if morning_mode else ("模拟数据" if is_mock else "实时数据")
     live_class = "terminal-chip" if morning_mode else ("terminal-chip warn" if is_mock else "terminal-chip live")
     vix = analytics.macro_metrics.get("vix")
     us10y = analytics.macro_metrics.get("us10y")
@@ -154,8 +155,11 @@ def render_terminal_status_bar(
         f"""
         <div class="terminal-topbar">
             <div class="terminal-brand">
-                <span class="terminal-title">{title}</span>
-                <span class="terminal-subtitle">数据源：{html.escape(source_name)}</span>
+                <div>
+                    <span class="terminal-title">{title}</span>
+                    <span class="terminal-subtitle">Market Intelligence Dashboard</span>
+                </div>
+                <span class="terminal-subtitle">数据链路：{html.escape(_display_source_name(source_name))}</span>
             </div>
             <div class="terminal-strip">
                 <span class="terminal-chip">{now_et}</span>
@@ -333,13 +337,13 @@ def render_valuation_health(valuation) -> None:
 
     st.markdown('<div class="layer-title">第二层 · Valuation / 估值层</div>', unsafe_allow_html=True)
     metrics = [
-        ("Forward PE", fmt_number(valuation.forward_pe, 1)),
-        ("Trailing PE", fmt_number(valuation.trailing_pe, 1)),
-        ("Earnings Yield", fmt_plain_pct(valuation.earnings_yield)),
-        ("10Y Yield", fmt_plain_pct(valuation.ten_year_yield)),
-        ("ERP", fmt_plain_pct(valuation.erp)),
-        ("CAPE", fmt_number(valuation.cape, 1)),
-        ("历史分位", fmt_plain_pct(valuation.historical_percentile)),
+        ("预期市盈率（Forward PE）", fmt_number(valuation.forward_pe, 1)),
+        ("市盈率TTM（Trailing PE）", fmt_number(valuation.trailing_pe, 1)),
+        ("盈利收益率（Earnings Yield）", fmt_plain_pct(valuation.earnings_yield)),
+        ("10年美债收益率（10Y Yield）", fmt_plain_pct(valuation.ten_year_yield)),
+        ("股权风险溢价（ERP）", fmt_plain_pct(valuation.erp)),
+        ("周期调整市盈率（CAPE）", fmt_number(valuation.cape, 1)),
+        ("历史估值分位", fmt_plain_pct(valuation.historical_percentile)),
     ]
     st.markdown(
         f"""
@@ -348,12 +352,14 @@ def render_valuation_health(valuation) -> None:
                 <span>估值评分</span>
                 <strong>{valuation.valuation_score}</strong>
                 <em>{valuation.valuation_label}</em>
+                <div class="valuation-score-note">估值评分：{valuation.valuation_score} / 100</div>
+                <div class="valuation-score-note">{_valuation_score_explanation(valuation.valuation_label)}</div>
             </div>
             <div class="valuation-grid">
                 {"".join(f'<div class="valuation-item"><span>{label}</span><strong>{value}</strong></div>' for label, value in metrics)}
             </div>
             <div class="valuation-summary">{html.escape(valuation.valuation_summary)}</div>
-            <div class="card-note">估值数据源：{html.escape(valuation.source)}；评分规则来自 config/valuation.py</div>
+            <div class="card-note">估值模型已启用（基于当前数据框架）</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -839,6 +845,24 @@ def _spread_status_text(spread: float | None) -> str:
     if spread < 0.5:
         return "修复中"
     return "正常化"
+
+
+def _valuation_score_explanation(label: str) -> str:
+    if label == "低估":
+        return "当前处于低估区间，长期赔率相对更具吸引力。"
+    if label == "合理":
+        return "当前处于合理区间，更适合长期定投而非激进追高。"
+    if label == "偏贵":
+        return "当前处于偏贵区间，未来长期回报预期可能低于历史平均。"
+    if label == "高估":
+        return "当前处于高估区间，应降低追高冲动并等待更好赔率。"
+    return "估值区间待确认。"
+
+
+def _display_source_name(source_name: str) -> str:
+    if "mock" in source_name.lower():
+        return "模拟数据链路"
+    return source_name
 
 
 def _pct_width(value: float | None) -> int:

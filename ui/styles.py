@@ -40,13 +40,14 @@ def apply_dark_theme() -> None:
             margin-bottom: 8px;
         }
         .terminal-title {
+            display: block;
             color: #f8fafc;
             font-size: 25px;
             font-weight: 780;
             line-height: 1.25;
             letter-spacing: 0;
         }
-        .terminal-subtitle { color: #94a3b8; font-size: 12px; }
+        .terminal-subtitle { display: block; color: #94a3b8; font-size: 12px; line-height: 1.35; }
         .terminal-strip { display: flex; flex-wrap: wrap; gap: 6px; }
         .terminal-chip {
             border: 1px solid #334155;
@@ -74,11 +75,11 @@ def apply_dark_theme() -> None:
         .compact-card { min-height: 78px; }
         .card-title {
             color: #94a3b8;
-            font-size: 11px;
+            font-size: 12px;
             padding-right: 82px;
             margin-bottom: 5px;
             letter-spacing: 0.03em;
-            text-transform: uppercase;
+            line-height: 1.35;
         }
         .card-note { color: #64748b; font-size: 11px; margin-top: 4px; }
         .layer-title {
@@ -158,6 +159,12 @@ def apply_dark_theme() -> None:
             font-weight: 800;
             margin-top: 6px;
         }
+        .valuation-score-note {
+            color: #cbd5e1;
+            font-size: 12px;
+            line-height: 1.45;
+            margin-top: 8px;
+        }
         .valuation-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(110px, 1fr));
@@ -173,9 +180,10 @@ def apply_dark_theme() -> None:
         .driver-grid span {
             display: block;
             color: #64748b;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 760;
             margin-bottom: 4px;
+            line-height: 1.35;
         }
         .valuation-item strong,
         .driver-grid strong {
@@ -455,6 +463,13 @@ def apply_dark_theme() -> None:
             font-size: 11px;
             font-weight: 760;
             background: #0b111a;
+        }
+        .health-help {
+            flex-basis: 100%;
+            color: #64748b;
+            font-size: 11px;
+            line-height: 1.35;
+            margin-top: 2px;
         }
         .morning-panel {
             border: 1px solid #243244;
