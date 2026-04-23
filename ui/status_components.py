@@ -279,34 +279,165 @@ def render_overview(metrics: dict[str, IndexMetrics]) -> None:
 
 
 def render_macro_strip(metrics: dict[str, IndexMetrics]) -> None:
-    """Render macro cards with status badges."""
+    """Render macro cards with status badges and Treasury insights."""
 
     us10y = metrics.get("us10y")
     us2y = metrics.get("us2y")
+    vix = metrics.get("vix")
     spread = us2y.current - us10y.current if us2y and us10y and us2y.current is not None and us10y.current is not None else None
-    items = [
-        ("VIX", metrics.get("vix"), metrics.get("vix").current if metrics.get("vix") else None, metrics.get("vix").day_change_pct if metrics.get("vix") else None, ""),
-        ("10年美债收益率", us10y, us10y.current if us10y else None, us10y.day_change if us10y else None, "%"),
-        ("2年美债收益率", us2y, us2y.current if us2y else None, us2y.day_change if us2y else None, "%"),
-        ("2Y-10Y 利差", us10y or us2y, spread, None, "bp"),
-    ]
 
     cols = st.columns(4)
-    for col, (title, metric, value, delta, unit) in zip(cols, items):
+
+    with cols[0]:
+        st.markdown(
+            f"""
+            <div class="card compact-card">
+                {status_badge(vix.data_state if vix else None, vix.cache_saved_at if vix else None, vix.data_provider if vix else None)}
+                <div class="card-title">VIX</div>
+                <div class="macro-value">{fmt_number(vix.current if vix else None, 2)}</div>
+                <div class="{delta_class(vix.day_change_pct if vix else None)}">{fmt_pct(vix.day_change_pct if vix else None)}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    treasury_items = [
+        (
+            "US 10Y",
+            us10y,
+            us10y.current if us10y else None,
+            us10y.day_change if us10y else None,
+            "%",
+            _treasury_10y_explanation(us10y),
+            _yield_direction_badge(us10y.day_change if us10y else None, "10Y"),
+        ),
+        (
+            "US 2Y",
+            us2y,
+            us2y.current if us2y else None,
+            us2y.day_change if us2y else None,
+            "%",
+            _treasury_2y_explanation(us2y),
+            _yield_direction_badge(us2y.day_change if us2y else None, "2Y"),
+        ),
+        (
+            "2Y-10Y Spread",
+            us10y or us2y,
+            spread,
+            None,
+            "bp",
+            _spread_explanation(spread),
+            _spread_status_badge(spread),
+        ),
+    ]
+
+    for col, (title, metric, value, delta, unit, explanation, insight_badge) in zip(cols[1:], treasury_items):
         value_text = f"{fmt_number(value, 2)}%" if unit == "%" else f"{fmt_number(value * 100, 0)} bp" if value is not None and unit == "bp" else fmt_number(value, 2)
-        delta_text = fmt_pct(delta) if title == "VIX" else fmt_bp(delta)
         with col:
             st.markdown(
                 f"""
                 <div class="card compact-card">
                     {status_badge(metric.data_state if metric else None, metric.cache_saved_at if metric else None, metric.data_provider if metric else None)}
                     <div class="card-title">{title}</div>
+                    {insight_badge}
                     <div class="macro-value">{value_text}</div>
-                    <div class="{delta_class(delta)}">{delta_text}</div>
+                    <div class="{delta_class(delta)}">{fmt_bp(delta)}</div>
+                    <div class="card-explain treasury-explain">{explanation}</div>
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
+
+    st.markdown(
+        f"""
+        <div class="macro-summary-line">
+            <span class="macro-summary-label">Treasury Insight</span>
+            <strong>{html.escape(_treasury_macro_summary(us10y, us2y, spread))}</strong>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def _treasury_10y_explanation(metric: IndexMetrics | None) -> str:
+    if metric is None or metric.current is None:
+        return "长端利率缺失，暂无法判断估值压力。"
+    if metric.day_change is None or abs(metric.day_change) < 0.005:
+        return "10Y代表长期贴现率，当前变动有限，股市估值影响中性。"
+    if metric.day_change > 0:
+        return "10Y上行代表贴现率抬升，成长股估值更容易承压。"
+    return "10Y回落代表长期利率缓和，有利于成长股估值修复。"
+
+
+def _treasury_2y_explanation(metric: IndexMetrics | None) -> str:
+    if metric is None or metric.current is None:
+        return "短端利率缺失，暂无法判断政策预期。"
+    if metric.day_change is None or abs(metric.day_change) < 0.005:
+        return "2Y反映联储政策预期，当前波动有限，市场在等待新指引。"
+    if metric.day_change > 0:
+        return "2Y上行显示紧缩预期抬头，权益风险偏好通常受压。"
+    return "2Y回落显示降息预期升温，权益风险偏好通常改善。"
+
+
+def _spread_explanation(spread: float | None) -> str:
+    if spread is None:
+        return "期限利差缺失，暂无法判断曲线形态。"
+    if spread < 0:
+        return "利差倒挂，市场仍在定价增长放缓或衰退风险。"
+    if spread < 0.5:
+        return "利差已转正但仍偏窄，曲线处于初步正常化阶段。"
+    return "利差明显转正，曲线趋于正常，衰退担忧通常回落。"
+
+
+def _yield_direction_badge(day_change: float | None, label: str) -> str:
+    if day_change is None or abs(day_change) < 0.005:
+        return '<span class="macro-insight-badge macro-insight-neutral">持平</span>'
+    if day_change > 0:
+        text = "估值承压" if label == "10Y" else "偏紧"
+        return f'<span class="macro-insight-badge macro-insight-warn">{text}</span>'
+    text = "估值缓和" if label == "10Y" else "偏松"
+    return f'<span class="macro-insight-badge macro-insight-good">{text}</span>'
+
+
+def _spread_status_badge(spread: float | None) -> str:
+    if spread is None:
+        return '<span class="macro-insight-badge macro-insight-neutral">待确认</span>'
+    if spread < 0:
+        return '<span class="macro-insight-badge macro-insight-risk">倒挂</span>'
+    if spread < 0.5:
+        return '<span class="macro-insight-badge macro-insight-warn">修复中</span>'
+    return '<span class="macro-insight-badge macro-insight-good">正常化</span>'
+
+
+def _treasury_macro_summary(us10y: IndexMetrics | None, us2y: IndexMetrics | None, spread: float | None) -> str:
+    ten_year_text = "10Y持平，估值影响有限"
+    if us10y and us10y.day_change is not None:
+        if us10y.day_change > 0.005:
+            ten_year_text = "10Y上行，成长股估值承压"
+        elif us10y.day_change < -0.005:
+            ten_year_text = "10Y回落，成长股估值缓和"
+
+    two_year_text = ""
+    if us2y and us2y.day_change is not None:
+        if us2y.day_change > 0.005:
+            two_year_text = "2Y上行，紧缩预期抬头"
+        elif us2y.day_change < -0.005:
+            two_year_text = "2Y回落，降息预期升温"
+
+    spread_text = "利差状态待确认"
+    if spread is not None:
+        if spread < 0:
+            spread_text = "利差倒挂，衰退担忧仍存"
+        elif spread < 0.5:
+            spread_text = "利差修复，衰退担忧下降"
+        else:
+            spread_text = "利差正常化，增长预期改善"
+
+    parts = [ten_year_text]
+    if two_year_text:
+        parts.append(two_year_text)
+    parts.append(spread_text)
+    return "；".join(parts)
 
 
 def render_mega_cap_section(metrics: dict[str, IndexMetrics], average_value: float | None) -> None:
@@ -337,6 +468,89 @@ def render_mega_cap_section(metrics: dict[str, IndexMetrics], average_value: flo
                         <div class="heat-ticker">{html.escape(metric.name)}</div>
                         <div class="heat-change">{fmt_pct(metric.day_change_pct)}</div>
                         <div class="heat-meta">权重 {fmt_plain_pct(metric.weight)} · 贡献 {fmt_pct(metric.contribution)}</div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+
+
+def render_sector_contribution_map(analytics: MarketAnalytics) -> None:
+    """Render sector proxy return and estimated S&P 500 contribution map."""
+
+    sectors = analytics.sector_contributions
+    if not sectors:
+        st.markdown(
+            """
+            <div class="card compact-card">
+                <div class="card-title">板块贡献图</div>
+                <div class="card-explain">暂无 sector ETF 数据，无法估算标普板块贡献。</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
+
+    top_positive = next((sector for sector in sectors if (sector.est_contribution_pct or 0) > 0), None)
+    total_positive = sum(max(sector.est_contribution_pct or 0, 0) for sector in sectors)
+    total_negative = sum(min(sector.est_contribution_pct or 0, 0) for sector in sectors)
+    status = aggregate_status([sector.data_state for sector in sectors])
+
+    lead_text = "暂无明显正向主驱动"
+    if top_positive and top_positive.est_contribution_pct is not None:
+        lead_text = f"{top_positive.label}领涨，估算贡献 {top_positive.est_contribution_pct:+.2f} pct"
+
+    st.markdown(
+        f"""
+        <div class="section-kpi">
+            <span>板块贡献图 / Sector Contribution Map</span>
+            <strong>{lead_text}</strong>
+            {status_badge(status)}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        f"""
+        <div class="sector-summary-line">
+            <span class="sector-summary-chip sector-summary-up">正向贡献 {total_positive:+.2f} pct</span>
+            <span class="sector-summary-chip sector-summary-down">负向贡献 {total_negative:+.2f} pct</span>
+            <span class="sector-summary-chip sector-summary-neutral">标签：主驱动 / 支撑 / 防御 / 拖累</span>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    for start in range(0, len(sectors), 3):
+        cols = st.columns(min(3, len(sectors) - start))
+        for col, sector in zip(cols, sectors[start : start + 3]):
+            metric_class = delta_class(sector.day_change_pct)
+            contribution_class = delta_class(sector.est_contribution_pct)
+            badge_class = _sector_role_class(sector.role)
+            contribution_text = fmt_pct(sector.est_contribution_pct)
+            if sector.est_contribution_pct is None:
+                contribution_text = "--"
+            with col:
+                st.markdown(
+                    f"""
+                    <div class="card sector-card">
+                        {status_badge(sector.data_state, sector.cache_saved_at, sector.data_provider)}
+                        <div class="sector-card-top">
+                            <div class="card-title">#{sector.rank or '--'} · {html.escape(sector.label)}</div>
+                            <span class="sector-role-badge {badge_class}">{sector.role}</span>
+                        </div>
+                        <div class="{metric_class} sector-return">{fmt_pct(sector.day_change_pct)}</div>
+                        <div class="sector-meta-row">
+                            <span class="sector-meta-label">估算贡献</span>
+                            <span class="{contribution_class}">{contribution_text}</span>
+                        </div>
+                        <div class="sector-meta-row">
+                            <span class="sector-meta-label">代理ETF</span>
+                            <span class="sector-meta-value">{sector.key.upper()}</span>
+                        </div>
+                        <div class="sector-meta-row">
+                            <span class="sector-meta-label">估算权重</span>
+                            <span class="sector-meta-value">{fmt_plain_pct(sector.weight)}</span>
+                        </div>
                     </div>
                     """,
                     unsafe_allow_html=True,
@@ -450,6 +664,18 @@ def render_summary(sections: dict[str, list[str]], analytics: MarketAnalytics | 
                 """,
                 unsafe_allow_html=True,
             )
+
+
+def _sector_role_class(role: str) -> str:
+    if role == "主驱动":
+        return "sector-role-driver"
+    if role == "支撑":
+        return "sector-role-support"
+    if role == "防御":
+        return "sector-role-defensive"
+    if role == "拖累":
+        return "sector-role-drag"
+    return "sector-role-neutral"
 
 
 def format_ad(advances: int | None, declines: int | None, unchanged: int | None) -> str:

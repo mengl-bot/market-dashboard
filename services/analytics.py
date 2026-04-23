@@ -23,6 +23,32 @@ MEGA_CAP_WEIGHTS = {
     "tsla": 1.4,
 }
 
+SECTOR_WEIGHTS = {
+    "xlk": 31.5,
+    "xlf": 13.4,
+    "xle": 3.7,
+    "xlv": 12.6,
+    "xli": 8.7,
+    "xly": 10.2,
+    "xlp": 6.1,
+    "xlu": 2.5,
+    "xlre": 2.3,
+}
+
+SECTOR_LABELS_ZH = {
+    "xlk": "科技",
+    "xlf": "金融",
+    "xle": "能源",
+    "xlv": "医疗保健",
+    "xli": "工业",
+    "xly": "可选消费",
+    "xlp": "必选消费",
+    "xlu": "公用事业",
+    "xlre": "房地产",
+}
+
+DEFENSIVE_SECTORS = {"xlv", "xlp", "xlu", "xlre"}
+
 
 @dataclass
 class IndexMetrics:
@@ -98,6 +124,22 @@ class DecisionView:
 
 
 @dataclass
+class SectorContribution:
+    """Estimated S&P 500 daily sector contribution from ETF proxies."""
+
+    key: str
+    label: str
+    day_change_pct: float | None
+    est_contribution_pct: float | None
+    weight: float | None
+    rank: int | None
+    role: str
+    data_state: str = "error"
+    data_provider: str = "unknown"
+    cache_saved_at: float | None = None
+
+
+@dataclass
 class MarketAnalytics:
     """Aggregated analytics needed by all UI sections."""
 
@@ -105,6 +147,8 @@ class MarketAnalytics:
     index_metrics: Dict[str, IndexMetrics]
     macro_metrics: Dict[str, IndexMetrics]
     mega_cap_metrics: Dict[str, IndexMetrics]
+    sector_metrics: Dict[str, IndexMetrics]
+    sector_contributions: list[SectorContribution]
     breadth: BreadthMetrics
     decision: DecisionView
     mega_cap_average: float | None
@@ -125,8 +169,11 @@ def calculate_market_analytics(
     index_metrics = _by_category(metrics, "index")
     macro_metrics = _by_category(metrics, "macro")
     mega_cap_metrics = _rank_mega_caps(_by_category(metrics, "mega_cap"))
+    sector_metrics = _rank_sectors(_by_category(metrics, "sector"))
     metrics.update(mega_cap_metrics)
+    metrics.update(sector_metrics)
     breadth = calculate_breadth(metrics, market_breadth)
+    sector_contributions = calculate_sector_contributions(sector_metrics)
     mega_cap_average = _average([metric.day_change_pct for metric in mega_cap_metrics.values()])
     labels, leader_key = generate_market_labels(index_metrics, macro_metrics, mega_cap_average, breadth)
     decision = generate_decision_view(index_metrics, macro_metrics, mega_cap_metrics, breadth, mega_cap_average, leader_key)
@@ -136,6 +183,8 @@ def calculate_market_analytics(
         index_metrics=index_metrics,
         macro_metrics=macro_metrics,
         mega_cap_metrics=mega_cap_metrics,
+        sector_metrics=sector_metrics,
+        sector_contributions=sector_contributions,
         breadth=breadth,
         decision=decision,
         mega_cap_average=mega_cap_average,
@@ -264,6 +313,35 @@ def filter_history(history: pd.DataFrame, period: str) -> pd.DataFrame:
 
     days = {"1D": 2, "5D": 5, "1M": 21, "6M": 126, "1Y": 252}.get(period, 252)
     return frame.tail(days)
+
+
+def calculate_sector_contributions(sector_metrics: Dict[str, IndexMetrics]) -> list[SectorContribution]:
+    """Estimate sector contribution and role labels from ETF proxy returns."""
+
+    ranked = sorted(
+        sector_metrics.values(),
+        key=lambda metric: metric.contribution if metric.contribution is not None else float("-inf"),
+        reverse=True,
+    )
+
+    strongest_positive = next((metric.key for metric in ranked if (metric.contribution or 0) > 0), None)
+    results: list[SectorContribution] = []
+    for rank, metric in enumerate(ranked, start=1):
+        results.append(
+            SectorContribution(
+                key=metric.key,
+                label=SECTOR_LABELS_ZH.get(metric.key, metric.name),
+                day_change_pct=metric.day_change_pct,
+                est_contribution_pct=metric.contribution,
+                weight=metric.weight,
+                rank=rank if metric.contribution is not None else None,
+                role=_sector_role(metric, strongest_positive),
+                data_state=metric.data_state,
+                data_provider=metric.data_provider,
+                cache_saved_at=metric.cache_saved_at,
+            )
+        )
+    return results
 
 
 def generate_market_labels(
@@ -405,6 +483,35 @@ def _rank_mega_caps(metrics: Dict[str, IndexMetrics]) -> Dict[str, IndexMetrics]
         if weight is not None and metric.day_change_pct is not None and total_weight:
             metric.contribution = metric.day_change_pct * weight / total_weight
     return metrics
+
+
+def _rank_sectors(metrics: Dict[str, IndexMetrics]) -> Dict[str, IndexMetrics]:
+    ranked = sorted(
+        [metric for metric in metrics.values() if metric.day_change_pct is not None],
+        key=lambda metric: metric.day_change_pct or 0,
+        reverse=True,
+    )
+    for rank, metric in enumerate(ranked, start=1):
+        metric.strength_rank = rank
+    for metric in metrics.values():
+        weight = SECTOR_WEIGHTS.get(metric.key)
+        metric.weight = weight
+        if weight is not None and metric.day_change_pct is not None:
+            metric.contribution = metric.day_change_pct * weight / 100
+    return metrics
+
+
+def _sector_role(metric: IndexMetrics, strongest_positive: str | None) -> str:
+    contribution = metric.contribution
+    if contribution is None or metric.day_change_pct is None:
+        return "待确认"
+    if contribution < 0:
+        return "拖累"
+    if metric.key == strongest_positive:
+        return "主驱动"
+    if metric.key in DEFENSIVE_SECTORS:
+        return "防御"
+    return "支撑"
 
 
 def _top_abs_metric(metrics) -> IndexMetrics | None:

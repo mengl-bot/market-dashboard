@@ -53,6 +53,7 @@ def _render_dashboard() -> None:
         render_morning_recap,
         render_mega_cap_section,
         render_overview,
+        render_sector_contribution_map,
         render_summary,
         render_terminal_status_bar,
     )
@@ -103,6 +104,10 @@ def _render_dashboard() -> None:
     st.divider()
     st.subheader("七巨头热力与贡献")
     render_mega_cap_section(analytics.mega_cap_metrics, analytics.mega_cap_average)
+
+    st.divider()
+    st.subheader("板块贡献图")
+    render_sector_contribution_map(analytics)
 
     st.divider()
     st.subheader("市场宽度")

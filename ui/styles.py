@@ -87,6 +87,109 @@ def apply_dark_theme() -> None:
             line-height: 1.35;
             margin-top: 7px;
         }
+        .treasury-explain {
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px dashed #223146;
+            min-height: 44px;
+        }
+        .macro-insight-badge {
+            display: inline-block;
+            border-radius: 999px;
+            padding: 2px 7px;
+            margin-bottom: 7px;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            border: 1px solid #334155;
+            background: #08111b;
+        }
+        .macro-insight-good { color: #32d583; border-color: #166534; background: #07140d; }
+        .macro-insight-warn { color: #fbbf24; border-color: #854d0e; background: #161005; }
+        .macro-insight-risk { color: #ff5f57; border-color: #7f1d1d; background: #160909; }
+        .macro-insight-neutral { color: #94a3b8; border-color: #334155; background: #08111b; }
+        .macro-summary-line {
+            border: 1px solid #243244;
+            background: linear-gradient(180deg, #0b111a 0%, #070b11 100%);
+            border-radius: 6px;
+            padding: 9px 11px;
+            margin-top: 8px;
+            margin-bottom: 2px;
+        }
+        .macro-summary-label {
+            display: block;
+            color: #fbbf24;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .macro-summary-line strong {
+            color: #f8fafc;
+            font-size: 13px;
+            line-height: 1.45;
+            font-weight: 760;
+        }
+        .sector-summary-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 0 0 8px 0;
+        }
+        .sector-summary-chip {
+            border: 1px solid #334155;
+            background: #0b111a;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: 760;
+        }
+        .sector-summary-up { color: #32d583; border-color: #166534; }
+        .sector-summary-down { color: #ff5f57; border-color: #7f1d1d; }
+        .sector-summary-neutral { color: #cbd5e1; }
+        .sector-card {
+            min-height: 156px;
+            background: linear-gradient(180deg, #0b111a 0%, #08111a 100%);
+        }
+        .sector-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 6px;
+            padding-right: 82px;
+        }
+        .sector-return {
+            font-size: 22px;
+            font-weight: 780;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+        .sector-role-badge {
+            display: inline-block;
+            border-radius: 999px;
+            padding: 2px 8px;
+            font-size: 10px;
+            font-weight: 800;
+            border: 1px solid #334155;
+            white-space: nowrap;
+        }
+        .sector-role-driver { color: #32d583; border-color: #166534; background: #07140d; }
+        .sector-role-support { color: #7dd3fc; border-color: #0369a1; background: #07141d; }
+        .sector-role-defensive { color: #fbbf24; border-color: #854d0e; background: #161005; }
+        .sector-role-drag { color: #ff5f57; border-color: #7f1d1d; background: #160909; }
+        .sector-role-neutral { color: #94a3b8; border-color: #334155; background: #08111b; }
+        .sector-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-top: 5px;
+            font-size: 11px;
+        }
+        .sector-meta-label { color: #64748b; }
+        .sector-meta-value { color: #cbd5e1; font-weight: 720; }
         .breadth-caption {
             color: #94a3b8;
             font-size: 12px;
