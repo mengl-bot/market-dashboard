@@ -7,6 +7,7 @@ from providers.base import IndexConfig
 
 DEFAULT_SERIES = [
     IndexConfig(key="nasdaq", name="NASDAQ Composite", ticker="^IXIC", category="index", alpha_ticker="QQQ"),
+    IndexConfig(key="nasdaq100", name="Nasdaq 100 Proxy", ticker="QQQ", category="index"),
     IndexConfig(key="sp500", name="S&P 500", ticker="^GSPC", category="index", alpha_ticker="SPY"),
     IndexConfig(key="vix", name="VIX", ticker="^VIX", category="macro", alpha_ticker="VIXY"),
     IndexConfig(key="us10y", name="US 10Y Yield", ticker="^TNX", category="macro"),
@@ -17,6 +18,7 @@ DEFAULT_SERIES = [
     IndexConfig(key="xlv", name="Health Care", ticker="XLV", category="sector"),
     IndexConfig(key="xli", name="Industrials", ticker="XLI", category="sector"),
     IndexConfig(key="xly", name="Consumer Discretionary", ticker="XLY", category="sector"),
+    IndexConfig(key="xlc", name="Communication Services", ticker="XLC", category="sector"),
     IndexConfig(key="xlp", name="Consumer Staples", ticker="XLP", category="sector"),
     IndexConfig(key="xlu", name="Utilities", ticker="XLU", category="sector"),
     IndexConfig(key="xlre", name="Real Estate", ticker="XLRE", category="sector"),

@@ -12,7 +12,7 @@ def main() -> None:
     """Build the dashboard page or a minimal deployment test page."""
 
     st.set_page_config(
-        page_title="美股指数专业看板 V3",
+        page_title="V4 美股投资决策终端",
         page_icon="📈",
         layout="wide",
         initial_sidebar_state="collapsed",
@@ -38,7 +38,11 @@ def _render_dashboard() -> None:
 
     from data_repository import DataRepository
     from services.analytics import calculate_market_analytics
+    from services.contributions import calculate_contribution_metrics
+    from services.dca_advice import generate_dca_suggestion
+    from services.market_regime import classify_market_regime
     from services.summary import generate_chinese_summary
+    from services.valuation import calculate_valuation
     from ui.components import (
         render_badges,
         render_data_debug,
@@ -47,15 +51,20 @@ def _render_dashboard() -> None:
     )
     from ui.status_components import (
         is_morning_review_mode,
+        render_actionable_insights,
         render_breadth_section,
         render_decision_matrix,
+        render_driver_breakdown,
+        render_market_snapshot,
         render_macro_strip,
         render_morning_recap,
         render_mega_cap_section,
         render_overview,
+        render_regime_panel,
         render_sector_contribution_map,
         render_summary,
         render_terminal_status_bar,
+        render_valuation_health,
     )
     from ui.styles import apply_dark_theme
     from utils.config import load_config
@@ -69,6 +78,10 @@ def _render_dashboard() -> None:
         provider_result = DataRepository(config).load_market_data()
 
     analytics = calculate_market_analytics(provider_result.datasets, provider_result.market_breadth)
+    valuation = calculate_valuation(analytics.macro_metrics.get("us10y"))
+    contribution = calculate_contribution_metrics(analytics)
+    regime = classify_market_regime(analytics, valuation, contribution)
+    dca = generate_dca_suggestion(valuation, regime, contribution)
     summary_sections = generate_chinese_summary(analytics)
     morning_mode = is_morning_review_mode()
 
@@ -85,8 +98,11 @@ def _render_dashboard() -> None:
             )
             render_data_debug(provider_result.debug_rows)
 
-    render_macro_strip(analytics.macro_metrics)
-    render_overview(analytics.index_metrics)
+    render_market_snapshot(analytics)
+    render_valuation_health(valuation)
+    render_driver_breakdown(analytics, contribution)
+    render_actionable_insights(dca, valuation, regime)
+    render_regime_panel(regime)
 
     st.divider()
     controls = st.columns([1, 1, 1, 1])
@@ -104,10 +120,6 @@ def _render_dashboard() -> None:
     st.divider()
     st.subheader("七巨头热力与贡献")
     render_mega_cap_section(analytics.mega_cap_metrics, analytics.mega_cap_average)
-
-    st.divider()
-    st.subheader("板块贡献图")
-    render_sector_contribution_map(analytics)
 
     st.divider()
     st.subheader("市场宽度")

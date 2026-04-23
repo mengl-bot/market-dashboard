@@ -81,11 +81,192 @@ def apply_dark_theme() -> None:
             text-transform: uppercase;
         }
         .card-note { color: #64748b; font-size: 11px; margin-top: 4px; }
+        .layer-title {
+            color: #f8fafc;
+            border-left: 3px solid #fbbf24;
+            padding-left: 9px;
+            margin: 14px 0 8px 0;
+            font-size: 14px;
+            font-weight: 840;
+            letter-spacing: 0.02em;
+        }
+        .snapshot-card { min-height: 126px; }
+        .snapshot-status {
+            display: inline-block;
+            border: 1px solid #334155;
+            background: #070b11;
+            color: #fbbf24;
+            border-radius: 999px;
+            padding: 2px 8px;
+            margin-bottom: 8px;
+            font-size: 10px;
+            font-weight: 820;
+        }
+        .spread-card {
+            margin-top: 8px;
+            min-height: 86px;
+        }
         .card-explain {
             color: #cbd5e1;
             font-size: 11px;
             line-height: 1.35;
             margin-top: 7px;
+        }
+        .valuation-panel,
+        .driver-panel,
+        .regime-panel,
+        .action-panel {
+            border: 1px solid #243244;
+            background: linear-gradient(180deg, #0b111a 0%, #070b11 100%);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        .valuation-panel {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            gap: 10px;
+        }
+        .valuation-score {
+            border: 1px solid #334155;
+            background: #05070b;
+            border-radius: 6px;
+            padding: 12px;
+        }
+        .valuation-score span,
+        .dca-box span {
+            display: block;
+            color: #94a3b8;
+            font-size: 11px;
+            font-weight: 760;
+            margin-bottom: 5px;
+        }
+        .valuation-score strong,
+        .dca-box strong {
+            display: block;
+            color: #f8fafc;
+            font-size: 36px;
+            line-height: 1;
+            font-weight: 860;
+        }
+        .valuation-score em,
+        .dca-box em {
+            display: block;
+            color: #fbbf24;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 800;
+            margin-top: 6px;
+        }
+        .valuation-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(110px, 1fr));
+            gap: 6px;
+        }
+        .valuation-item {
+            border: 1px solid #243244;
+            background: #08111a;
+            border-radius: 5px;
+            padding: 8px;
+        }
+        .valuation-item span,
+        .driver-grid span {
+            display: block;
+            color: #64748b;
+            font-size: 10px;
+            font-weight: 760;
+            margin-bottom: 4px;
+        }
+        .valuation-item strong,
+        .driver-grid strong {
+            color: #f8fafc;
+            font-size: 15px;
+            font-weight: 800;
+        }
+        .valuation-summary,
+        .action-summary,
+        .regime-description {
+            color: #d8e1ec;
+            font-size: 13px;
+            line-height: 1.45;
+            margin-top: 8px;
+        }
+        .driver-title {
+            color: #fbbf24;
+            font-size: 12px;
+            font-weight: 820;
+            margin-bottom: 8px;
+        }
+        .driver-bar {
+            display: flex;
+            overflow: hidden;
+            border: 1px solid #243244;
+            background: #05070b;
+            border-radius: 5px;
+            height: 30px;
+            margin-bottom: 8px;
+        }
+        .driver-bar span {
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            font-size: 11px;
+            font-weight: 820;
+            white-space: nowrap;
+        }
+        .driver-bar-mega { color: #06140d; background: #32d583; }
+        .driver-bar-other { color: #06111a; background: #7dd3fc; }
+        .driver-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(120px, 1fr));
+            gap: 6px;
+        }
+        .driver-grid div {
+            border: 1px solid #243244;
+            background: #08111a;
+            border-radius: 5px;
+            padding: 8px;
+        }
+        .regime-primary,
+        .action-title {
+            color: #f8fafc;
+            font-size: 22px;
+            font-weight: 860;
+            line-height: 1.1;
+        }
+        .regime-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .regime-chip {
+            border: 1px solid #334155;
+            color: #7dd3fc;
+            background: #07141d;
+            border-radius: 999px;
+            padding: 3px 8px;
+            font-size: 11px;
+            font-weight: 800;
+        }
+        .regime-panel ul,
+        .action-panel ul {
+            color: #cbd5e1;
+            margin: 8px 0 0 0;
+            padding-left: 17px;
+            font-size: 12px;
+            line-height: 1.45;
+        }
+        .action-panel {
+            display: grid;
+            grid-template-columns: 1fr 180px;
+            gap: 12px;
+        }
+        .dca-box {
+            border: 1px solid #334155;
+            background: #05070b;
+            border-radius: 6px;
+            padding: 12px;
         }
         .treasury-explain {
             margin-top: 6px;
@@ -453,6 +634,10 @@ def apply_dark_theme() -> None:
         @media (max-width: 900px) {
             .heatmap-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .decision-grid { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+            .valuation-panel,
+            .action-panel { grid-template-columns: 1fr; }
+            .valuation-grid,
+            .driver-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .terminal-brand { display: block; }
             .terminal-subtitle { display: block; margin-top: 3px; }
         }
@@ -464,6 +649,8 @@ def apply_dark_theme() -> None:
             .macro-value, .breadth-value { font-size: 18px; }
             .card { padding: 10px; min-height: auto; }
             .heatmap-grid { grid-template-columns: 1fr; }
+            .valuation-grid,
+            .driver-grid { grid-template-columns: 1fr; }
         }
         </style>
         """,

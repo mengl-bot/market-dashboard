@@ -9,6 +9,7 @@ from zoneinfo import ZoneInfo
 import streamlit as st
 
 from services.analytics import IndexMetrics, MarketAnalytics
+from services.interpretation import interpret_rates, snapshot_status
 from ui.formatters import delta_class, fmt_number, fmt_pct, fmt_plain_pct
 
 
@@ -276,6 +277,158 @@ def render_overview(metrics: dict[str, IndexMetrics]) -> None:
                 """,
                 unsafe_allow_html=True,
             )
+
+
+def render_market_snapshot(analytics: MarketAnalytics) -> None:
+    """Render V4 market snapshot cards with concise status labels."""
+
+    cards = [
+        ("S&P 500", analytics.index_metrics.get("sp500"), "equity"),
+        ("Nasdaq Composite", analytics.index_metrics.get("nasdaq"), "equity"),
+        ("Nasdaq 100", analytics.index_metrics.get("nasdaq100"), "equity"),
+        ("VIX", analytics.macro_metrics.get("vix"), "vol"),
+        ("2Y Treasury", analytics.macro_metrics.get("us2y"), "rate"),
+        ("10Y Treasury", analytics.macro_metrics.get("us10y"), "rate"),
+    ]
+    us2y = analytics.macro_metrics.get("us2y")
+    us10y = analytics.macro_metrics.get("us10y")
+    spread = us2y.current - us10y.current if us2y and us10y and us2y.current is not None and us10y.current is not None else None
+
+    st.markdown('<div class="layer-title">第一层 · Market Snapshot / 行情层</div>', unsafe_allow_html=True)
+    for start in range(0, len(cards), 3):
+        cols = st.columns(3)
+        for col, (title, metric, kind) in zip(cols, cards[start : start + 3]):
+            value_text = f"{fmt_number(metric.current if metric else None, 2)}%" if kind == "rate" else fmt_number(metric.current if metric else None, 2)
+            delta_text = fmt_pct(metric.day_change_pct if metric else None) if kind in {"equity", "vol"} else fmt_bp(metric.day_change if metric else None)
+            status = snapshot_status(metric, kind)
+            with col:
+                st.markdown(
+                    f"""
+                    <div class="card snapshot-card">
+                        {status_badge(metric.data_state if metric else None, metric.cache_saved_at if metric else None, metric.data_provider if metric else None)}
+                        <div class="card-title">{title}</div>
+                        <span class="snapshot-status">{status}</span>
+                        <div class="metric-value">{value_text}</div>
+                        <div class="{delta_class(metric.day_change_pct if kind in {'equity', 'vol'} and metric else metric.day_change if metric else None)}">{delta_text}</div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+
+    st.markdown(
+        f"""
+        <div class="card snapshot-card spread-card">
+            <div class="card-title">2Y10Y Spread</div>
+            <span class="snapshot-status">{_spread_status_text(spread)}</span>
+            <div class="macro-value">{fmt_number(spread * 100, 0) if spread is not None else "N/A"} bp</div>
+            <div class="card-explain">{interpret_rates(us10y, us2y).summary}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_valuation_health(valuation) -> None:
+    """Render S&P 500 valuation health check."""
+
+    st.markdown('<div class="layer-title">第二层 · Valuation / 估值层</div>', unsafe_allow_html=True)
+    metrics = [
+        ("Forward PE", fmt_number(valuation.forward_pe, 1)),
+        ("Trailing PE", fmt_number(valuation.trailing_pe, 1)),
+        ("Earnings Yield", fmt_plain_pct(valuation.earnings_yield)),
+        ("10Y Yield", fmt_plain_pct(valuation.ten_year_yield)),
+        ("ERP", fmt_plain_pct(valuation.erp)),
+        ("CAPE", fmt_number(valuation.cape, 1)),
+        ("历史分位", fmt_plain_pct(valuation.historical_percentile)),
+    ]
+    st.markdown(
+        f"""
+        <div class="valuation-panel">
+            <div class="valuation-score">
+                <span>估值评分</span>
+                <strong>{valuation.valuation_score}</strong>
+                <em>{valuation.valuation_label}</em>
+            </div>
+            <div class="valuation-grid">
+                {"".join(f'<div class="valuation-item"><span>{label}</span><strong>{value}</strong></div>' for label, value in metrics)}
+            </div>
+            <div class="valuation-summary">{html.escape(valuation.valuation_summary)}</div>
+            <div class="card-note">估值数据源：{html.escape(valuation.source)}；评分规则来自 config/valuation.py</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_driver_breakdown(analytics: MarketAnalytics, contribution) -> None:
+    """Render V4 market driver decomposition."""
+
+    st.markdown('<div class="layer-title">第三层 · Drivers / 驱动层</div>', unsafe_allow_html=True)
+    mega_width = _pct_width(contribution.mega_cap_share)
+    other_width = _pct_width(contribution.other_share)
+    st.markdown(
+        f"""
+        <div class="driver-panel">
+            <div class="driver-title">七巨头 vs Other 493 贡献拆解</div>
+            <div class="driver-bar">
+                <span class="driver-bar-mega" style="width:{mega_width}%;">M7 {fmt_plain_pct(_to_pct(contribution.mega_cap_share))}</span>
+                <span class="driver-bar-other" style="width:{other_width}%;">Other {fmt_plain_pct(_to_pct(contribution.other_share))}</span>
+            </div>
+            <div class="driver-grid">
+                <div><span>七巨头贡献</span><strong>{fmt_pct(contribution.mega_cap_contribution)}</strong></div>
+                <div><span>Other 493</span><strong>{fmt_pct(contribution.other_contribution)}</strong></div>
+                <div><span>集中度</span><strong>{contribution.concentration_label}</strong></div>
+            </div>
+            <div class="card-explain">{html.escape(contribution.summary)}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    render_sector_contribution_map(analytics)
+
+
+def render_regime_panel(regime) -> None:
+    """Render market regime state and evidence."""
+
+    badges = "".join(f'<span class="regime-chip">{html.escape(item)}</span>' for item in regime.active_states)
+    evidence = "".join(f"<li>{html.escape(item)}</li>" for item in regime.evidence)
+    st.markdown(
+        f"""
+        <div class="regime-panel">
+            <div class="terminal-note-title">Risk Regime / 市场状态引擎</div>
+            <div class="regime-primary">{html.escape(regime.primary)}</div>
+            <div class="regime-description">{html.escape(regime.description)}</div>
+            <div class="regime-chip-row">{badges}</div>
+            <ul>{evidence}</ul>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_actionable_insights(dca, valuation, regime) -> None:
+    """Render long-term investor advice and DCA multiplier."""
+
+    rationale = "".join(f"<li>{html.escape(item)}</li>" for item in dca.rationale)
+    st.markdown('<div class="layer-title">第四层 · Actionable Insights / 决策层</div>', unsafe_allow_html=True)
+    st.markdown(
+        f"""
+        <div class="action-panel">
+            <div>
+                <div class="terminal-note-title">长期投资者建议引擎</div>
+                <div class="action-title">{html.escape(dca.action)}</div>
+                <div class="action-summary">{html.escape(dca.summary)}</div>
+                <ul>{rationale}</ul>
+            </div>
+            <div class="dca-box">
+                <span>定投倍率建议</span>
+                <strong>{dca.multiplier:.1f}x</strong>
+                <em>{html.escape(valuation.valuation_label)} / {html.escape(regime.primary)}</em>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 def render_macro_strip(metrics: dict[str, IndexMetrics]) -> None:
@@ -676,6 +829,26 @@ def _sector_role_class(role: str) -> str:
     if role == "拖累":
         return "sector-role-drag"
     return "sector-role-neutral"
+
+
+def _spread_status_text(spread: float | None) -> str:
+    if spread is None:
+        return "待确认"
+    if spread < 0:
+        return "倒挂"
+    if spread < 0.5:
+        return "修复中"
+    return "正常化"
+
+
+def _pct_width(value: float | None) -> int:
+    if value is None:
+        return 50
+    return int(max(8, min(92, value * 100)))
+
+
+def _to_pct(value: float | None) -> float | None:
+    return value * 100 if value is not None else None
 
 
 def format_ad(advances: int | None, declines: int | None, unchanged: int | None) -> str:
