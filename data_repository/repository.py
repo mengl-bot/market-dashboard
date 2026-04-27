@@ -189,7 +189,7 @@ class DataRepository:
         )
 
     def _cache_key(self, config: IndexConfig) -> str:
-        return f"daily:1y:{config.key}:{config.ticker}:{config.category}"
+        return f"daily:10y:{config.key}:{config.ticker}:{config.category}"
 
     def _stats_cache_key(self, config: IndexConfig) -> str:
         return f"stats:1y:{config.key}:{config.ticker}:{config.category}"

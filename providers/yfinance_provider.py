@@ -25,7 +25,7 @@ class YFinanceProvider:
         try:
             raw = yf.download(
                 tickers=list(ticker_map),
-                period="1y",
+                period="10y",
                 interval="1d",
                 auto_adjust=False,
                 group_by="ticker",

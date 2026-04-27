@@ -199,6 +199,61 @@ def apply_dark_theme() -> None:
             line-height: 1.45;
             margin-top: 8px;
         }
+        .valuation-map-copy {
+            border: 1px solid #243244;
+            background: #070b11;
+            border-radius: 6px;
+            padding: 9px 11px;
+            margin: 0 0 10px 0;
+            color: #d8e1ec;
+            font-size: 13px;
+            line-height: 1.45;
+        }
+        .valuation-map-card { min-height: 96px; }
+        .valuation-map-value {
+            color: #f8fafc;
+            font-size: 24px;
+            font-weight: 820;
+            line-height: 1.1;
+        }
+        .valuation-label-low { border-color: #166534; }
+        .valuation-label-fair { border-color: #0369a1; }
+        .valuation-label-rich { border-color: #854d0e; }
+        .valuation-label-high { border-color: #7f1d1d; }
+        .valuation-map-subtitle {
+            color: #fbbf24;
+            font-size: 12px;
+            font-weight: 820;
+            margin: 10px 0 8px 0;
+        }
+        .valuation-map-total {
+            border: 1px solid #243244;
+            background: #080d14;
+            border-radius: 6px;
+            padding: 8px 10px;
+            margin-top: 8px;
+            color: #cbd5e1;
+            font-size: 12px;
+        }
+        .valuation-map-total strong { color: #f8fafc; font-size: 15px; }
+        .pe-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 6px 0 10px 0;
+        }
+        .pe-legend span {
+            border: 1px solid #334155;
+            border-radius: 4px;
+            padding: 3px 7px;
+            font-size: 11px;
+            font-weight: 760;
+            background: #0b111a;
+        }
+        .pe-low { color: #32d583; border-color: #166534 !important; }
+        .pe-fair { color: #7dd3fc; border-color: #0369a1 !important; }
+        .pe-rich { color: #fbbf24; border-color: #854d0e !important; }
+        .pe-high { color: #ff5f57; border-color: #7f1d1d !important; }
         .driver-title {
             color: #fbbf24;
             font-size: 12px;

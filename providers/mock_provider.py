@@ -18,7 +18,7 @@ class MockMarketDataProvider:
     def fetch_indices(self, indices: list[IndexConfig]) -> ProviderResult:
         datasets: dict[str, IndexDataset] = {}
         today = pd.Timestamp(date.today())
-        dates = pd.bdate_range(end=today, periods=380)
+        dates = pd.bdate_range(end=today, periods=2600)
 
         for idx, config in enumerate(indices):
             rng = np.random.default_rng(20260416 + idx)

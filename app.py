@@ -40,6 +40,7 @@ def _render_dashboard() -> None:
     from services.analytics import calculate_market_analytics
     from services.contributions import calculate_contribution_metrics
     from services.dca_advice import generate_dca_suggestion
+    from services.historical_valuation import build_historical_valuation_map
     from services.market_regime import classify_market_regime
     from services.summary import generate_chinese_summary
     from services.valuation import calculate_valuation
@@ -66,6 +67,7 @@ def _render_dashboard() -> None:
         render_terminal_status_bar,
         render_valuation_health,
     )
+    from ui.historical_valuation import render_historical_valuation_map
     from ui.styles import apply_dark_theme
     from utils.config import load_config
 
@@ -79,6 +81,7 @@ def _render_dashboard() -> None:
 
     analytics = calculate_market_analytics(provider_result.datasets, provider_result.market_breadth)
     valuation = calculate_valuation(analytics.macro_metrics.get("us10y"))
+    valuation_map = build_historical_valuation_map(provider_result.datasets, valuation)
     contribution = calculate_contribution_metrics(analytics)
     regime = classify_market_regime(analytics, valuation, contribution)
     dca = generate_dca_suggestion(valuation, regime, contribution)
@@ -100,6 +103,7 @@ def _render_dashboard() -> None:
 
     render_market_snapshot(analytics)
     render_valuation_health(valuation)
+    render_historical_valuation_map(valuation_map)
     render_driver_breakdown(analytics, contribution)
     render_actionable_insights(dca, valuation, regime)
     render_regime_panel(regime)
