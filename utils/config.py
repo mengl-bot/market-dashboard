@@ -19,6 +19,7 @@ class AppConfig:
     cache_ttl_quote: int
     cache_ttl_macro: int
     cache_ttl_stats: int
+    cache_ttl_fed_policy: int
     debug_data: bool
 
 
@@ -34,6 +35,7 @@ def load_config() -> AppConfig:
         cache_ttl_quote=_get_int("CACHE_TTL_QUOTE", 300),
         cache_ttl_macro=_get_int("CACHE_TTL_MACRO", 900),
         cache_ttl_stats=_get_int("CACHE_TTL_STATS", 86400),
+        cache_ttl_fed_policy=_get_int("CACHE_TTL_FED_POLICY", 3600),
         debug_data=os.getenv("DEBUG_DATA", "0").lower() in {"1", "true", "yes", "on"},
     )
 

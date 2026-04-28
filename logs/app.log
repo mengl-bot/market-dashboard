@@ -1455,3 +1455,88 @@
 2026-04-17 18:04:00,042 INFO us_index_dashboard - cache hit disk key=market-breadth:constituents:nasdaq100 ttl=86400
 2026-04-17 18:04:00,043 INFO us_index_dashboard - market breadth constituents cache hit key=nasdaq100 layer=disk count=101
 2026-04-17 18:04:08,063 INFO us_index_dashboard - cache write key=market-breadth:counts:nasdaq100:2d-close provider=Yahoo Finance / yfinance rows=1
+2026-04-28 17:21:28,340 INFO us_index_dashboard - cache miss key=daily:10y:nasdaq:^IXIC:index
+2026-04-28 17:21:28,341 INFO us_index_dashboard - cache miss key=daily:10y:nasdaq100:QQQ:index
+2026-04-28 17:21:28,341 INFO us_index_dashboard - cache miss key=daily:10y:sp500:^GSPC:index
+2026-04-28 17:21:28,342 INFO us_index_dashboard - cache miss key=daily:10y:vix:^VIX:macro
+2026-04-28 17:21:28,342 INFO us_index_dashboard - cache miss key=daily:10y:us10y:^TNX:macro
+2026-04-28 17:21:28,342 INFO us_index_dashboard - cache miss key=daily:10y:us2y:^UST2Y:macro
+2026-04-28 17:21:28,342 INFO us_index_dashboard - cache miss key=daily:10y:xlk:XLK:sector
+2026-04-28 17:21:28,343 INFO us_index_dashboard - cache miss key=daily:10y:xlf:XLF:sector
+2026-04-28 17:21:28,343 INFO us_index_dashboard - cache miss key=daily:10y:xle:XLE:sector
+2026-04-28 17:21:28,343 INFO us_index_dashboard - cache miss key=daily:10y:xlv:XLV:sector
+2026-04-28 17:21:28,343 INFO us_index_dashboard - cache miss key=daily:10y:xli:XLI:sector
+2026-04-28 17:21:28,344 INFO us_index_dashboard - cache miss key=daily:10y:xly:XLY:sector
+2026-04-28 17:21:28,344 INFO us_index_dashboard - cache miss key=daily:10y:xlc:XLC:sector
+2026-04-28 17:21:28,344 INFO us_index_dashboard - cache miss key=daily:10y:xlp:XLP:sector
+2026-04-28 17:21:28,344 INFO us_index_dashboard - cache miss key=daily:10y:xlu:XLU:sector
+2026-04-28 17:21:28,345 INFO us_index_dashboard - cache miss key=daily:10y:xlre:XLRE:sector
+2026-04-28 17:21:28,345 INFO us_index_dashboard - cache miss key=daily:10y:aapl:AAPL:mega_cap
+2026-04-28 17:21:28,345 INFO us_index_dashboard - cache miss key=daily:10y:msft:MSFT:mega_cap
+2026-04-28 17:21:28,345 INFO us_index_dashboard - cache miss key=daily:10y:nvda:NVDA:mega_cap
+2026-04-28 17:21:28,345 INFO us_index_dashboard - cache miss key=daily:10y:amzn:AMZN:mega_cap
+2026-04-28 17:21:28,346 INFO us_index_dashboard - cache miss key=daily:10y:googl:GOOGL:mega_cap
+2026-04-28 17:21:28,346 INFO us_index_dashboard - cache miss key=daily:10y:meta:META:mega_cap
+2026-04-28 17:21:28,346 INFO us_index_dashboard - cache miss key=daily:10y:tsla:TSLA:mega_cap
+2026-04-28 17:21:28,346 INFO us_index_dashboard - cache miss key=daily:10y:equal_weight:RSP:breadth
+2026-04-28 17:21:28,347 INFO us_index_dashboard - cache miss key=daily:10y:cap_weight:SPY:breadth
+2026-04-28 17:21:28,372 INFO us_index_dashboard - cache stale key=stats:1y:nasdaq:^IXIC:index ttl=86400 age=947886
+2026-04-28 17:21:28,372 INFO us_index_dashboard - cache miss key=stats:1y:nasdaq100:QQQ:index
+2026-04-28 17:21:28,393 INFO us_index_dashboard - cache stale key=stats:1y:sp500:^GSPC:index ttl=86400 age=947886
+2026-04-28 17:21:28,394 INFO us_index_dashboard - cache miss key=stats:1y:xlk:XLK:sector
+2026-04-28 17:21:28,395 INFO us_index_dashboard - cache miss key=stats:1y:xlf:XLF:sector
+2026-04-28 17:21:28,395 INFO us_index_dashboard - cache miss key=stats:1y:xle:XLE:sector
+2026-04-28 17:21:28,395 INFO us_index_dashboard - cache miss key=stats:1y:xlv:XLV:sector
+2026-04-28 17:21:28,396 INFO us_index_dashboard - cache miss key=stats:1y:xli:XLI:sector
+2026-04-28 17:21:28,396 INFO us_index_dashboard - cache miss key=stats:1y:xly:XLY:sector
+2026-04-28 17:21:28,397 INFO us_index_dashboard - cache miss key=stats:1y:xlc:XLC:sector
+2026-04-28 17:21:28,397 INFO us_index_dashboard - cache miss key=stats:1y:xlp:XLP:sector
+2026-04-28 17:21:28,397 INFO us_index_dashboard - cache miss key=stats:1y:xlu:XLU:sector
+2026-04-28 17:21:28,398 INFO us_index_dashboard - cache miss key=stats:1y:xlre:XLRE:sector
+2026-04-28 17:21:28,420 INFO us_index_dashboard - cache stale key=stats:1y:aapl:AAPL:mega_cap ttl=86400 age=947886
+2026-04-28 17:21:28,441 INFO us_index_dashboard - cache stale key=stats:1y:msft:MSFT:mega_cap ttl=86400 age=947886
+2026-04-28 17:21:28,463 INFO us_index_dashboard - cache stale key=stats:1y:nvda:NVDA:mega_cap ttl=86400 age=947886
+2026-04-28 17:21:28,484 INFO us_index_dashboard - cache stale key=stats:1y:amzn:AMZN:mega_cap ttl=86400 age=947886
+2026-04-28 17:21:28,509 INFO us_index_dashboard - cache stale key=stats:1y:googl:GOOGL:mega_cap ttl=86400 age=947886
+2026-04-28 17:21:28,530 INFO us_index_dashboard - cache stale key=stats:1y:meta:META:mega_cap ttl=86400 age=947886
+2026-04-28 17:21:28,552 INFO us_index_dashboard - cache stale key=stats:1y:tsla:TSLA:mega_cap ttl=86400 age=947886
+2026-04-28 17:21:28,573 INFO us_index_dashboard - cache stale key=stats:1y:equal_weight:RSP:breadth ttl=86400 age=947886
+2026-04-28 17:21:28,594 INFO us_index_dashboard - cache stale key=stats:1y:cap_weight:SPY:breadth ttl=86400 age=947886
+2026-04-28 17:21:28,697 INFO us_index_dashboard - mock fallback key=nasdaq ticker=^IXIC
+2026-04-28 17:21:28,697 INFO us_index_dashboard - mock fallback key=nasdaq100 ticker=QQQ
+2026-04-28 17:21:28,697 INFO us_index_dashboard - mock fallback key=sp500 ticker=^GSPC
+2026-04-28 17:21:28,697 INFO us_index_dashboard - mock fallback key=vix ticker=^VIX
+2026-04-28 17:21:28,697 INFO us_index_dashboard - mock fallback key=us10y ticker=^TNX
+2026-04-28 17:21:28,697 INFO us_index_dashboard - mock fallback key=us2y ticker=^UST2Y
+2026-04-28 17:21:28,697 INFO us_index_dashboard - mock fallback key=xlk ticker=XLK
+2026-04-28 17:21:28,698 INFO us_index_dashboard - mock fallback key=xlf ticker=XLF
+2026-04-28 17:21:28,698 INFO us_index_dashboard - mock fallback key=xle ticker=XLE
+2026-04-28 17:21:28,698 INFO us_index_dashboard - mock fallback key=xlv ticker=XLV
+2026-04-28 17:21:28,698 INFO us_index_dashboard - mock fallback key=xli ticker=XLI
+2026-04-28 17:21:28,698 INFO us_index_dashboard - mock fallback key=xly ticker=XLY
+2026-04-28 17:21:28,698 INFO us_index_dashboard - mock fallback key=xlc ticker=XLC
+2026-04-28 17:21:28,698 INFO us_index_dashboard - mock fallback key=xlp ticker=XLP
+2026-04-28 17:21:28,698 INFO us_index_dashboard - mock fallback key=xlu ticker=XLU
+2026-04-28 17:21:28,698 INFO us_index_dashboard - mock fallback key=xlre ticker=XLRE
+2026-04-28 17:21:28,699 INFO us_index_dashboard - mock fallback key=aapl ticker=AAPL
+2026-04-28 17:21:28,699 INFO us_index_dashboard - mock fallback key=msft ticker=MSFT
+2026-04-28 17:21:28,699 INFO us_index_dashboard - mock fallback key=nvda ticker=NVDA
+2026-04-28 17:21:28,699 INFO us_index_dashboard - mock fallback key=amzn ticker=AMZN
+2026-04-28 17:21:28,699 INFO us_index_dashboard - mock fallback key=googl ticker=GOOGL
+2026-04-28 17:21:28,699 INFO us_index_dashboard - mock fallback key=meta ticker=META
+2026-04-28 17:21:28,699 INFO us_index_dashboard - mock fallback key=tsla ticker=TSLA
+2026-04-28 17:21:28,699 INFO us_index_dashboard - mock fallback key=equal_weight ticker=RSP
+2026-04-28 17:21:28,699 INFO us_index_dashboard - mock fallback key=cap_weight ticker=SPY
+2026-04-28 17:21:28,721 INFO us_index_dashboard - cache stale key=market-breadth:counts:sp500:2d-close ttl=300 age=947849
+2026-04-28 17:21:28,743 INFO us_index_dashboard - cache stale key=market-breadth:constituents:sp500 ttl=86400 age=960149
+2026-04-28 17:21:28,797 WARNING us_index_dashboard - market breadth constituents failed key=sp500 error=<urlopen error [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。>
+2026-04-28 17:21:28,798 INFO us_index_dashboard - cache stale disk fallback key=market-breadth:constituents:sp500
+2026-04-28 17:21:32,061 WARNING us_index_dashboard - market breadth live failed key=sp500 error=no valid close pairs for breadth calculation
+2026-04-28 17:21:32,062 INFO us_index_dashboard - cache stale disk fallback key=market-breadth:counts:sp500:2d-close
+2026-04-28 17:21:32,085 INFO us_index_dashboard - cache stale key=market-breadth:counts:nasdaq100:2d-close ttl=300 age=947844
+2026-04-28 17:21:32,107 INFO us_index_dashboard - cache stale key=market-breadth:constituents:nasdaq100 ttl=86400 age=960109
+2026-04-28 17:21:32,109 WARNING us_index_dashboard - market breadth constituents failed key=nasdaq100 error=<urlopen error [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。>
+2026-04-28 17:21:32,110 INFO us_index_dashboard - cache stale disk fallback key=market-breadth:constituents:nasdaq100
+2026-04-28 17:21:32,499 WARNING us_index_dashboard - market breadth live failed key=nasdaq100 error=no valid close pairs for breadth calculation
+2026-04-28 17:21:32,500 INFO us_index_dashboard - cache stale disk fallback key=market-breadth:counts:nasdaq100:2d-close
+2026-04-28 17:21:32,504 WARNING us_index_dashboard - fed policy rate fetch failed error=<urlopen error [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。>

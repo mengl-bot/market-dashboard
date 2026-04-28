@@ -31,12 +31,18 @@ def classify_market_regime(
     vix = analytics.macro_metrics.get("vix")
     us10y = analytics.macro_metrics.get("us10y")
     sp500 = analytics.index_metrics.get("sp500")
+    fed_policy_rate = analytics.fed_policy_rate
     active: list[str] = []
     evidence: list[str] = []
 
     if us10y and us10y.day_change is not None and us10y.day_change >= REGIME_THRESHOLDS["rate_pressure_daily_change"]:
         active.append("Rate Pressure")
         evidence.append("10Y收益率快速上行")
+
+    if fed_policy_rate and fed_policy_rate.policy_status == "限制性" and fed_policy_rate.last_action != "降息":
+        if "Rate Pressure" not in active:
+            active.append("Rate Pressure")
+        evidence.append("政策利率仍处限制性区间")
 
     if contribution.mega_cap_share is not None and contribution.mega_cap_share >= REGIME_THRESHOLDS["leader_concentration_high"]:
         active.append("Narrow Leadership")
@@ -76,4 +82,3 @@ def _safe_ratio(left: int | None, right: int | None) -> float:
     if left is None or right in (None, 0):
         return 0.0
     return left / right
-

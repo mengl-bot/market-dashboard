@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from config.valuation import VALUATION_FALLBACKS, VALUATION_SCORE_RANGES, VALUATION_SCORING
+from data_repository.fed_policy_rate import FedPolicyRate
 from services.analytics import IndexMetrics
 
 
@@ -22,10 +23,11 @@ class ValuationMetrics:
     valuation_score: int
     valuation_label: str
     valuation_summary: str
+    policy_rate_note: str
     source: str
 
 
-def calculate_valuation(us10y: IndexMetrics | None) -> ValuationMetrics:
+def calculate_valuation(us10y: IndexMetrics | None, fed_policy_rate: FedPolicyRate | None = None) -> ValuationMetrics:
     """Build valuation metrics from configured fundamentals and live 10Y yield."""
 
     forward_pe = _float_or_none(VALUATION_FALLBACKS.get("forward_pe"))
@@ -48,6 +50,7 @@ def calculate_valuation(us10y: IndexMetrics | None) -> ValuationMetrics:
         valuation_score=score,
         valuation_label=label,
         valuation_summary=_valuation_summary(label, erp),
+        policy_rate_note=_policy_rate_note(fed_policy_rate),
         source=str(VALUATION_FALLBACKS.get("source", "mock_config")),
     )
 
@@ -94,9 +97,20 @@ def _valuation_summary(label: str, erp: float | None) -> str:
     return "估值数据不足，建议结合盈利预期和利率环境继续观察。"
 
 
+def _policy_rate_note(fed_policy_rate: FedPolicyRate | None) -> str:
+    if fed_policy_rate is None or fed_policy_rate.midpoint is None:
+        return "政策利率数据不足，估值层暂以10Y收益率为主要利率输入。"
+    if fed_policy_rate.policy_status == "限制性":
+        return "当前政策利率仍处限制性区间，估值扩张空间受到一定压制。"
+    if fed_policy_rate.last_action == "降息":
+        return "降息周期下流动性改善，成长股估值压力缓解。"
+    if fed_policy_rate.last_action == "暂停":
+        return "暂停周期中，市场重点转向未来降息预期。"
+    return "政策利率是短端利率锚，仍需结合盈利与长端利率判断估值。"
+
+
 def _float_or_none(value: object) -> float | None:
     try:
         return None if value is None else float(value)
     except (TypeError, ValueError):
         return None
-

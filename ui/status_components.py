@@ -8,8 +8,9 @@ from zoneinfo import ZoneInfo
 
 import streamlit as st
 
+from data_repository.fed_policy_rate import FedPolicyRate
 from services.analytics import IndexMetrics, MarketAnalytics
-from services.interpretation import interpret_rates, snapshot_status
+from services.interpretation import snapshot_status
 from ui.formatters import delta_class, fmt_number, fmt_pct, fmt_plain_pct
 
 
@@ -112,6 +113,8 @@ def health_counts(analytics: MarketAnalytics) -> dict[str, int]:
 
     states = [metric.data_state for metric in analytics.metrics.values()]
     states.extend([analytics.breadth.sp500_source, analytics.breadth.nasdaq100_source])
+    if analytics.fed_policy_rate:
+        states.append(analytics.fed_policy_rate.source_state)
     states.append(aggregate_status(states))
     counts = {"realtime": 0, "cached": 0, "mock": 0, "error": 0}
     for state in states:
@@ -148,6 +151,7 @@ def render_terminal_status_bar(
     live_class = "terminal-chip" if morning_mode else ("terminal-chip warn" if is_mock else "terminal-chip live")
     vix = analytics.macro_metrics.get("vix")
     us10y = analytics.macro_metrics.get("us10y")
+    fed_policy_rate = analytics.fed_policy_rate
     breadth_text = f"龙头宽度 M7 A/D {analytics.breadth.advances}/{analytics.breadth.declines}"
     risk_class = "risk-off" if "Risk OFF" in analytics.decision.risk_mode else "risk-on"
 
@@ -167,6 +171,7 @@ def render_terminal_status_bar(
                 <span class="terminal-chip {risk_class}">{analytics.decision.risk_mode}</span>
                 <span class="terminal-chip">VIX {fmt_number(vix.current if vix else None, 2)} / {fmt_pct(vix.day_change_pct if vix else None)}</span>
                 <span class="terminal-chip">10年美债 {fmt_number(us10y.current if us10y else None, 2)}%</span>
+                <span class="terminal-chip">Fed Funds {_policy_rate_range(fed_policy_rate)}</span>
                 <span class="terminal-chip">{breadth_text}</span>
             </div>
         </div>
@@ -286,11 +291,13 @@ def render_overview(metrics: dict[str, IndexMetrics]) -> None:
 def render_market_snapshot(analytics: MarketAnalytics) -> None:
     """Render V4 market snapshot cards with concise status labels."""
 
+    fed_policy_rate = analytics.fed_policy_rate
     cards = [
         ("S&P 500", analytics.index_metrics.get("sp500"), "equity"),
         ("Nasdaq Composite", analytics.index_metrics.get("nasdaq"), "equity"),
         ("Nasdaq 100", analytics.index_metrics.get("nasdaq100"), "equity"),
         ("VIX", analytics.macro_metrics.get("vix"), "vol"),
+        ("政策利率（Fed Funds Rate）", fed_policy_rate, "policy_rate"),
         ("2Y Treasury", analytics.macro_metrics.get("us2y"), "rate"),
         ("10Y Treasury", analytics.macro_metrics.get("us10y"), "rate"),
     ]
@@ -302,10 +309,13 @@ def render_market_snapshot(analytics: MarketAnalytics) -> None:
     for start in range(0, len(cards), 3):
         cols = st.columns(3)
         for col, (title, metric, kind) in zip(cols, cards[start : start + 3]):
-            value_text = f"{fmt_number(metric.current if metric else None, 2)}%" if kind == "rate" else fmt_number(metric.current if metric else None, 2)
-            delta_text = fmt_pct(metric.day_change_pct if metric else None) if kind in {"equity", "vol"} else fmt_bp(metric.day_change if metric else None)
-            status = snapshot_status(metric, kind)
             with col:
+                if kind == "policy_rate":
+                    col.markdown(_policy_rate_card_html(metric if isinstance(metric, FedPolicyRate) else None), unsafe_allow_html=True)
+                    continue
+                value_text = f"{fmt_number(metric.current if metric else None, 2)}%" if kind == "rate" else fmt_number(metric.current if metric else None, 2)
+                delta_text = fmt_pct(metric.day_change_pct if metric else None) if kind in {"equity", "vol"} else fmt_bp(metric.day_change if metric else None)
+                status = snapshot_status(metric, kind)
                 st.markdown(
                     f"""
                     <div class="card snapshot-card">
@@ -325,7 +335,7 @@ def render_market_snapshot(analytics: MarketAnalytics) -> None:
             <div class="card-title">2Y10Y Spread</div>
             <span class="snapshot-status">{_spread_status_text(spread)}</span>
             <div class="macro-value">{fmt_number(spread * 100, 0) if spread is not None else "N/A"} bp</div>
-            <div class="card-explain">{interpret_rates(us10y, us2y).summary}</div>
+            <div class="card-explain">{html.escape(_treasury_macro_summary(us10y, us2y, spread, fed_policy_rate))}</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -359,6 +369,7 @@ def render_valuation_health(valuation) -> None:
                 {"".join(f'<div class="valuation-item"><span>{label}</span><strong>{value}</strong></div>' for label, value in metrics)}
             </div>
             <div class="valuation-summary">{html.escape(valuation.valuation_summary)}</div>
+            <div class="card-explain">{html.escape(valuation.policy_rate_note)}</div>
             <div class="card-note">估值模型已启用（基于当前数据框架）</div>
         </div>
         """,
@@ -437,7 +448,7 @@ def render_actionable_insights(dca, valuation, regime) -> None:
     )
 
 
-def render_macro_strip(metrics: dict[str, IndexMetrics]) -> None:
+def render_macro_strip(metrics: dict[str, IndexMetrics], fed_policy_rate: FedPolicyRate | None = None) -> None:
     """Render macro cards with status badges and Treasury insights."""
 
     us10y = metrics.get("us10y")
@@ -445,7 +456,7 @@ def render_macro_strip(metrics: dict[str, IndexMetrics]) -> None:
     vix = metrics.get("vix")
     spread = us2y.current - us10y.current if us2y and us10y and us2y.current is not None and us10y.current is not None else None
 
-    cols = st.columns(4)
+    cols = st.columns(5)
 
     with cols[0]:
         st.markdown(
@@ -459,6 +470,9 @@ def render_macro_strip(metrics: dict[str, IndexMetrics]) -> None:
             """,
             unsafe_allow_html=True,
         )
+
+    with cols[1]:
+        st.markdown(_policy_rate_card_html(fed_policy_rate), unsafe_allow_html=True)
 
     treasury_items = [
         (
@@ -490,7 +504,7 @@ def render_macro_strip(metrics: dict[str, IndexMetrics]) -> None:
         ),
     ]
 
-    for col, (title, metric, value, delta, unit, explanation, insight_badge) in zip(cols[1:], treasury_items):
+    for col, (title, metric, value, delta, unit, explanation, insight_badge) in zip(cols[2:], treasury_items):
         value_text = f"{fmt_number(value, 2)}%" if unit == "%" else f"{fmt_number(value * 100, 0)} bp" if value is not None and unit == "bp" else fmt_number(value, 2)
         with col:
             st.markdown(
@@ -511,7 +525,7 @@ def render_macro_strip(metrics: dict[str, IndexMetrics]) -> None:
         f"""
         <div class="macro-summary-line">
             <span class="macro-summary-label">Treasury Insight</span>
-            <strong>{html.escape(_treasury_macro_summary(us10y, us2y, spread))}</strong>
+            <strong>{html.escape(_treasury_macro_summary(us10y, us2y, spread, fed_policy_rate))}</strong>
         </div>
         """,
         unsafe_allow_html=True,
@@ -568,7 +582,12 @@ def _spread_status_badge(spread: float | None) -> str:
     return '<span class="macro-insight-badge macro-insight-good">正常化</span>'
 
 
-def _treasury_macro_summary(us10y: IndexMetrics | None, us2y: IndexMetrics | None, spread: float | None) -> str:
+def _treasury_macro_summary(
+    us10y: IndexMetrics | None,
+    us2y: IndexMetrics | None,
+    spread: float | None,
+    fed_policy_rate: FedPolicyRate | None = None,
+) -> str:
     ten_year_text = "10Y持平，估值影响有限"
     if us10y and us10y.day_change is not None:
         if us10y.day_change > 0.005:
@@ -596,7 +615,57 @@ def _treasury_macro_summary(us10y: IndexMetrics | None, us2y: IndexMetrics | Non
     if two_year_text:
         parts.append(two_year_text)
     parts.append(spread_text)
+    if fed_policy_rate and fed_policy_rate.midpoint is not None:
+        parts.append(_policy_rate_interpretation(fed_policy_rate))
     return "；".join(parts)
+
+
+def _policy_rate_range(policy_rate: FedPolicyRate | None) -> str:
+    if policy_rate is None or policy_rate.lower_bound is None or policy_rate.upper_bound is None:
+        return "N/A"
+    return f"{policy_rate.lower_bound:.2f}% - {policy_rate.upper_bound:.2f}%"
+
+
+def _policy_rate_interpretation(policy_rate: FedPolicyRate) -> str:
+    if policy_rate.policy_status == "限制性":
+        return "高政策利率：高利率环境仍在压制估值"
+    if policy_rate.last_action == "降息":
+        return "降息周期：流动性改善，成长股估值压力缓解"
+    if policy_rate.last_action == "暂停":
+        return "暂停周期：市场重点转向未来降息预期"
+    return "政策利率是短端利率锚，需结合美债收益率观察流动性"
+
+
+def _policy_rate_badge(policy_rate: FedPolicyRate | None) -> str:
+    if policy_rate is None:
+        return '<span class="macro-insight-badge macro-insight-neutral">待确认</span>'
+    if policy_rate.policy_status == "限制性":
+        return '<span class="macro-insight-badge macro-insight-risk">限制性</span>'
+    if policy_rate.policy_status == "宽松":
+        return '<span class="macro-insight-badge macro-insight-good">宽松</span>'
+    return '<span class="macro-insight-badge macro-insight-neutral">中性</span>'
+
+
+def _policy_rate_card_html(policy_rate: FedPolicyRate | None) -> str:
+    next_meeting = policy_rate.next_fomc_date.isoformat() if policy_rate and policy_rate.next_fomc_date else "预留/mock"
+    status = policy_rate.source_state if policy_rate else None
+    cache_saved_at = policy_rate.cache_saved_at if policy_rate else None
+    provider = policy_rate.provider if policy_rate else None
+    action = policy_rate.last_action if policy_rate else "待确认"
+    interpretation = _policy_rate_interpretation(policy_rate) if policy_rate else "政策利率数据缺失，等待 FRED 或官方数据。"
+    message = policy_rate.message if policy_rate and policy_rate.message else "政策利率是美联储设定的短端利率锚，会影响美债收益率、股票估值和市场流动性。"
+    return f"""
+        <div class="card compact-card">
+            {status_badge(status, cache_saved_at, provider)}
+            <div class="card-title">政策利率（Fed Funds Rate）</div>
+            {_policy_rate_badge(policy_rate)}
+            <div class="macro-value">{_policy_rate_range(policy_rate)}</div>
+            <div class="card-note">当前状态：{html.escape(policy_rate.policy_status if policy_rate else "待确认")} / 最近一次动作：{html.escape(action)}</div>
+            <div class="card-note">下次 FOMC：{html.escape(next_meeting)}</div>
+            <div class="card-explain treasury-explain">政策利率是美联储设定的短端利率锚，会影响美债收益率、股票估值和市场流动性。{html.escape(interpretation)}。</div>
+            <div class="status-meta">{html.escape(message)}</div>
+        </div>
+    """
 
 
 def render_mega_cap_section(metrics: dict[str, IndexMetrics], average_value: float | None) -> None:

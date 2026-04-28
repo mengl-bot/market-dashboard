@@ -12,6 +12,7 @@ def generate_chinese_summary(analytics: MarketAnalytics) -> dict[str, list[str]]
     sp500 = analytics.index_metrics.get("sp500")
     vix = analytics.macro_metrics.get("vix")
     us10y = analytics.macro_metrics.get("us10y")
+    fed_policy_rate = analytics.fed_policy_rate
     top = _top_mega(analytics)
     weak = _weak_mega(analytics)
 
@@ -30,6 +31,12 @@ def generate_chinese_summary(analytics: MarketAnalytics) -> dict[str, list[str]]
         driver.append(f"主驱动：{top.name} {top.day_change_pct:+.2f}%，贡献约 {top.contribution:+.2f}pct。")
     if analytics.mega_cap_average is not None:
         driver.append(f"七巨头平均 {analytics.mega_cap_average:+.2f}%。{analytics.decision.driver}。")
+    if fed_policy_rate and fed_policy_rate.midpoint is not None:
+        driver.append(
+            f"政策利率：{fed_policy_rate.lower_bound:.2f}% - {fed_policy_rate.upper_bound:.2f}%，"
+            f"{fed_policy_rate.policy_status}，最近一次动作：{fed_policy_rate.last_action}。"
+        )
+        watchlist.append(_policy_rate_watch(fed_policy_rate.policy_status, fed_policy_rate.last_action))
     if vix and vix.day_change_pct is not None:
         driver.append(f"波动：VIX {vix.current:.2f}，日变动 {vix.day_change_pct:+.2f}%。")
 
@@ -58,3 +65,13 @@ def _top_mega(analytics: MarketAnalytics):
 def _weak_mega(analytics: MarketAnalytics):
     values = [metric for metric in analytics.mega_cap_metrics.values() if metric.day_change_pct is not None]
     return min(values, key=lambda metric: metric.day_change_pct or 0, default=None)
+
+
+def _policy_rate_watch(policy_status: str, last_action: str) -> str:
+    if policy_status == "限制性":
+        return "政策利率仍处限制性区间，估值扩张空间受到一定压制。"
+    if last_action == "降息":
+        return "降息周期：流动性改善，成长股估值压力缓解。"
+    if last_action == "暂停":
+        return "暂停周期：市场重点转向未来降息预期。"
+    return "政策利率是短端利率锚，需结合美债收益率判断流动性方向。"

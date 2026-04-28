@@ -79,8 +79,12 @@ def _render_dashboard() -> None:
     with st.spinner("正在加载市场数据..."):
         provider_result = DataRepository(config).load_market_data()
 
-    analytics = calculate_market_analytics(provider_result.datasets, provider_result.market_breadth)
-    valuation = calculate_valuation(analytics.macro_metrics.get("us10y"))
+    analytics = calculate_market_analytics(
+        provider_result.datasets,
+        provider_result.market_breadth,
+        provider_result.fed_policy_rate,
+    )
+    valuation = calculate_valuation(analytics.macro_metrics.get("us10y"), provider_result.fed_policy_rate)
     valuation_map = build_historical_valuation_map(provider_result.datasets, valuation)
     contribution = calculate_contribution_metrics(analytics)
     regime = classify_market_regime(analytics, valuation, contribution)
@@ -97,7 +101,7 @@ def _render_dashboard() -> None:
             st.caption(
                 f"Provider preference: {config.provider_name} | "
                 f"Cache dir: {config.cache_dir} | "
-                f"TTL quote/macro/stats: {config.cache_ttl_quote}/{config.cache_ttl_macro}/{config.cache_ttl_stats}s"
+                f"TTL quote/macro/stats/fed: {config.cache_ttl_quote}/{config.cache_ttl_macro}/{config.cache_ttl_stats}/{config.cache_ttl_fed_policy}s"
             )
             render_data_debug(provider_result.debug_rows)
 

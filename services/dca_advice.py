@@ -45,8 +45,9 @@ def generate_dca_suggestion(
 
     if regime.primary == "Rate Pressure":
         rationale.append("利率上行压制估值")
+    if valuation.policy_rate_note:
+        rationale.append(valuation.policy_rate_note)
     if contribution.mega_cap_share is not None and contribution.mega_cap_share >= 0.65:
         rationale.append("龙头集中度偏高")
 
     return DcaSuggestion(action=action, multiplier=multiplier, summary=summary, rationale=rationale)
-

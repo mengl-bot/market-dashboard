@@ -9,6 +9,7 @@ from typing import Dict
 import numpy as np
 import pandas as pd
 
+from data_repository.fed_policy_rate import FedPolicyRate
 from data_repository.market_breadth import MarketBreadthSnapshot
 from providers.base import IndexDataset
 
@@ -153,6 +154,7 @@ class MarketAnalytics:
     sector_contributions: list[SectorContribution]
     breadth: BreadthMetrics
     decision: DecisionView
+    fed_policy_rate: FedPolicyRate | None
     mega_cap_average: float | None
     labels: list[str]
     leader_key: str | None
@@ -164,6 +166,7 @@ PERIOD_DAYS = {"5D": 5, "1M": 21, "6M": 126, "1Y": 252}
 def calculate_market_analytics(
     datasets: Dict[str, IndexDataset],
     market_breadth: dict[str, MarketBreadthSnapshot] | None = None,
+    fed_policy_rate: FedPolicyRate | None = None,
 ) -> MarketAnalytics:
     """Compute metrics and rule-based market labels."""
 
@@ -177,8 +180,8 @@ def calculate_market_analytics(
     breadth = calculate_breadth(metrics, market_breadth)
     sector_contributions = calculate_sector_contributions(sector_metrics)
     mega_cap_average = _average([metric.day_change_pct for metric in mega_cap_metrics.values()])
-    labels, leader_key = generate_market_labels(index_metrics, macro_metrics, mega_cap_average, breadth)
-    decision = generate_decision_view(index_metrics, macro_metrics, mega_cap_metrics, breadth, mega_cap_average, leader_key)
+    labels, leader_key = generate_market_labels(index_metrics, macro_metrics, mega_cap_average, breadth, fed_policy_rate)
+    decision = generate_decision_view(index_metrics, macro_metrics, mega_cap_metrics, breadth, mega_cap_average, leader_key, fed_policy_rate)
 
     return MarketAnalytics(
         metrics=metrics,
@@ -189,6 +192,7 @@ def calculate_market_analytics(
         sector_contributions=sector_contributions,
         breadth=breadth,
         decision=decision,
+        fed_policy_rate=fed_policy_rate,
         mega_cap_average=mega_cap_average,
         labels=labels,
         leader_key=leader_key,
@@ -351,6 +355,7 @@ def generate_market_labels(
     macro_metrics: Dict[str, IndexMetrics],
     mega_cap_average: float | None,
     breadth: BreadthMetrics,
+    fed_policy_rate: FedPolicyRate | None = None,
 ) -> tuple[list[str], str | None]:
     """Create rule-based badges for relative strength, macro, and breadth."""
 
@@ -388,6 +393,9 @@ def generate_market_labels(
     if breadth.equal_vs_cap_spread is not None:
         labels.append("等权领先" if breadth.equal_vs_cap_spread > 0 else "权重领先")
 
+    if fed_policy_rate and fed_policy_rate.policy_status:
+        labels.append(f"政策利率{fed_policy_rate.policy_status}")
+
     return labels, leader_key
 
 
@@ -398,6 +406,7 @@ def generate_decision_view(
     breadth: BreadthMetrics,
     mega_cap_average: float | None,
     leader_key: str | None,
+    fed_policy_rate: FedPolicyRate | None = None,
 ) -> DecisionView:
     """Generate five-dimensional terminal-style market judgment."""
 
@@ -424,6 +433,8 @@ def generate_decision_view(
     if vix and vix.day_change_pct is not None and vix.day_change_pct > 3:
         risk_pressure += 1
     if us10y and us10y.day_change is not None and us10y.day_change > 0.04:
+        risk_pressure += 1
+    if fed_policy_rate and fed_policy_rate.policy_status == "限制性" and fed_policy_rate.last_action != "降息":
         risk_pressure += 1
     if breadth.advances < breadth.declines:
         risk_pressure += 1

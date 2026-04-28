@@ -13,6 +13,7 @@ from utils.config import AppConfig, load_config
 from utils.logging_config import setup_logging
 
 from data_repository.cache import MarketDataCache
+from data_repository.fed_policy_rate import FedPolicyRate, FedPolicyRateRepository
 from data_repository.market_breadth import MarketBreadthRepository, MarketBreadthSnapshot
 
 
@@ -39,6 +40,7 @@ class RepositoryResult:
     is_mock: bool
     warning: str | None
     market_breadth: dict[str, MarketBreadthSnapshot] = field(default_factory=dict)
+    fed_policy_rate: FedPolicyRate | None = None
     debug_rows: list[DebugRow] = field(default_factory=list)
     status_messages: list[str] = field(default_factory=list)
 
@@ -54,6 +56,11 @@ class DataRepository:
         self.alpha = AlphaVantageProvider(self.config.alpha_vantage_api_key or self.config.market_api_key)
         self.mock = MockMarketDataProvider()
         self.market_breadth = MarketBreadthRepository(self.cache, self.logger, self.config)
+        self.fed_policy_rate = FedPolicyRateRepository(
+            self.config.cache_dir,
+            self.logger,
+            self.config.cache_ttl_fed_policy,
+        )
 
     def load_market_data(self, series: list[IndexConfig] | None = None) -> RepositoryResult:
         """Load all dashboard data with cache and per-symbol fallback."""
@@ -120,9 +127,12 @@ class DataRepository:
 
         market_breadth = self.market_breadth.load_all()
         self._append_market_breadth_debug(market_breadth, debug_rows)
+        fed_policy_rate = self.fed_policy_rate.load()
+        self._append_fed_policy_debug(fed_policy_rate, debug_rows)
 
         status_messages = self._status_messages(configs, datasets)
         status_messages.extend(self._market_breadth_status(market_breadth))
+        status_messages.extend(self._fed_policy_status(fed_policy_rate))
         warning = "；".join(status_messages) if status_messages else None
         source_name = self._source_name(datasets)
         is_mock = all(dataset.source_state == "mock" for dataset in datasets.values()) if datasets else True
@@ -132,6 +142,7 @@ class DataRepository:
             is_mock=is_mock,
             warning=warning,
             market_breadth=market_breadth,
+            fed_policy_rate=fed_policy_rate,
             debug_rows=debug_rows,
             status_messages=status_messages,
         )
@@ -258,6 +269,29 @@ class DataRepository:
         if unavailable:
             messages.append(f"全市场宽度暂不可用：{', '.join(unavailable)}")
         return messages
+
+    def _append_fed_policy_debug(self, policy_rate: FedPolicyRate, debug_rows: list[DebugRow]) -> None:
+        debug_rows.append(
+            DebugRow(
+                key="fed_policy_rate",
+                ticker="DFEDTARL/DFEDTARU",
+                category="macro",
+                provider=policy_rate.provider,
+                state=policy_rate.source_state,
+                cache_layer="cache" if policy_rate.source_state in {"cache", "stale_cache"} else "none",
+                rows=1 if policy_rate.lower_bound is not None and policy_rate.upper_bound is not None else 0,
+                message=policy_rate.message,
+            )
+        )
+
+    def _fed_policy_status(self, policy_rate: FedPolicyRate) -> list[str]:
+        if policy_rate.source_state == "mock":
+            return ["政策利率使用 fallback/mock 数据"]
+        if policy_rate.source_state == "stale_cache":
+            return ["政策利率使用过期缓存"]
+        if policy_rate.source_state == "cache":
+            return ["政策利率来自缓存"]
+        return []
 
     def _source_name(self, datasets: dict[str, IndexDataset]) -> str:
         providers = sorted({dataset.provider for dataset in datasets.values()})
